@@ -15,6 +15,13 @@
 		AD433BB41E9E21EE002FC799 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD433BB21E9E21EE002FC799 /* LaunchScreen.storyboard */; };
 		AD433BBF1E9E21EE002FC799 /* MDWTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AD433BBE1E9E21EE002FC799 /* MDWTests.m */; };
 		AD433BCA1E9E21EE002FC799 /* MDWUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AD433BC91E9E21EE002FC799 /* MDWUITests.m */; };
+		ADED080B1EA2728700A33CE0 /* AgendaDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = ADED07FE1EA2728700A33CE0 /* AgendaDTO.m */; };
+		ADED080C1EA2728700A33CE0 /* AttendeeDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = ADED08001EA2728700A33CE0 /* AttendeeDTO.m */; };
+		ADED080D1EA2728700A33CE0 /* DBHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = ADED08021EA2728700A33CE0 /* DBHandler.m */; };
+		ADED080E1EA2728700A33CE0 /* ExhibitorDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = ADED08041EA2728700A33CE0 /* ExhibitorDTO.m */; };
+		ADED080F1EA2728700A33CE0 /* RLMString.m in Sources */ = {isa = PBXBuildFile; fileRef = ADED08061EA2728700A33CE0 /* RLMString.m */; };
+		ADED08101EA2728700A33CE0 /* SessionDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = ADED08081EA2728700A33CE0 /* SessionDTO.m */; };
+		ADED08111EA2728700A33CE0 /* SpeakerDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = ADED080A1EA2728700A33CE0 /* SpeakerDTO.m */; };
 		C9BC7AE9FB0F37240E8186AD /* libPods-MDW.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4347F597BA710ACAAB8B9845 /* libPods-MDW.a */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +62,20 @@
 		AD433BC51E9E21EE002FC799 /* MDWUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MDWUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD433BC91E9E21EE002FC799 /* MDWUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MDWUITests.m; sourceTree = "<group>"; };
 		AD433BCB1E9E21EE002FC799 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADED07FD1EA2728700A33CE0 /* AgendaDTO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgendaDTO.h; sourceTree = "<group>"; };
+		ADED07FE1EA2728700A33CE0 /* AgendaDTO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgendaDTO.m; sourceTree = "<group>"; };
+		ADED07FF1EA2728700A33CE0 /* AttendeeDTO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendeeDTO.h; sourceTree = "<group>"; };
+		ADED08001EA2728700A33CE0 /* AttendeeDTO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendeeDTO.m; sourceTree = "<group>"; };
+		ADED08011EA2728700A33CE0 /* DBHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBHandler.h; sourceTree = "<group>"; };
+		ADED08021EA2728700A33CE0 /* DBHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBHandler.m; sourceTree = "<group>"; };
+		ADED08031EA2728700A33CE0 /* ExhibitorDTO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExhibitorDTO.h; sourceTree = "<group>"; };
+		ADED08041EA2728700A33CE0 /* ExhibitorDTO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExhibitorDTO.m; sourceTree = "<group>"; };
+		ADED08051EA2728700A33CE0 /* RLMString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLMString.h; sourceTree = "<group>"; };
+		ADED08061EA2728700A33CE0 /* RLMString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLMString.m; sourceTree = "<group>"; };
+		ADED08071EA2728700A33CE0 /* SessionDTO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionDTO.h; sourceTree = "<group>"; };
+		ADED08081EA2728700A33CE0 /* SessionDTO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionDTO.m; sourceTree = "<group>"; };
+		ADED08091EA2728700A33CE0 /* SpeakerDTO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeakerDTO.h; sourceTree = "<group>"; };
+		ADED080A1EA2728700A33CE0 /* SpeakerDTO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeakerDTO.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +181,20 @@
 		ADF2208C1E9E7255005879A3 /* pojos */ = {
 			isa = PBXGroup;
 			children = (
+				ADED07FD1EA2728700A33CE0 /* AgendaDTO.h */,
+				ADED07FE1EA2728700A33CE0 /* AgendaDTO.m */,
+				ADED07FF1EA2728700A33CE0 /* AttendeeDTO.h */,
+				ADED08001EA2728700A33CE0 /* AttendeeDTO.m */,
+				ADED08011EA2728700A33CE0 /* DBHandler.h */,
+				ADED08021EA2728700A33CE0 /* DBHandler.m */,
+				ADED08031EA2728700A33CE0 /* ExhibitorDTO.h */,
+				ADED08041EA2728700A33CE0 /* ExhibitorDTO.m */,
+				ADED08051EA2728700A33CE0 /* RLMString.h */,
+				ADED08061EA2728700A33CE0 /* RLMString.m */,
+				ADED08071EA2728700A33CE0 /* SessionDTO.h */,
+				ADED08081EA2728700A33CE0 /* SessionDTO.m */,
+				ADED08091EA2728700A33CE0 /* SpeakerDTO.h */,
+				ADED080A1EA2728700A33CE0 /* SpeakerDTO.m */,
 			);
 			name = pojos;
 			sourceTree = "<group>";
@@ -356,7 +391,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADED080F1EA2728700A33CE0 /* RLMString.m in Sources */,
+				ADED080E1EA2728700A33CE0 /* ExhibitorDTO.m in Sources */,
 				AD433BAC1E9E21EE002FC799 /* ViewController.m in Sources */,
+				ADED080C1EA2728700A33CE0 /* AttendeeDTO.m in Sources */,
+				ADED080D1EA2728700A33CE0 /* DBHandler.m in Sources */,
+				ADED08111EA2728700A33CE0 /* SpeakerDTO.m in Sources */,
+				ADED080B1EA2728700A33CE0 /* AgendaDTO.m in Sources */,
+				ADED08101EA2728700A33CE0 /* SessionDTO.m in Sources */,
 				AD433BA91E9E21EE002FC799 /* AppDelegate.m in Sources */,
 				AD433BA61E9E21EE002FC799 /* main.m in Sources */,
 			);
