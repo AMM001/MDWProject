@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4EA30B4E1EA2A37D00CE1809 /* ServiceUrls.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA30B4D1EA2A37D00CE1809 /* ServiceUrls.m */; };
+		4EA30B511EA2A39400CE1809 /* MDWNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA30B501EA2A39400CE1809 /* MDWNetworkManager.m */; };
 		AD433BA61E9E21EE002FC799 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AD433BA51E9E21EE002FC799 /* main.m */; };
 		AD433BA91E9E21EE002FC799 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD433BA81E9E21EE002FC799 /* AppDelegate.m */; };
 		AD433BAC1E9E21EE002FC799 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD433BAB1E9E21EE002FC799 /* ViewController.m */; };
@@ -45,6 +47,10 @@
 /* Begin PBXFileReference section */
 		1A49CC0A336F74BF5CA0F95A /* Pods-MDW.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDW.release.xcconfig"; path = "Pods/Target Support Files/Pods-MDW/Pods-MDW.release.xcconfig"; sourceTree = "<group>"; };
 		4347F597BA710ACAAB8B9845 /* libPods-MDW.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MDW.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EA30B4C1EA2A37D00CE1809 /* ServiceUrls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceUrls.h; sourceTree = "<group>"; };
+		4EA30B4D1EA2A37D00CE1809 /* ServiceUrls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceUrls.m; sourceTree = "<group>"; };
+		4EA30B4F1EA2A39400CE1809 /* MDWNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDWNetworkManager.h; sourceTree = "<group>"; };
+		4EA30B501EA2A39400CE1809 /* MDWNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDWNetworkManager.m; sourceTree = "<group>"; };
 		74201D68596726BD56C6EF05 /* Pods-MDW.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDW.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MDW/Pods-MDW.debug.xcconfig"; sourceTree = "<group>"; };
 		AD433BA11E9E21EE002FC799 /* MDW.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MDW.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD433BA51E9E21EE002FC799 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -113,9 +119,29 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		4EA30B4A1EA2A35000CE1809 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				4EA30B4C1EA2A37D00CE1809 /* ServiceUrls.h */,
+				4EA30B4D1EA2A37D00CE1809 /* ServiceUrls.m */,
+			);
+			name = utils;
+			sourceTree = "<group>";
+		};
+		4EA30B4B1EA2A35900CE1809 /* network */ = {
+			isa = PBXGroup;
+			children = (
+				4EA30B4F1EA2A39400CE1809 /* MDWNetworkManager.h */,
+				4EA30B501EA2A39400CE1809 /* MDWNetworkManager.m */,
+			);
+			name = network;
+			sourceTree = "<group>";
+		};
 		AD433B981E9E21EE002FC799 = {
 			isa = PBXGroup;
 			children = (
+				4EA30B4B1EA2A35900CE1809 /* network */,
+				4EA30B4A1EA2A35000CE1809 /* utils */,
 				ADF2208C1E9E7255005879A3 /* pojos */,
 				AD433BA31E9E21EE002FC799 /* MDW */,
 				AD433BBD1E9E21EE002FC799 /* MDWTests */,
@@ -394,9 +420,11 @@
 				ADED080F1EA2728700A33CE0 /* RLMString.m in Sources */,
 				ADED080E1EA2728700A33CE0 /* ExhibitorDTO.m in Sources */,
 				AD433BAC1E9E21EE002FC799 /* ViewController.m in Sources */,
+				4EA30B511EA2A39400CE1809 /* MDWNetworkManager.m in Sources */,
 				ADED080C1EA2728700A33CE0 /* AttendeeDTO.m in Sources */,
 				ADED080D1EA2728700A33CE0 /* DBHandler.m in Sources */,
 				ADED08111EA2728700A33CE0 /* SpeakerDTO.m in Sources */,
+				4EA30B4E1EA2A37D00CE1809 /* ServiceUrls.m in Sources */,
 				ADED080B1EA2728700A33CE0 /* AgendaDTO.m in Sources */,
 				ADED08101EA2728700A33CE0 /* SessionDTO.m in Sources */,
 				AD433BA91E9E21EE002FC799 /* AppDelegate.m in Sources */,

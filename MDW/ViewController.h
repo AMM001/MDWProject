@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import <Realm/Realm.h>
-@interface ViewController : UIViewController
+#import "MDWNetworkManager.h"
+#import "SessionDTO.h"
 
+@interface ViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
+
+@property (strong, nonatomic) IBOutlet UITableView *SpeakersTableView;
+
+@property NSMutableArray *speakers;
+@property NSMutableArray *sessions;
 
 @end
 

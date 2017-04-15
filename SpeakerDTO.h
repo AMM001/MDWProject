@@ -22,5 +22,7 @@
 @property NSString * biography;
 @property RLMArray <RLMString *><RLMString> *mobiles;
 @property RLMArray <RLMString *><RLMString> *phones;
+
+- (instancetype)initWithSpeakerId:(int)id firstName:(NSString*)fName middleName:(NSString*)mName lastName:(NSString*)lName imageURL:(NSString*)imgURL companyName:(NSString*)companyName title:(NSString*)title biography:(NSString*)biography;
 @end
 RLM_ARRAY_TYPE(SpeakerDTO)
