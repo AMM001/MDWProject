@@ -14,6 +14,8 @@ NSString * const speakersURL = @"http://www.mobiledeveloperweekend.net/MDW/servi
 
 NSString * const sessionsURL = @"http://www.mobiledeveloperweekend.net/MDW/service/getSessions?userName=eng.medhat.cs.h@gmail.com";
 
+NSString * const exhibitorsURL = @"http://www.mobiledeveloperweekend.net/MDW/service/getExhibitors?userName=eng.medhat.cs.h@gmail.com&sessionId=4482&enforce=false&status=0";
+
 
 +(NSURLRequest *)allSpeakersRequest{
     
@@ -24,5 +26,13 @@ NSString * const sessionsURL = @"http://www.mobiledeveloperweekend.net/MDW/servi
     
     return [NSURLRequest requestWithURL:[NSURL URLWithString:sessionsURL]];
 }
+
+//---------- merna -----------
+
+//---------- end merna -----------
+
+//---------- marko -----------
+
+//---------- end marko -----------
 
 @end

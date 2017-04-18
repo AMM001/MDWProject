@@ -122,11 +122,41 @@ static AFURLSessionManager *manager = nil;
     [dataTask resume];
 }
 
++(void) fetchExhibitorsData:(NSMutableArray*) mydata :(UITableView*) myTable{
 
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:[ServiceUrls allSessionsRequest] completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+        
+        if (error) {
+            
+            NSLog(@"Error: %@", error);
+            
+        } else {
+            
+            NSArray * result = [responseObject objectForKey:@"result"];
+            
+            for (NSDictionary * exhibitor in result) {
+                
+                ExhibitorDTO * exhibitorDTO = [[ExhibitorDTO alloc] initWithCompanyName:[exhibitor objectForKey:@"companyName"] CompanyAddress:[exhibitor objectForKey:@"companyAddress"]  ImageURL:[exhibitor objectForKey:@"imageURL"]  Email:[exhibitor objectForKey:@"email"]  CountryName:[exhibitor objectForKey:@"countryName"]  CityName:[exhibitor objectForKey:@"cityName"]  CompanyAbout:[exhibitor objectForKey:@"companyAbout"]  ContactName:[exhibitor objectForKey:@"contactName"]  ContactTitle:[exhibitor objectForKey:@"contactTitle"]  companyURl:[exhibitor objectForKey:@"companyUrl"] ];
+                
+                [mydata addObject:exhibitorDTO];
+            }
 
+        }
+        
+        [myTable reloadData];
+        //-- 
+    }];
+    
+  [dataTask resume];
 
+}
+//---------- merna -----------
 
+//---------- end merna -----------
 
+//---------- marko -----------
+
+//---------- end marko -----------
 
 
 @end
