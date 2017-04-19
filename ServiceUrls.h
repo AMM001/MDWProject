@@ -12,5 +12,14 @@
 
 +(NSURLRequest*) allSpeakersRequest;
 +(NSURLRequest*) allSessionsRequest;
++(NSURLRequest*) exhibitorsRequest;
+
+//---------- merna -----------
+
+//---------- end merna -----------
+
+//---------- marko -----------
+
+//---------- end marko -----------
 
 @end
