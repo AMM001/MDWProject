@@ -1002,7 +1002,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x0f-J5-y4M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1489" y="788"/>
+            <point key="canvasLocation" x="-1441" y="852"/>
         </scene>
         <!--Third Day Agenda Table View Controller-->
         <scene sceneID="AKE-mu-hO2">
