@@ -22,8 +22,11 @@
     
     [_SpeakersTableView setDelegate:self];
     [_SpeakersTableView setDataSource:self];
-
+    
+    
     [MDWNetworkManager fetchSpeakersData:_speakers :_SpeakersTableView];
+    
+   
 
     // Do any additional setup after loading the view, typically from a nib.
 }

@@ -10,11 +10,15 @@
 
 @implementation ServiceUrls
 
-NSString * const speakersURL = @"http://www.mobiledeveloperweekend.net/MDW/service/getSpeakers?userName=eng.medhat.cs.h@gmail.com";
+NSString * speakersURL = @"http://www.mobiledeveloperweekend.net/MDW/service/getSpeakers?userName=eng.medhat.cs.h@gmail.com";
 
-NSString * const sessionsURL = @"http://www.mobiledeveloperweekend.net/MDW/service/getSessions?userName=eng.medhat.cs.h@gmail.com";
+NSString * sessionsURL = @"http://www.mobiledeveloperweekend.net/MDW/service/getSessions?userName=eng.medhat.cs.h@gmail.com";
 
-NSString * const exhibitorsURL = @"http://www.mobiledeveloperweekend.net/MDW/service/getExhibitors?userName=eng.medhat.cs.h@gmail.com&sessionId=4482&enforce=false&status=0";
+NSString * exhibitorsURL = @"http://www.mobiledeveloperweekend.net/MDW/service/getExhibitors?userName=eng.medhat.cs.h@gmail.com&sessionId=4482&enforce=false&status=0";
+
+NSString * loginURL = @"http://www.mobiledeveloperweekend.net/MDW/service/login?userName=eng.medhat.cs.h@gmail.com&password=medhat123";
+
+
 
 
 +(NSURLRequest *)allSpeakersRequest{
@@ -26,8 +30,17 @@ NSString * const exhibitorsURL = @"http://www.mobiledeveloperweekend.net/MDW/ser
     
     return [NSURLRequest requestWithURL:[NSURL URLWithString:sessionsURL]];
 }
++(NSURLRequest *)exhibitorsRequest{
+    
+    return [NSURLRequest requestWithURL:[NSURL URLWithString:exhibitorsURL]];
+}
+
 
 //---------- merna -----------
+
++(NSURLRequest*)LoginRequest{
+    return [NSURLRequest requestWithURL:[NSURL URLWithString:loginURL]];
+}
 
 //---------- end merna -----------
 

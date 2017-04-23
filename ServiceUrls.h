@@ -15,7 +15,7 @@
 +(NSURLRequest*) exhibitorsRequest;
 
 //---------- merna -----------
-
++(NSURLRequest*) LoginRequest;
 //---------- end merna -----------
 
 //---------- marko -----------
