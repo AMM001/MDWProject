@@ -14,6 +14,7 @@
 #import "SessionDTO.h"
 #import "ExhibitorDTO.h"
 #import "AttendeeDTO.h"
+#import "AgendaDTO.h"
 
 @interface MDWNetworkManager : NSObject <NSURLSessionTaskDelegate, NSURLSessionDataDelegate,
                                             NSURLSessionDownloadDelegate, NSURLSessionDelegate>

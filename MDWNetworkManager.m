@@ -61,15 +61,23 @@ static AFURLSessionManager *manager = nil;
             NSLog(@"Error: %@", error);
         } else {
             
-            //NSMutableArray * sessions = [NSMutableArray new];
+
+            NSMutableArray * agendaList = [NSMutableArray new];
             
             NSDictionary * result = [responseObject objectForKey:@"result"];
             NSArray * agendas = [result objectForKey:@"agendas"];
             
+            
+            NSNumber* date;
+            NSArray* sessionsForDay;
+            AgendaDTO* agendaObj;
+            
             // get all sessions for 3 days
             for(NSDictionary* day in agendas){
-                NSNumber* date = [day objectForKey:@"date"];
-                NSArray* sessionsForDay = [day objectForKey:@"sessions"];
+                
+                agendaObj = [AgendaDTO new];
+                date = [day objectForKey:@"date"];
+                sessionsForDay = [day objectForKey:@"sessions"];
                 
                 // get sessions list in one day
                 for(NSDictionary* session in sessionsForDay){
@@ -108,8 +116,15 @@ static AFURLSessionManager *manager = nil;
                                                                 endDate:[[session objectForKey:@"endDate"] longValue]];
 
                     [mydata addObject:sessionDTO];
+                    [agendaObj.sessions addObject:sessionDTO];
+           
                 }
                 //-------------
+                [agendaObj setDate:[date longValue]];
+                [agendaList addObject:agendaObj];
+                
+                NSLog(@"%@<><><>",agendaObj);
+               
                 
                 
             }
