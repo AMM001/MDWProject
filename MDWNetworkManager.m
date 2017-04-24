@@ -12,12 +12,12 @@
 @implementation MDWNetworkManager
 
 static AFURLSessionManager *manager = nil;
-
+static DBHandler * myDb;
 +(void)initialize{
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-
+    myDb = [DBHandler getDB];
 }
 
 +(void) fetchSpeakersData: (NSMutableArray*) mydata :(UITableView*) myTable{
@@ -40,7 +40,7 @@ static AFURLSessionManager *manager = nil;
                 [speaker setImageURL:[speakerDict objectForKey:@"imageURL"]];
                 [speaker setTitle:[speakerDict objectForKey:@"title"]];
                 
-                
+                [myDb addOrUpdateSpeaker:speaker];
                 [mydata addObject:speaker];
                 
             }
@@ -61,15 +61,23 @@ static AFURLSessionManager *manager = nil;
             NSLog(@"Error: %@", error);
         } else {
             
-            //NSMutableArray * sessions = [NSMutableArray new];
+
+            NSMutableArray * agendaList = [NSMutableArray new];
             
             NSDictionary * result = [responseObject objectForKey:@"result"];
             NSArray * agendas = [result objectForKey:@"agendas"];
             
+            
+            NSNumber* date;
+            NSArray* sessionsForDay;
+            AgendaDTO* agendaObj;
+            int counter = 0;
             // get all sessions for 3 days
             for(NSDictionary* day in agendas){
-                NSNumber* date = [day objectForKey:@"date"];
-                NSArray* sessionsForDay = [day objectForKey:@"sessions"];
+                
+                agendaObj = [AgendaDTO new];
+                date = [day objectForKey:@"date"];
+                sessionsForDay = [day objectForKey:@"sessions"];
                 
                 // get sessions list in one day
                 for(NSDictionary* session in sessionsForDay){
@@ -108,8 +116,27 @@ static AFURLSessionManager *manager = nil;
                                                                 endDate:[[session objectForKey:@"endDate"] longValue]];
 
                     [mydata addObject:sessionDTO];
+                    [agendaObj.sessions addObject:sessionDTO];
+           
                 }
                 //-------------
+                [agendaObj setDate:[date longValue]];
+                [agendaList addObject:agendaObj];
+                
+                
+                ////////////////////////
+                counter++;
+                FillteringAgendaDTO * fillter = [FillteringAgendaDTO new];
+                fillter.id=counter;
+                fillter.date=[date longValue];
+                [myDb addOrUpdateFillter:fillter];
+                ////////////////////////
+                
+                
+                
+                [myDb addOrUpdateAgenda:agendaObj];
+                NSLog(@"%@<><><>",agendaObj);
+               
                 
                 
             }
@@ -124,7 +151,7 @@ static AFURLSessionManager *manager = nil;
 
 +(void) fetchExhibitorsData:(NSMutableArray*) mydata :(UITableView*) myTable{
 
-    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:[ServiceUrls allSessionsRequest] completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:[ServiceUrls exhibitorsRequest] completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
         
         if (error) {
             
@@ -137,7 +164,7 @@ static AFURLSessionManager *manager = nil;
             for (NSDictionary * exhibitor in result) {
                 
                 ExhibitorDTO * exhibitorDTO = [[ExhibitorDTO alloc] initWithCompanyName:[exhibitor objectForKey:@"companyName"] CompanyAddress:[exhibitor objectForKey:@"companyAddress"]  ImageURL:[exhibitor objectForKey:@"imageURL"]  Email:[exhibitor objectForKey:@"email"]  CountryName:[exhibitor objectForKey:@"countryName"]  CityName:[exhibitor objectForKey:@"cityName"]  CompanyAbout:[exhibitor objectForKey:@"companyAbout"]  ContactName:[exhibitor objectForKey:@"contactName"]  ContactTitle:[exhibitor objectForKey:@"contactTitle"]  companyURl:[exhibitor objectForKey:@"companyUrl"] ];
-                
+                [myDb addOrUpdateExhibitor:exhibitorDTO];
                 [mydata addObject:exhibitorDTO];
             }
 
@@ -151,6 +178,102 @@ static AFURLSessionManager *manager = nil;
 
 }
 //---------- merna -----------
+
++(void) fetchAttendeeData{
+    
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:[ServiceUrls LoginRequest] completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+        
+        
+        if (error) {
+            
+            NSLog(@"Error: %@", error);
+            
+        } else {
+        
+            
+            if([[responseObject objectForKey:@"status"] isEqualToString:@"view.success"]){
+                
+                NSDictionary * result = [responseObject objectForKey:@"result"];
+                AttendeeDTO * attendeeDTO = [[AttendeeDTO alloc] initWithCode:[result objectForKey:@"code"]
+                                                                     imageURL:[result objectForKey:@"imageURL"]
+                                                                     birthDate:[[result objectForKey:@"birthdate"] longValue ]
+                                                                     email:[result objectForKey:@"email"]
+                                                                     firstName:[result objectForKey:@"firstName"]
+                                                                     middleName:[result objectForKey:@"middleName"]
+                                                                     lastName:[result objectForKey:@"lastName"]
+                                                                     countryName:[result objectForKey:@"countryName"]
+                                                                     cityName:[result objectForKey:@"cityName"]
+                                                                     companyName:[result objectForKey:@"companyName"]
+                                                                     titleJob:[result objectForKey:@"title"]
+                                                                     gender:[result objectForKey:@"gender"]];
+                
+                
+                // save  attendee object using NSUserDefaults
+                NSData *data = [NSKeyedArchiver archivedDataWithRootObject:attendeeDTO];
+                
+                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                [defaults setObject:data forKey:@"attendeeObject"];
+
+            }
+        
+        }
+        
+        
+    }];
+    
+    [dataTask resume];
+    
+}
+
++(void) fetchImageWithURL: (NSURL*)imageURL UIImageView:(UIImageView*) imageView setForObject:(id)myObject{
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:imageURL];
+    
+    NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
+        
+        NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
+        
+        return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
+        
+    } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
+        
+        printf("\n**************************\n");
+        NSLog(@"File downloaded to: %@\n", filePath);
+        printf("\n**************************\n");
+        NSLog(@"error %@\n", error);
+        printf("\n**************************\n");
+        NSLog(@"response %@\n",response);
+        
+        UIImage *image = [UIImage imageWithData: [NSData dataWithContentsOfURL: filePath]];
+
+        imageView.image = image;
+        
+        NSData *imageToBeSaved = UIImageJPEGRepresentation(image, 0.7);
+   
+        if ([myObject isKindOfClass:[ExhibitorDTO class]]) {
+            ExhibitorDTO * ex = myObject;
+            ex.image = imageToBeSaved;
+            [myDb addOrUpdateExhibitor:ex];
+            
+        }
+        else if([myObject isKindOfClass:[SpeakerDTO class]]){
+            SpeakerDTO * sp = myObject;
+            sp.image = imageToBeSaved;
+            [myDb addOrUpdateSpeaker:sp];
+        }
+        else if([myObject isKindOfClass:[AttendeeDTO class]]){
+            AttendeeDTO * att = myObject;
+            att.image = imageToBeSaved;
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:att forKey:@"attendeeObject"];
+        }
+        
+        
+    }];
+    [downloadTask resume];
+
+
+}
 
 //---------- end merna -----------
 

@@ -10,6 +10,7 @@
 #import <Realm/Realm.h>
 #import "MDWNetworkManager.h"
 #import "SessionDTO.h"
+#import "AttendeeDTO.h"
 
 @interface ViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 

@@ -26,6 +26,26 @@
 //@property BOOL gender;
 //@property long *birthDate;
 
+- (instancetype)initWithCode:(NSString*)code imageURL:(NSString*)imgURL birthDate:(long) birthdate email:(NSString*)email firstName:(NSString*)fName middleName:(NSString*)mName lastName:(NSString*)lName countryName:(NSString*)country cityName:(NSString*)city companyName:(NSString*)company titleJob:(NSString*)title gender:(NSString*)gender
+{
+    self = [super init];
+    if (self) {
+        _code = code;
+        _imageURL = imgURL;
+        _birthDate = birthdate;
+        _email = email;
+        _firstName = fName;
+        _middleName = mName;
+        _lastName = lName;
+        _countryName = country;
+        _cityName = city;
+        _companyName = company;
+        _title = title;
+        _gender = gender;
+    }
+    return self;
+}
+
 -(instancetype)initWithCoder:(NSCoder *)aDecoder{
     self.id=[aDecoder decodeIntForKey:@"id"];
     self.firstName=[aDecoder decodeObjectForKey:@"firstName"];

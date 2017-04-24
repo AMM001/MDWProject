@@ -25,4 +25,7 @@
 @property NSData * image;
 @property BOOL gender;
 @property long birthDate;
+
+- (instancetype)initWithCode:(NSString*)code imageURL:(NSString*)imgURL birthDate:(long) birthdate email:(NSString*)email firstName:(NSString*)fName middleName:(NSString*)mName lastName:(NSString*)lName countryName:(NSString*)country cityName:(NSString*)city companyName:(NSString*)company titleJob:(NSString*)title gender:(NSString*)gender;
+
 @end

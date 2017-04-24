@@ -26,6 +26,12 @@ static DBHandler *dbHandler;
     }];
 
 }
+- (void)addOrUpdateFillter: (FillteringAgendaDTO *) fillter{
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    [realm transactionWithBlock:^{
+        [realm addOrUpdateObject:fillter];
+    }];
+}
 
 -(void)addOrUpdateSession:(SessionDTO *)session{
     RLMRealm *realm = [RLMRealm defaultRealm];
@@ -51,13 +57,24 @@ static DBHandler *dbHandler;
 
 }
 
--(AgendaDTO *)getAgendaByDate: (long) date{
-    NSString *query = [NSString stringWithFormat:@"%@%ld", @"date == ", date];
-    AgendaDTO* agenda = [[AgendaDTO objectsWhere:query] firstObject];
+//-(AgendaDTO *)getAgendaByDate: (long) date{
+//    NSString *query = [NSString stringWithFormat:@"%@%ld", @"date == ", date];
+//    AgendaDTO* agenda = [[AgendaDTO objectsWhere:query] firstObject];
+//
+//    return agenda;
+//}
 
+-(AgendaDTO *) getAgendaByDayNumber: (int) day{
+    
+    NSString *query1 = [NSString stringWithFormat:@"%@%d", @"id == ", day];
+    FillteringAgendaDTO* fillteredDate = [[FillteringAgendaDTO objectsWhere:query1] firstObject];
+    
+    
+    NSString *query2 = [NSString stringWithFormat:@"%@%ld", @"date == ", fillteredDate.date];
+    AgendaDTO* agenda = [[AgendaDTO objectsWhere:query2] firstObject];
+    
     return agenda;
 }
-
 
 -(SpeakerDTO *)getSpeakerById:(int)id{
         NSString *query = [NSString stringWithFormat:@"%@%d", @"id == ", id];
