@@ -17,6 +17,7 @@
 		AD433BB41E9E21EE002FC799 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD433BB21E9E21EE002FC799 /* LaunchScreen.storyboard */; };
 		AD433BBF1E9E21EE002FC799 /* MDWTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AD433BBE1E9E21EE002FC799 /* MDWTests.m */; };
 		AD433BCA1E9E21EE002FC799 /* MDWUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AD433BC91E9E21EE002FC799 /* MDWUITests.m */; };
+		AD4AB7DF1EAE14D3004D2893 /* FillteringAgendaDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4AB7DE1EAE14D3004D2893 /* FillteringAgendaDTO.m */; };
 		ADED080B1EA2728700A33CE0 /* AgendaDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = ADED07FE1EA2728700A33CE0 /* AgendaDTO.m */; };
 		ADED080C1EA2728700A33CE0 /* AttendeeDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = ADED08001EA2728700A33CE0 /* AttendeeDTO.m */; };
 		ADED080D1EA2728700A33CE0 /* DBHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = ADED08021EA2728700A33CE0 /* DBHandler.m */; };
@@ -152,6 +153,8 @@
 		AD433BC51E9E21EE002FC799 /* MDWUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MDWUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD433BC91E9E21EE002FC799 /* MDWUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MDWUITests.m; sourceTree = "<group>"; };
 		AD433BCB1E9E21EE002FC799 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD4AB7DD1EAE14D3004D2893 /* FillteringAgendaDTO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FillteringAgendaDTO.h; sourceTree = "<group>"; };
+		AD4AB7DE1EAE14D3004D2893 /* FillteringAgendaDTO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FillteringAgendaDTO.m; sourceTree = "<group>"; };
 		ADED07FD1EA2728700A33CE0 /* AgendaDTO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgendaDTO.h; sourceTree = "<group>"; };
 		ADED07FE1EA2728700A33CE0 /* AgendaDTO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgendaDTO.m; sourceTree = "<group>"; };
 		ADED07FF1EA2728700A33CE0 /* AttendeeDTO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendeeDTO.h; sourceTree = "<group>"; };
@@ -407,6 +410,8 @@
 				ADED08081EA2728700A33CE0 /* SessionDTO.m */,
 				ADED08091EA2728700A33CE0 /* SpeakerDTO.h */,
 				ADED080A1EA2728700A33CE0 /* SpeakerDTO.m */,
+				AD4AB7DD1EAE14D3004D2893 /* FillteringAgendaDTO.h */,
+				AD4AB7DE1EAE14D3004D2893 /* FillteringAgendaDTO.m */,
 			);
 			name = pojos;
 			sourceTree = "<group>";
@@ -807,6 +812,7 @@
 				ADED080D1EA2728700A33CE0 /* DBHandler.m in Sources */,
 				ADED08111EA2728700A33CE0 /* SpeakerDTO.m in Sources */,
 				CC1ECCCB1EA5E5CC00083C02 /* SecondDayMyAgendaTableViewController.m in Sources */,
+				AD4AB7DF1EAE14D3004D2893 /* FillteringAgendaDTO.m in Sources */,
 				CC1ECCB61EA5B7D700083C02 /* ThirdDayAgendaTableViewController.m in Sources */,
 				CC1ECCB91EA5BF7B00083C02 /* SpeakersTableViewController.m in Sources */,
 				4EA30B4E1EA2A37D00CE1809 /* ServiceUrls.m in Sources */,

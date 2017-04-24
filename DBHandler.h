@@ -11,16 +11,18 @@
 #import "SessionDTO.h"
 #import "SpeakerDTO.h"
 #import "ExhibitorDTO.h"
-
+#import "FillteringAgendaDTO.h"
 @interface DBHandler : NSObject
 - (id) init __attribute__((unavailable("Must Use Factory Method getDB")));
 
 +(instancetype) getDB;
 - (void)addOrUpdateAgenda: (AgendaDTO *) agenda;
+- (void)addOrUpdateFillter: (FillteringAgendaDTO *) fillter;
 -(void)addOrUpdateSession: (SessionDTO *) session;
 -(void) addOrUpdateSpeaker: (SpeakerDTO *) speaker;
 -(void) addOrUpdateExhibitor: (ExhibitorDTO *) exhibitor;
--(AgendaDTO *) getAgendaByDate: (long) date;
+//-(AgendaDTO *) getAgendaByDate: (long) date;
+-(AgendaDTO *) getAgendaByDayNumber: (int) day;
 -(SpeakerDTO *) getSpeakerById: (int) id;
 -(SessionDTO *) getSessionById: (int) id;
 -(ExhibitorDTO *) getExhibitorById: (int) id;

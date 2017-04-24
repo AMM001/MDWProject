@@ -12,12 +12,12 @@
 @implementation MDWNetworkManager
 
 static AFURLSessionManager *manager = nil;
-
+static DBHandler * myDb;
 +(void)initialize{
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-
+    myDb = [DBHandler getDB];
 }
 
 +(void) fetchSpeakersData: (NSMutableArray*) mydata :(UITableView*) myTable{
@@ -40,7 +40,7 @@ static AFURLSessionManager *manager = nil;
                 [speaker setImageURL:[speakerDict objectForKey:@"imageURL"]];
                 [speaker setTitle:[speakerDict objectForKey:@"title"]];
                 
-                
+                [myDb addOrUpdateSpeaker:speaker];
                 [mydata addObject:speaker];
                 
             }
@@ -71,7 +71,7 @@ static AFURLSessionManager *manager = nil;
             NSNumber* date;
             NSArray* sessionsForDay;
             AgendaDTO* agendaObj;
-            
+            int counter = 0;
             // get all sessions for 3 days
             for(NSDictionary* day in agendas){
                 
@@ -123,6 +123,18 @@ static AFURLSessionManager *manager = nil;
                 [agendaObj setDate:[date longValue]];
                 [agendaList addObject:agendaObj];
                 
+                
+                ////////////////////////
+                counter++;
+                FillteringAgendaDTO * fillter = [FillteringAgendaDTO new];
+                fillter.id=counter;
+                fillter.date=[date longValue];
+                [myDb addOrUpdateFillter:fillter];
+                ////////////////////////
+                
+                
+                
+                [myDb addOrUpdateAgenda:agendaObj];
                 NSLog(@"%@<><><>",agendaObj);
                
                 
@@ -152,7 +164,7 @@ static AFURLSessionManager *manager = nil;
             for (NSDictionary * exhibitor in result) {
                 
                 ExhibitorDTO * exhibitorDTO = [[ExhibitorDTO alloc] initWithCompanyName:[exhibitor objectForKey:@"companyName"] CompanyAddress:[exhibitor objectForKey:@"companyAddress"]  ImageURL:[exhibitor objectForKey:@"imageURL"]  Email:[exhibitor objectForKey:@"email"]  CountryName:[exhibitor objectForKey:@"countryName"]  CityName:[exhibitor objectForKey:@"cityName"]  CompanyAbout:[exhibitor objectForKey:@"companyAbout"]  ContactName:[exhibitor objectForKey:@"contactName"]  ContactTitle:[exhibitor objectForKey:@"contactTitle"]  companyURl:[exhibitor objectForKey:@"companyUrl"] ];
-                
+                [myDb addOrUpdateExhibitor:exhibitorDTO];
                 [mydata addObject:exhibitorDTO];
             }
 
@@ -213,7 +225,7 @@ static AFURLSessionManager *manager = nil;
     
 }
 
-+(void) fetchImageWithURL: (NSURL*)imageURL UIImageView:(UIImageView*) imageView{
++(void) fetchImageWithURL: (NSURL*)imageURL UIImageView:(UIImageView*) imageView setForObject:(id)myObject{
     
     NSURLRequest *request = [NSURLRequest requestWithURL:imageURL];
     
@@ -233,8 +245,29 @@ static AFURLSessionManager *manager = nil;
         NSLog(@"response %@\n",response);
         
         UIImage *image = [UIImage imageWithData: [NSData dataWithContentsOfURL: filePath]];
+
         imageView.image = image;
-      
+        
+        NSData *imageToBeSaved = UIImageJPEGRepresentation(image, 0.7);
+   
+        if ([myObject isKindOfClass:[ExhibitorDTO class]]) {
+            ExhibitorDTO * ex = myObject;
+            ex.image = imageToBeSaved;
+            [myDb addOrUpdateExhibitor:ex];
+            
+        }
+        else if([myObject isKindOfClass:[SpeakerDTO class]]){
+            SpeakerDTO * sp = myObject;
+            sp.image = imageToBeSaved;
+            [myDb addOrUpdateSpeaker:sp];
+        }
+        else if([myObject isKindOfClass:[AttendeeDTO class]]){
+            AttendeeDTO * att = myObject;
+            att.image = imageToBeSaved;
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:att forKey:@"attendeeObject"];
+        }
+        
         
     }];
     [downloadTask resume];

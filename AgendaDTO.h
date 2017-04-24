@@ -14,3 +14,8 @@
 //@property Long endDate;
 @property RLMArray<SessionDTO *><SessionDTO> *sessions;
 @end
+
+
+
+
+
