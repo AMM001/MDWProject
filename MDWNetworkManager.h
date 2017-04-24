@@ -26,7 +26,7 @@
 //---------- merna -----------
 
 +(void) fetchAttendeeData;
-+(void) fetchImageWithURL: (NSString*)imageURL UIImageView:(UIImageView*) image;
++(void) fetchImageWithURL: (NSString*)imageURL UIImageView:(UIImageView*) image setForObject:(id)myObject;
 
 //---------- end merna -----------
 

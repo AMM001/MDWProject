@@ -25,6 +25,24 @@ static DBHandler * myDb;
     NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:[ServiceUrls allSpeakersRequest] completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
         if (error) {
             NSLog(@"Error: %@", error);
+            
+            RLMResults *results = [SpeakerDTO allObjects];
+            
+            if([results count] == 0){
+                
+                NSLog(@"alert %@",@"alert ............. <hi><hi>");
+                
+            }else{
+                
+                for (RLMObject *object in results) {
+                    [mydata addObject:object];
+                }
+                
+                [myTable reloadData];
+               
+            }
+
+            
         } else {
             //NSLog(@"response <> %@ %@", response, responseObject);
             
@@ -34,11 +52,16 @@ static DBHandler * myDb;
                 
                 NSMutableDictionary *speakerDict = [arrayOfSpeakers objectAtIndex:i];
                 
-                SpeakerDTO *speaker = [SpeakerDTO new];
+                SpeakerDTO *speaker = [[SpeakerDTO alloc] initWithSpeakerId:[[speakerDict objectForKey:@"id"] intValue]
+                                                                  firstName:[speakerDict objectForKey:@"firstName"]
+                                                                  middleName:[speakerDict objectForKey:@"middleName"]
+                                                                  lastName:[speakerDict objectForKey:@"lastName"]
+                                                                  imageURL:[speakerDict objectForKey:@"imageURL"]
+                                                                  companyName:[speakerDict objectForKey:@"companyName"]
+                                                                  title:[speakerDict objectForKey:@"title"]
+                                                                  biography:[speakerDict objectForKey:@"biography"]];
                 
-                [speaker setFirstName:[speakerDict objectForKey:@"firstName"]];
-                [speaker setImageURL:[speakerDict objectForKey:@"imageURL"]];
-                [speaker setTitle:[speakerDict objectForKey:@"title"]];
+                
                 
                 [myDb addOrUpdateSpeaker:speaker];
                 [mydata addObject:speaker];
@@ -136,8 +159,6 @@ static DBHandler * myDb;
                 
                 [myDb addOrUpdateAgenda:agendaObj];
                 NSLog(@"%@<><><>",agendaObj);
-               
-                
                 
             }
 
@@ -225,54 +246,48 @@ static DBHandler * myDb;
     
 }
 
-+(void) fetchImageWithURL: (NSURL*)imageURL UIImageView:(UIImageView*) imageView setForObject:(id)myObject{
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:imageURL];
-    
-    NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
-        
-        NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
-        
-        return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
-        
-    } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
-        
-        printf("\n**************************\n");
-        NSLog(@"File downloaded to: %@\n", filePath);
-        printf("\n**************************\n");
-        NSLog(@"error %@\n", error);
-        printf("\n**************************\n");
-        NSLog(@"response %@\n",response);
-        
-        UIImage *image = [UIImage imageWithData: [NSData dataWithContentsOfURL: filePath]];
 
++(void) fetchImageWithURL: (NSString*)imageURL UIImageView:(UIImageView*) imageView setForObject:(id)myObject{
+    
+    imageView.image=[UIImage imageNamed:@"speaker.png"];
+    
+    NSString * cutURL = [imageURL stringByReplacingOccurrencesOfString:@"www." withString:@""];
+    
+   // NSURLSessionConfiguration * config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    
+    AFHTTPSessionManager *sharedManager = [AFHTTPSessionManager manager];
+    sharedManager.responseSerializer  = [[AFImageResponseSerializer alloc] init];
+    [sharedManager GET:cutURL parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        
+        
+        UIImage* image = (UIImage*) responseObject;
         imageView.image = image;
         
         NSData *imageToBeSaved = UIImageJPEGRepresentation(image, 0.7);
-   
+        
         if ([myObject isKindOfClass:[ExhibitorDTO class]]) {
             ExhibitorDTO * ex = myObject;
-            ex.image = imageToBeSaved;
+            ex.imageData = imageToBeSaved;
             [myDb addOrUpdateExhibitor:ex];
             
         }
         else if([myObject isKindOfClass:[SpeakerDTO class]]){
-            SpeakerDTO * sp = myObject;
-            sp.image = imageToBeSaved;
-            [myDb addOrUpdateSpeaker:sp];
+            SpeakerDTO  * sp = myObject;
+            [myDb UpdateSpeaker:sp withImage:imageToBeSaved];
         }
         else if([myObject isKindOfClass:[AttendeeDTO class]]){
             AttendeeDTO * att = myObject;
-            att.image = imageToBeSaved;
+            att.imageData = imageToBeSaved;
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             [defaults setObject:att forKey:@"attendeeObject"];
         }
         
+        //Caching the image in the database
         
+        
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
     }];
-    [downloadTask resume];
-
-
 }
 
 //---------- end merna -----------

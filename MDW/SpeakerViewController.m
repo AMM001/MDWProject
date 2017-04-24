@@ -18,6 +18,15 @@
     [super viewDidLoad];
    
     
+    _speakers = [NSMutableArray new];
+    
+//    RLMResults *results = [SpeakerDTO allObjects];
+//    
+//    _speakers = [NSMutableArray new];
+//    
+//    for (RLMObject *object in results) {
+//        [_speakers addObject:object];
+//    }
     
     _barButton.target=self.revealViewController;
     _barButton.action=@selector(revealToggle:);
@@ -32,6 +41,9 @@
     self.view.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
     self.speakersTableView.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
     
+    
+    [MDWNetworkManager fetchSpeakersData:_speakers :_speakersTableView];
+    
 }
 
 
@@ -41,23 +53,55 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 15;
+    return [_speakers count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-   
-   
+    static NSString *cellIdentifier =@"cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if(cell == nil){
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+    
     UILabel *nameLabel = (UILabel*) [cell viewWithTag:1];
     UILabel *descriptionLabel = (UILabel*) [cell viewWithTag:2];
     UIImageView *imageView = (UIImageView*) [cell viewWithTag:3];
     
-    nameLabel.text = @"SpeakerName";
-    descriptionLabel.text = @"JETS ITI";
-    imageView.image=[UIImage imageNamed:@"speaker.png"];
+//    nameLabel.text = @"SpeakerName";
+//    descriptionLabel.text = @"JETS ITI";
+    NSMutableString *fullName = [NSMutableString new];
+    [fullName appendString:[[_speakers objectAtIndex:indexPath.row] firstName]];
+    [fullName appendString:@" "];
+    [fullName appendString:[[_speakers objectAtIndex:indexPath.row] middleName]];
+    [fullName appendString:@" "];
+    [fullName appendString:[[_speakers objectAtIndex:indexPath.row] lastName]];
+    
+    nameLabel.text = fullName;
+    descriptionLabel.text = [[_speakers objectAtIndex:indexPath.row] title];
+    
+    if([[_speakers objectAtIndex:indexPath.row] imageData] == nil){
+        
+        if([[_speakers objectAtIndex:indexPath.row] imageURL] == nil){
+            
+            imageView.image=[UIImage imageNamed:@"speaker.png"];
+            
+        }else{
+        
+            [MDWNetworkManager fetchImageWithURL:[[_speakers objectAtIndex:indexPath.row] imageURL]
+                                     UIImageView:imageView
+                                     setForObject:[_speakers objectAtIndex:indexPath.row] ];
+        }
+    
+    }else{
+        
+        UIImage * img = [[UIImage alloc] initWithData:[[_speakers objectAtIndex:indexPath.row] imageData]];
+        imageView.image = img;
+    }
+    
+    
 
     return cell;
 }
