@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //self.view.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
     // Do any additional setup after loading the view.
 }
 
@@ -33,5 +34,12 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+- (IBAction)login:(id)sender {
+}
+
+- (IBAction)registerAction:(id)sender {
+}
 
 @end

@@ -637,31 +637,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r3D-ry-BGz">
-                                <rect key="frame" x="40" y="124" width="205" height="30"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="4WP-8L-we3">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="loginHeader.png" translatesAutoresizingMaskIntoConstraints="NO" id="kAX-b9-Ipg">
+                                <rect key="frame" x="37" y="110" width="219" height="68"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="loginTextBoxsBackGround.png" translatesAutoresizingMaskIntoConstraints="NO" id="F8d-91-Jl3">
+                                <rect key="frame" x="0.0" y="220" width="320" height="192"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1cp-e8-h9T">
+                                <rect key="frame" x="27" y="249" width="273" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NYf-vl-TX9">
-                                <rect key="frame" x="40" y="184" width="205" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N1H-gU-EFx">
+                                <rect key="frame" x="27" y="301" width="273" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uui-Rz-DY1">
-                                <rect key="frame" x="70" y="281" width="46" height="30"/>
-                                <state key="normal" title="Login"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tft-Ro-rJu">
+                                <rect key="frame" x="58" y="348" width="78" height="32"/>
+                                <state key="normal" image="loginButton.png"/>
+                                <connections>
+                                    <action selector="login:" destination="18w-Mk-IpT" eventType="touchUpInside" id="fAP-1r-fLC"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lqu-Al-lPP">
-                                <rect key="frame" x="170" y="281" width="70" height="30"/>
-                                <state key="normal" title="Register"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QUJ-n8-9GC">
+                                <rect key="frame" x="202" y="349" width="63" height="30"/>
+                                <state key="normal" title="Register">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="registerAction:" destination="18w-Mk-IpT" eventType="touchUpInside" id="1EI-a0-bEb"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="password" destination="N1H-gU-EFx" id="jFU-HW-Cvs"/>
+                        <outlet property="username" destination="1cp-e8-h9T" id="UsL-eb-Pqn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6h5-ag-DBm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1743" y="-144"/>
+            <point key="canvasLocation" x="-1693" y="-112"/>
         </scene>
         <!--Speaker View Controller-->
         <scene sceneID="DPv-AR-sE1">
@@ -690,7 +711,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="72" id="jGx-Zz-Wcw">
-                                        <rect key="frame" x="0.0" y="92" width="320" height="72"/>
+                                        <rect key="frame" x="0.0" y="28" width="320" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jGx-Zz-Wcw" id="FG9-Vr-3GF">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="71"/>
@@ -1048,9 +1069,13 @@
         <image name="20 Apr" width="518" height="194"/>
         <image name="agenda.png" width="65" height="65"/>
         <image name="allDays.png" width="30" height="29"/>
+        <image name="background.png" width="636" height="955"/>
         <image name="exihiptors.png" width="65" height="65"/>
         <image name="firstDay.png" width="30" height="30"/>
         <image name="leftSideMenuHeader.png" width="518" height="194"/>
+        <image name="loginButton.png" width="164" height="60"/>
+        <image name="loginHeader.png" width="372" height="125"/>
+        <image name="loginTextBoxsBackGround.png" width="723" height="293"/>
         <image name="logo1.png" width="164" height="163"/>
         <image name="logout.png" width="65" height="65"/>
         <image name="myagenda.png" width="65" height="65"/>
