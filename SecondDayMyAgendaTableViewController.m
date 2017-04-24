@@ -16,7 +16,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [super viewDidLoad];
     _barButton.target=self.revealViewController;
     _barButton.action=@selector(revealToggle:);
     

@@ -29,7 +29,6 @@
 		CC1ECCB01EA5B7A300083C02 /* FirstDayAgendaTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1ECCAF1EA5B7A300083C02 /* FirstDayAgendaTableViewController.m */; };
 		CC1ECCB31EA5B7B900083C02 /* SecondDayAgendaTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1ECCB21EA5B7B900083C02 /* SecondDayAgendaTableViewController.m */; };
 		CC1ECCB61EA5B7D700083C02 /* ThirdDayAgendaTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1ECCB51EA5B7D700083C02 /* ThirdDayAgendaTableViewController.m */; };
-		CC1ECCB91EA5BF7B00083C02 /* SpeakersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1ECCB81EA5BF7B00083C02 /* SpeakersTableViewController.m */; };
 		CC1ECCBC1EA5C2A100083C02 /* ExhibitorsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1ECCBB1EA5C2A100083C02 /* ExhibitorsTableViewController.m */; };
 		CC1ECCBF1EA5C4F700083C02 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1ECCBE1EA5C4F700083C02 /* ProfileViewController.m */; };
 		CC1ECCC21EA5CFD300083C02 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1ECCC11EA5CFD300083C02 /* LoginViewController.m */; };
@@ -174,8 +173,6 @@
 		CC1ECCB21EA5B7B900083C02 /* SecondDayAgendaTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondDayAgendaTableViewController.m; sourceTree = "<group>"; };
 		CC1ECCB41EA5B7D700083C02 /* ThirdDayAgendaTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdDayAgendaTableViewController.h; sourceTree = "<group>"; };
 		CC1ECCB51EA5B7D700083C02 /* ThirdDayAgendaTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdDayAgendaTableViewController.m; sourceTree = "<group>"; };
-		CC1ECCB71EA5BF7B00083C02 /* SpeakersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeakersTableViewController.h; sourceTree = "<group>"; };
-		CC1ECCB81EA5BF7B00083C02 /* SpeakersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeakersTableViewController.m; sourceTree = "<group>"; };
 		CC1ECCBA1EA5C2A100083C02 /* ExhibitorsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExhibitorsTableViewController.h; sourceTree = "<group>"; };
 		CC1ECCBB1EA5C2A100083C02 /* ExhibitorsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExhibitorsTableViewController.m; sourceTree = "<group>"; };
 		CC1ECCBD1EA5C4F700083C02 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
@@ -433,8 +430,6 @@
 				CC1ECCB21EA5B7B900083C02 /* SecondDayAgendaTableViewController.m */,
 				CC1ECCB41EA5B7D700083C02 /* ThirdDayAgendaTableViewController.h */,
 				CC1ECCB51EA5B7D700083C02 /* ThirdDayAgendaTableViewController.m */,
-				CC1ECCB71EA5BF7B00083C02 /* SpeakersTableViewController.h */,
-				CC1ECCB81EA5BF7B00083C02 /* SpeakersTableViewController.m */,
 				CC1ECCBA1EA5C2A100083C02 /* ExhibitorsTableViewController.h */,
 				CC1ECCBB1EA5C2A100083C02 /* ExhibitorsTableViewController.m */,
 				CC1ECCBD1EA5C4F700083C02 /* ProfileViewController.h */,
@@ -808,7 +803,6 @@
 				ADED08111EA2728700A33CE0 /* SpeakerDTO.m in Sources */,
 				CC1ECCCB1EA5E5CC00083C02 /* SecondDayMyAgendaTableViewController.m in Sources */,
 				CC1ECCB61EA5B7D700083C02 /* ThirdDayAgendaTableViewController.m in Sources */,
-				CC1ECCB91EA5BF7B00083C02 /* SpeakersTableViewController.m in Sources */,
 				4EA30B4E1EA2A37D00CE1809 /* ServiceUrls.m in Sources */,
 				ADED080B1EA2728700A33CE0 /* AgendaDTO.m in Sources */,
 				CC1ECCB31EA5B7B900083C02 /* SecondDayAgendaTableViewController.m in Sources */,

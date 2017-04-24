@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SideMenuTableViewController.h"
 
-@interface SpeakerViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *myLabel;
-@property NSString *speakerName;
+@interface SpeakerViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *barButton;
+@property (weak, nonatomic) IBOutlet UITableView *speakersTableView;
 
 @end
