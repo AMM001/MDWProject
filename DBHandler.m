@@ -72,6 +72,17 @@ static RLMRealm *realm;
     }
 }
 
+-(void)UpdateExhibitor:(ExhibitorDTO *)exhibitor withImage:(NSData*)img{
+    NSError *error;
+    [realm beginWriteTransaction];
+    exhibitor.imageData = img;
+    [realm addOrUpdateObject:exhibitor];
+    [realm commitWriteTransaction:&error];
+    if (error != nil) {
+        NSLog(@"Merna%@", [error description]);
+    }
+}
+
 
 -(void)addOrUpdateExhibitor:(ExhibitorDTO *)exhibitor{
     RLMRealm *realm = [RLMRealm defaultRealm];
