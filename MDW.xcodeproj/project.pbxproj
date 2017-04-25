@@ -25,6 +25,7 @@
 		ADED080F1EA2728700A33CE0 /* RLMString.m in Sources */ = {isa = PBXBuildFile; fileRef = ADED08061EA2728700A33CE0 /* RLMString.m */; };
 		ADED08101EA2728700A33CE0 /* SessionDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = ADED08081EA2728700A33CE0 /* SessionDTO.m */; };
 		ADED08111EA2728700A33CE0 /* SpeakerDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = ADED080A1EA2728700A33CE0 /* SpeakerDTO.m */; };
+		ADF0D2FC1EAF5CA6007406D9 /* DateConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF0D2FB1EAF5CA6007406D9 /* DateConverter.m */; };
 		C9BC7AE9FB0F37240E8186AD /* libPods-MDW.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4347F597BA710ACAAB8B9845 /* libPods-MDW.a */; };
 		CC1ECCBF1EA5C4F700083C02 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1ECCBE1EA5C4F700083C02 /* ProfileViewController.m */; };
 		CC1ECCC21EA5CFD300083C02 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1ECCC11EA5CFD300083C02 /* LoginViewController.m */; };
@@ -168,6 +169,8 @@
 		ADED08081EA2728700A33CE0 /* SessionDTO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionDTO.m; sourceTree = "<group>"; };
 		ADED08091EA2728700A33CE0 /* SpeakerDTO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeakerDTO.h; sourceTree = "<group>"; };
 		ADED080A1EA2728700A33CE0 /* SpeakerDTO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeakerDTO.m; sourceTree = "<group>"; };
+		ADF0D2FA1EAF5CA6007406D9 /* DateConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateConverter.h; sourceTree = "<group>"; };
+		ADF0D2FB1EAF5CA6007406D9 /* DateConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateConverter.m; sourceTree = "<group>"; };
 		CC1ECCBD1EA5C4F700083C02 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		CC1ECCBE1EA5C4F700083C02 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		CC1ECCC01EA5CFD300083C02 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -307,6 +310,8 @@
 			children = (
 				4EA30B4C1EA2A37D00CE1809 /* ServiceUrls.h */,
 				4EA30B4D1EA2A37D00CE1809 /* ServiceUrls.m */,
+				ADF0D2FA1EAF5CA6007406D9 /* DateConverter.h */,
+				ADF0D2FB1EAF5CA6007406D9 /* DateConverter.m */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -816,6 +821,7 @@
 				AD433BA91E9E21EE002FC799 /* AppDelegate.m in Sources */,
 				CC6DE1D31EAE8C90009B0DA5 /* ThirdDayAgendaViewController.m in Sources */,
 				CC6DE1C11EAE680A009B0DA5 /* ExhibitorsViewController.m in Sources */,
+				ADF0D2FC1EAF5CA6007406D9 /* DateConverter.m in Sources */,
 				CC6DE1D91EAE95E2009B0DA5 /* AllDaysAgendaViewController.m in Sources */,
 				CC1ECCC21EA5CFD300083C02 /* LoginViewController.m in Sources */,
 				AD433BA61E9E21EE002FC799 /* main.m in Sources */,
