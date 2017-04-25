@@ -16,8 +16,45 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
+    
+    NSMutableString *fullName = [NSMutableString new];
+    [fullName appendString:_speaker.firstName];
+    [fullName appendString:@" "];
+    [fullName appendString:_speaker.middleName];
+    [fullName appendString:@" "];
+    [fullName appendString:_speaker.lastName];
+    
+    
+    _speakerName.text=fullName;
+    _speakerTitle.text=_speaker.title;
+    _companyName.text=_speaker.companyName;
+    _speakerBiography.text=_speaker.biography;
+    
+
+    if([_speaker imageData]==nil){
+        
+        if(_speaker.imageURL == nil){
+            _speakerImage.image=[UIImage imageNamed:@"speaker.png"];
+            
+        }else{
+        
+            [MDWNetworkManager fetchImageWithURL:[_speaker imageURL]
+                                     UIImageView:_speakerImage
+  
+                                    setForObject:_speaker ];
+        }
+    
+    }
+    
+    else{
+    
+        UIImage * img = [[UIImage alloc] initWithData:[_speaker imageData]];
+        _speakerImage.image=img;
+        
+    }
+    
+    
+  }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
