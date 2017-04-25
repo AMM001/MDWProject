@@ -22,7 +22,7 @@
 @property NSString * companyName;
 @property NSString * title;
 @property NSString * imageURL;
-@property NSData * image;
+@property NSData * imageData;
 @property BOOL gender;
 @property long birthDate;
 

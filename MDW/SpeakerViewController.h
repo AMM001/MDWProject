@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "SideMenuTableViewController.h"
-
+#import "MDWNetworkManager.h"
 
 @interface SpeakerViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *barButton;
-@property (weak, nonatomic) IBOutlet UITableView *speakersTableView;
+@property (strong, nonatomic) IBOutlet UITableView *speakersTableView;
+
+@property NSMutableArray *speakers;
 
 @end

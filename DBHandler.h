@@ -20,6 +20,7 @@
 - (void)addOrUpdateFillter: (FillteringAgendaDTO *) fillter;
 -(void)addOrUpdateSession: (SessionDTO *) session;
 -(void) addOrUpdateSpeaker: (SpeakerDTO *) speaker;
+-(void)UpdateSpeaker:(SpeakerDTO *)speaker withImage:(NSData*)img;
 -(void) addOrUpdateExhibitor: (ExhibitorDTO *) exhibitor;
 //-(AgendaDTO *) getAgendaByDate: (long) date;
 -(AgendaDTO *) getAgendaByDayNumber: (int) day;

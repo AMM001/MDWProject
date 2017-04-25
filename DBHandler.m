@@ -12,6 +12,12 @@
 @implementation DBHandler
 static DBHandler *dbHandler;
 
+static RLMRealm *realm;
+
++(void)initialize{
+    realm = [RLMRealm defaultRealm];
+}
+
 +(instancetype) getDB{
     if (dbHandler == nil) {
         dbHandler = [DBHandler new];
@@ -42,12 +48,30 @@ static DBHandler *dbHandler;
 }
 
 -(void)addOrUpdateSpeaker:(SpeakerDTO *)speaker{
-    RLMRealm *realm = [RLMRealm defaultRealm];
-    [realm transactionWithBlock:^{
-        [realm addOrUpdateObject:speaker];
-    }];
+//    RLMRealm *realm = [RLMRealm defaultRealm];
+//    [realm transactionWithBlock:^{
+//        [realm addOrUpdateObject:speaker];
+//    }];
+    NSError *error;
+    [realm beginWriteTransaction];
+    [realm addOrUpdateObject:speaker];
+    [realm commitWriteTransaction:&error];
+    if (error != nil) {
+        NSLog(@"Merna%@", [error description]);
+    }
 
 }
+-(void)UpdateSpeaker:(SpeakerDTO *)speaker withImage:(NSData*)img{
+    NSError *error;
+    [realm beginWriteTransaction];
+    speaker.imageData = img;
+    [realm addOrUpdateObject:speaker];
+    [realm commitWriteTransaction:&error];
+    if (error != nil) {
+        NSLog(@"Merna%@", [error description]);
+    }
+}
+
 
 -(void)addOrUpdateExhibitor:(ExhibitorDTO *)exhibitor{
     RLMRealm *realm = [RLMRealm defaultRealm];

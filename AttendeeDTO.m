@@ -60,7 +60,7 @@
     self.companyName=[aDecoder decodeObjectForKey:@"companyName"];
     self.title=[aDecoder decodeObjectForKey:@"title"];
     self.imageURL=[aDecoder decodeObjectForKey:@"imageURL"];
-    self.image=[aDecoder decodeObjectForKey:@"image"];
+    self.imageData=[aDecoder decodeObjectForKey:@"image"];
     self.gender=[aDecoder decodeBoolForKey:@"gender"];
     self.birthDate=[aDecoder decodeInt32ForKey:@"birthDate"];
     
@@ -80,7 +80,7 @@
     [aCoder encodeObject:_companyName forKey:@"companyName"];
     [aCoder encodeObject:_title forKey:@"title"];
     [aCoder encodeObject:_imageURL forKey:@"imageURL"];
-    [aCoder encodeObject:_image forKey:@"image"];
+    [aCoder encodeObject:_imageData forKey:@"image"];
     [aCoder encodeBool:_gender forKey:@"gender"];
     [aCoder encodeInt32:_birthDate forKey:@"birthDate"];
     
