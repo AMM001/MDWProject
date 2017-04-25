@@ -12,5 +12,6 @@
 @interface ThirdDayMyAgendaViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *barButton;
 @property (weak, nonatomic) IBOutlet UITableView *thirdDayTable;
+@property NSMutableArray * thirdDaySessions ;
 
 @end
