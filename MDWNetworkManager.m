@@ -127,7 +127,7 @@ static DBHandler * myDb;
                     }
                     
                    //data el session
-                    SessionDTO* sessionDTO = [[SessionDTO alloc] initWithDate:[date longValue]
+                    SessionDTO* sessionDTO = [[SessionDTO alloc] initWithId:[[session objectForKey:@"id"] intValue] Date:[date longValue]
                                                                 name:[session objectForKey:@"name"]
                                                                 location:[session objectForKey:@"location"]
                                                                 sessionDescription:[session objectForKey:@"description"]
@@ -200,9 +200,9 @@ static DBHandler * myDb;
             
             for (NSDictionary * exhibitor in exhibitors) {
 
-                ExhibitorDTO * exhibitorDTO = [[ExhibitorDTO alloc] initWithCompanyName:[exhibitor objectForKey:@"companyName"] CompanyAddress:[exhibitor objectForKey:@"companyAddress"]  ImageURL:[exhibitor objectForKey:@"imageURL"]  Email:[exhibitor objectForKey:@"email"]  CountryName:[exhibitor objectForKey:@"countryName"]  CityName:[exhibitor objectForKey:@"cityName"]  CompanyAbout:[exhibitor objectForKey:@"companyAbout"]  ContactName:[exhibitor objectForKey:@"contactName"]  ContactTitle:[exhibitor objectForKey:@"contactTitle"]  companyURl:[exhibitor objectForKey:@"companyUrl"] ];
+                ExhibitorDTO * exhibitorDTO = [[ExhibitorDTO alloc] initWithId:[[exhibitor objectForKey:@"id"] intValue] CompanyName:[exhibitor objectForKey:@"companyName"] CompanyAddress:[exhibitor objectForKey:@"companyAddress"]  ImageURL:[exhibitor objectForKey:@"imageURL"]  Email:[exhibitor objectForKey:@"email"]  CountryName:[exhibitor objectForKey:@"countryName"]  CityName:[exhibitor objectForKey:@"cityName"]  CompanyAbout:[exhibitor objectForKey:@"companyAbout"]  ContactName:[exhibitor objectForKey:@"contactName"]  ContactTitle:[exhibitor objectForKey:@"contactTitle"]  companyURl:[exhibitor objectForKey:@"companyUrl"] ];
                
-                //[myDb addOrUpdateExhibitor:exhibitorDTO];
+                [myDb addOrUpdateExhibitor:exhibitorDTO];
                 [mydata addObject:exhibitorDTO];
             }
             
