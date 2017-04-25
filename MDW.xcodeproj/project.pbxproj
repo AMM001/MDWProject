@@ -147,7 +147,7 @@
 		AD433BAE1E9E21EE002FC799 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AD433BB01E9E21EE002FC799 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD433BB31E9E21EE002FC799 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		AD433BB51E9E21EE002FC799 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD433BB51E9E21EE002FC799 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../MDW/Info.plist; sourceTree = "<group>"; };
 		AD433BBA1E9E21EE002FC799 /* MDWTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MDWTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD433BBE1E9E21EE002FC799 /* MDWTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MDWTests.m; sourceTree = "<group>"; };
 		AD433BC01E9E21EE002FC799 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -366,7 +366,6 @@
 				AD433BAD1E9E21EE002FC799 /* Main.storyboard */,
 				AD433BB01E9E21EE002FC799 /* Assets.xcassets */,
 				AD433BB21E9E21EE002FC799 /* LaunchScreen.storyboard */,
-				AD433BB51E9E21EE002FC799 /* Info.plist */,
 				AD433BA41E9E21EE002FC799 /* Supporting Files */,
 			);
 			path = MDW;
@@ -392,6 +391,7 @@
 		AD433BC81E9E21EE002FC799 /* MDWUITests */ = {
 			isa = PBXGroup;
 			children = (
+				AD433BB51E9E21EE002FC799 /* Info.plist */,
 				AD433BC91E9E21EE002FC799 /* MDWUITests.m */,
 				AD433BCB1E9E21EE002FC799 /* Info.plist */,
 			);
