@@ -82,8 +82,23 @@ static DBHandler * myDb;
         
         if (error) {
             NSLog(@"Error: %@", error);
-        } else {
+            RLMResults *results = [AgendaDTO allObjects];
             
+            if([results count] == 0){
+                
+                NSLog(@"alert %@",@"alert ............. <hi><hi>");
+                
+            }else{
+                
+                for (AgendaDTO *object in results) {
+                    [mydata addObjectsFromArray:object.sessions];
+                }
+                
+                [myTable reloadData];
+                
+            }
+
+        } else {
 
             NSMutableArray * agendaList = [NSMutableArray new];
             

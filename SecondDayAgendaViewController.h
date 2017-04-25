@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *barButton;
 
 @property (weak, nonatomic) IBOutlet UITableView *SecondDayTable;
+@property NSMutableArray * secondDaySessions ;
 
 @end

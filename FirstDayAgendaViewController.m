@@ -7,7 +7,10 @@
 //
 
 #import "FirstDayAgendaViewController.h"
-
+#import "SessionDTO.h"
+#import "DBHandler.h"
+#import "AgendaDTO.h"
+#import "DateConverter.h"
 @interface FirstDayAgendaViewController ()
 
 @end
@@ -20,7 +23,11 @@
     _barButton.action=@selector(revealToggle:);
     
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-    
+    AgendaDTO * firstDayAgenda = [[DBHandler getDB] getAgendaByDayNumber:1];
+    _firstDaySessions =[NSMutableArray new];
+    for(SessionDTO *session in firstDayAgenda.sessions) {
+        [_firstDaySessions addObject:session];
+    }
     
     [_FirstDayTable setDelegate:self];
     [_FirstDayTable setDataSource:self];
@@ -31,13 +38,16 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 3;
+    return [_firstDaySessions count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    
+    static NSString *cellIdentifier =@"cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if(cell == nil){
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
     
     UILabel *firstLabel = (UILabel*) [cell viewWithTag:2];
     UILabel *secondLabel = (UILabel*) [cell viewWithTag:3];
@@ -45,11 +55,18 @@
     UIImageView *imageView = (UIImageView*) [cell viewWithTag:5];
     
     
-    firstLabel.text = @"First Label";
-    secondLabel.text = @"Second Label";
-    thirdLabel.text = @"Third Label";
+    //    firstLabel.text = @"First Label";
+    //    secondLabel.text = @"Second Label";
+    //    thirdLabel.text = @"Third Label";
+    SessionDTO * sessionToView =nil;
+    sessionToView=[_firstDaySessions objectAtIndex:indexPath.row];
+    firstLabel.text = [sessionToView name];
+    secondLabel.text = [sessionToView location];
+    NSString * date = [NSString stringWithFormat:@"%@ - %@",
+                       [DateConverter stringFromDate:sessionToView.startDate],
+                       [DateConverter stringFromDate:sessionToView.endDate]];
+    thirdLabel.text = date;
     imageView.image=[UIImage imageNamed:@"myagenda.png"];
-    
     return cell;
 }
 - (void)didReceiveMemoryWarning {

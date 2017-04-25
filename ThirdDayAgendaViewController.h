@@ -15,4 +15,6 @@
 
 
 @property (weak, nonatomic) IBOutlet UITableView *ThirdDayTable;
+@property NSMutableArray * thirdDaySessions ;
+
 @end
