@@ -22,7 +22,7 @@
 @property int status;
 @property RLMArray<SpeakerDTO *><SpeakerDTO> *speakers;
 
--(instancetype)initWithDate:(long)date name:(NSString*)name location:(NSString*)location sessionDescription:(NSString*)desc status:(int)status sessionType:(NSString*)SessionType liked:(BOOL)liked speakers:(NSArray*)speakers startDate:(long)startDate endDate:(long)enddate;
+-(instancetype)initWithId:(int)id Date:(long)date name:(NSString*)name location:(NSString*)location sessionDescription:(NSString*)desc status:(int)status sessionType:(NSString*)SessionType liked:(BOOL)liked speakers:(NSArray*)speakers startDate:(long)startDate endDate:(long)enddate;
 
 //@property List<String> sessionTags;
 

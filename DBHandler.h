@@ -27,5 +27,6 @@
 -(SpeakerDTO *) getSpeakerById: (int) id;
 -(SessionDTO *) getSessionById: (int) id;
 -(ExhibitorDTO *) getExhibitorById: (int) id;
+-(void)UpdateExhibitor:(ExhibitorDTO *)exhibitor withImage:(NSData*)img;
 -(void) dropDatabase;
 @end

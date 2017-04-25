@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "SideMenuTableViewController.h"
+#import "MDWNetworkManager.h"
 
 @interface ExhibitorsViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *barButton;
 
 
-@property (weak, nonatomic) IBOutlet UITableView *ExhibitorsTable;
+@property (strong, nonatomic) IBOutlet UITableView *ExhibitorsTable;
+
+@property NSMutableArray *exhibitors;
 @end

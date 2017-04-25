@@ -127,7 +127,7 @@ static DBHandler * myDb;
                     }
                     
                    //data el session
-                    SessionDTO* sessionDTO = [[SessionDTO alloc] initWithDate:[date longValue]
+                    SessionDTO* sessionDTO = [[SessionDTO alloc] initWithId:[[session objectForKey:@"id"] intValue] Date:[date longValue]
                                                                 name:[session objectForKey:@"name"]
                                                                 location:[session objectForKey:@"location"]
                                                                 sessionDescription:[session objectForKey:@"description"]
@@ -178,21 +178,37 @@ static DBHandler * myDb;
             
             NSLog(@"Error: %@", error);
             
+            RLMResults *results = [ExhibitorDTO allObjects];
+            
+            if([results count] == 0){
+                
+                NSLog(@"alert %@",@"alert ............. <hi><hi>");
+                
+            }else{
+                
+                for (RLMObject *object in results) {
+                    [mydata addObject:object];
+                }
+                
+                [myTable reloadData];
+                
+            }
+            
         } else {
             
-            NSArray * result = [responseObject objectForKey:@"result"];
+            NSArray * exhibitors = [responseObject objectForKey:@"result"];
             
-            for (NSDictionary * exhibitor in result) {
-                
-                ExhibitorDTO * exhibitorDTO = [[ExhibitorDTO alloc] initWithCompanyName:[exhibitor objectForKey:@"companyName"] CompanyAddress:[exhibitor objectForKey:@"companyAddress"]  ImageURL:[exhibitor objectForKey:@"imageURL"]  Email:[exhibitor objectForKey:@"email"]  CountryName:[exhibitor objectForKey:@"countryName"]  CityName:[exhibitor objectForKey:@"cityName"]  CompanyAbout:[exhibitor objectForKey:@"companyAbout"]  ContactName:[exhibitor objectForKey:@"contactName"]  ContactTitle:[exhibitor objectForKey:@"contactTitle"]  companyURl:[exhibitor objectForKey:@"companyUrl"] ];
+            for (NSDictionary * exhibitor in exhibitors) {
+
+                ExhibitorDTO * exhibitorDTO = [[ExhibitorDTO alloc] initWithId:[[exhibitor objectForKey:@"id"] intValue] CompanyName:[exhibitor objectForKey:@"companyName"] CompanyAddress:[exhibitor objectForKey:@"companyAddress"]  ImageURL:[exhibitor objectForKey:@"imageURL"]  Email:[exhibitor objectForKey:@"email"]  CountryName:[exhibitor objectForKey:@"countryName"]  CityName:[exhibitor objectForKey:@"cityName"]  CompanyAbout:[exhibitor objectForKey:@"companyAbout"]  ContactName:[exhibitor objectForKey:@"contactName"]  ContactTitle:[exhibitor objectForKey:@"contactTitle"]  companyURl:[exhibitor objectForKey:@"companyUrl"] ];
+               
                 [myDb addOrUpdateExhibitor:exhibitorDTO];
                 [mydata addObject:exhibitorDTO];
             }
-
+            
+            [myTable reloadData];
         }
         
-        [myTable reloadData];
-        //-- 
     }];
     
   [dataTask resume];
@@ -267,9 +283,7 @@ static DBHandler * myDb;
         
         if ([myObject isKindOfClass:[ExhibitorDTO class]]) {
             ExhibitorDTO * ex = myObject;
-            ex.imageData = imageToBeSaved;
-            [myDb addOrUpdateExhibitor:ex];
-            
+            [myDb UpdateExhibitor:ex withImage:imageToBeSaved];
         }
         else if([myObject isKindOfClass:[SpeakerDTO class]]){
             SpeakerDTO  * sp = myObject;
