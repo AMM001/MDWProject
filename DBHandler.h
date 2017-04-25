@@ -16,12 +16,12 @@
 - (id) init __attribute__((unavailable("Must Use Factory Method getDB")));
 
 +(instancetype) getDB;
-- (void)addOrUpdateAgenda: (AgendaDTO *) agenda;
-- (void)addOrUpdateFillter: (FillteringAgendaDTO *) fillter;
--(void)addOrUpdateSession: (SessionDTO *) session;
+- (void)addOrUpdateAgenda: (NSMutableArray *) agenda;
+- (void)addOrUpdateFillter: (NSMutableArray *) fillter;
+-(void)addOrUpdateSession: (NSMutableArray *) session;
 -(void) addOrUpdateSpeaker: (SpeakerDTO *) speaker;
 -(void)UpdateSpeaker:(SpeakerDTO *)speaker withImage:(NSData*)img;
--(void) addOrUpdateExhibitor: (ExhibitorDTO *) exhibitor;
+-(void) addOrUpdateExhibitor: (NSMutableArray *) exhibitor;
 //-(AgendaDTO *) getAgendaByDate: (long) date;
 -(AgendaDTO *) getAgendaByDayNumber: (int) day;
 -(SpeakerDTO *) getSpeakerById: (int) id;

@@ -20,7 +20,7 @@
         _status = status;
         _sessionType = SessionType;
         _liked = liked;
-        _speakers = speakers;
+//        _speakers = speakers;
         _startDate = startDate;
         _endDate = enddate;
     }

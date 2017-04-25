@@ -25,24 +25,24 @@ static RLMRealm *realm;
     return dbHandler;
 }
 
--(void)addOrUpdateAgenda:(AgendaDTO *)agenda{
+-(void)addOrUpdateAgenda:(NSMutableArray *)agenda{
     RLMRealm *realm = [RLMRealm defaultRealm];
     [realm transactionWithBlock:^{
-        [realm addOrUpdateObject:agenda];
+        [realm addOrUpdateObjectsFromArray:agenda];
     }];
 
 }
-- (void)addOrUpdateFillter: (FillteringAgendaDTO *) fillter{
+- (void)addOrUpdateFillter: (NSMutableArray *) fillter{
     RLMRealm *realm = [RLMRealm defaultRealm];
     [realm transactionWithBlock:^{
-        [realm addOrUpdateObject:fillter];
+        [realm addOrUpdateObjectsFromArray:fillter];
     }];
 }
 
--(void)addOrUpdateSession:(SessionDTO *)session{
+-(void)addOrUpdateSession:(NSMutableArray *)session{
     RLMRealm *realm = [RLMRealm defaultRealm];
     [realm transactionWithBlock:^{
-        [realm addOrUpdateObject:session];
+        [realm addOrUpdateObjectsFromArray:session];
     }];
 
 }
@@ -73,10 +73,10 @@ static RLMRealm *realm;
 }
 
 
--(void)addOrUpdateExhibitor:(ExhibitorDTO *)exhibitor{
+-(void)addOrUpdateExhibitor:(NSMutableArray *)exhibitor{
     RLMRealm *realm = [RLMRealm defaultRealm];
     [realm transactionWithBlock:^{
-        [realm addOrUpdateObject:exhibitor];
+        [realm addOrUpdateObjectsFromArray:exhibitor];
     }];
 
 }
