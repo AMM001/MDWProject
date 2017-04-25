@@ -198,13 +198,11 @@ static DBHandler * myDb;
             
             NSArray * exhibitors = [responseObject objectForKey:@"result"];
             
-            for (int i=1; i<[exhibitors count]; i++) {
-                
-                NSMutableDictionary *exhibitor = [exhibitors objectAtIndex:i];
+            for (NSDictionary * exhibitor in exhibitors) {
 
                 ExhibitorDTO * exhibitorDTO = [[ExhibitorDTO alloc] initWithCompanyName:[exhibitor objectForKey:@"companyName"] CompanyAddress:[exhibitor objectForKey:@"companyAddress"]  ImageURL:[exhibitor objectForKey:@"imageURL"]  Email:[exhibitor objectForKey:@"email"]  CountryName:[exhibitor objectForKey:@"countryName"]  CityName:[exhibitor objectForKey:@"cityName"]  CompanyAbout:[exhibitor objectForKey:@"companyAbout"]  ContactName:[exhibitor objectForKey:@"contactName"]  ContactTitle:[exhibitor objectForKey:@"contactTitle"]  companyURl:[exhibitor objectForKey:@"companyUrl"] ];
                
-                [myDb addOrUpdateExhibitor:exhibitorDTO];
+                //[myDb addOrUpdateExhibitor:exhibitorDTO];
                 [mydata addObject:exhibitorDTO];
             }
             
