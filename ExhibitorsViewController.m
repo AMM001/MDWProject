@@ -17,6 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _exhibitors = [[NSMutableArray alloc] init];
+    
     _barButton.target=self.revealViewController;
     _barButton.action=@selector(revealToggle:);
     
@@ -26,6 +28,9 @@
     [_ExhibitorsTable setDelegate:self];
     [_ExhibitorsTable setDataSource:self];
    // self.ExhibitorsTable.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+    
+    [MDWNetworkManager fetchExhibitorsData:_exhibitors :_ExhibitorsTable];
+    
 
 }
 
@@ -35,21 +40,47 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 3;
+    return [_exhibitors count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    static NSString *cellIdentifier =@"cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if(cell == nil){
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
     
     UILabel *nameLabel = (UILabel*) [cell viewWithTag:2];
     UIImageView *imageView = (UIImageView*) [cell viewWithTag:3];
     
     
-    nameLabel.text = @"ExihibtorName";
-    imageView.image=[UIImage imageNamed:@"exihiptors.png"];
+//    nameLabel.text = @"ExihibtorName";
+//    imageView.image=[UIImage imageNamed:@"exihiptors.png"];
+    ExhibitorDTO* ex = [_exhibitors objectAtIndex:indexPath.row];
+    nameLabel.text = [ex companyName];
+ 
+    
+    if([[_exhibitors objectAtIndex:indexPath.row] imageData] == nil){
+        
+        if([[_exhibitors objectAtIndex:indexPath.row] imageURL] == nil){
+            
+            imageView.image=[UIImage imageNamed:@"exihiptors.png"];
+            
+        }else{
+            
+            [MDWNetworkManager fetchImageWithURL:[[_exhibitors objectAtIndex:indexPath.row] imageURL]
+                                     UIImageView:imageView
+                                    setForObject:[_exhibitors objectAtIndex:indexPath.row] ];
+        }
+        
+    }else{
+        
+        UIImage * img = [[UIImage alloc] initWithData:[[_exhibitors objectAtIndex:indexPath.row] imageData]];
+        imageView.image = img;
+    }
+
     
     return cell;
 }

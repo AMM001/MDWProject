@@ -25,24 +25,24 @@ static RLMRealm *realm;
     return dbHandler;
 }
 
--(void)addOrUpdateAgenda:(NSMutableArray *)agenda{
+-(void)addOrUpdateAgenda:(AgendaDTO *)agenda{
     RLMRealm *realm = [RLMRealm defaultRealm];
     [realm transactionWithBlock:^{
-        [realm addOrUpdateObjectsFromArray:agenda];
+        [realm addOrUpdateObject:agenda];
     }];
 
 }
-- (void)addOrUpdateFillter: (NSMutableArray *) fillter{
+- (void)addOrUpdateFillter: (FillteringAgendaDTO *) fillter{
     RLMRealm *realm = [RLMRealm defaultRealm];
     [realm transactionWithBlock:^{
-        [realm addOrUpdateObjectsFromArray:fillter];
+        [realm addOrUpdateObject:fillter];
     }];
 }
 
--(void)addOrUpdateSession:(NSMutableArray *)session{
+-(void)addOrUpdateSession:(SessionDTO *)session{
     RLMRealm *realm = [RLMRealm defaultRealm];
     [realm transactionWithBlock:^{
-        [realm addOrUpdateObjectsFromArray:session];
+        [realm addOrUpdateObject:session];
     }];
 
 }
@@ -72,11 +72,22 @@ static RLMRealm *realm;
     }
 }
 
+-(void)UpdateExhibitor:(ExhibitorDTO *)exhibitor withImage:(NSData*)img{
+    NSError *error;
+    [realm beginWriteTransaction];
+    exhibitor.imageData = img;
+    [realm addOrUpdateObject:exhibitor];
+    [realm commitWriteTransaction:&error];
+    if (error != nil) {
+        NSLog(@"Merna%@", [error description]);
+    }
+}
 
--(void)addOrUpdateExhibitor:(NSMutableArray *)exhibitor{
+
+-(void)addOrUpdateExhibitor:(ExhibitorDTO *)exhibitor{
     RLMRealm *realm = [RLMRealm defaultRealm];
     [realm transactionWithBlock:^{
-        [realm addOrUpdateObjectsFromArray:exhibitor];
+        [realm addOrUpdateObject:exhibitor];
     }];
 
 }
