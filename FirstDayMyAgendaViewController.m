@@ -62,12 +62,27 @@
     //    thirdLabel.text = @"Third Label";
     SessionDTO * sessionToView =nil;
     sessionToView=[_firstDaySessions objectAtIndex:indexPath.row];
-    firstLabel.text = [sessionToView name];
-    secondLabel.text = [sessionToView location];
+    //firstLabel.text = [sessionToView name];
+    //     html firstLabel Rendered
+    NSAttributedString *renderedTextFirstLabel=[[NSAttributedString alloc]initWithData:[[sessionToView name]
+    dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType}documentAttributes:nil error:nil];
+    firstLabel.attributedText=renderedTextFirstLabel;
+    
+    //secondLabel.text = [sessionToView location];
+    //     html secondLabel Rendered
+    NSAttributedString *renderedTextSecondLabel=[[NSAttributedString alloc]initWithData:[[sessionToView location]
+    dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType}documentAttributes:nil error:nil];
+    secondLabel.attributedText=renderedTextSecondLabel;
+    
     NSString * date = [NSString stringWithFormat:@"%@ - %@",
                        [DateConverter stringFromDate:sessionToView.startDate],
                        [DateConverter stringFromDate:sessionToView.endDate]];
-    thirdLabel.text = date;
+    
+    //     html ThirdLabel Rendered
+    NSAttributedString *renderedTextThirdLabel=[[NSAttributedString alloc]initWithData:[date
+    dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType}documentAttributes:nil error:nil];
+    thirdLabel.attributedText=renderedTextThirdLabel;
+    //thirdLabel.text = date;
     imageView.image=[UIImage imageNamed:@"myagenda.png"];
     
     return cell;

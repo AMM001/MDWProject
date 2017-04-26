@@ -10,13 +10,13 @@
 
 @implementation ServiceUrls
 
-NSString * speakersURL = @"http://www.mobiledeveloperweekend.net/MDW/service/getSpeakers?userName=eng.medhat.cs.h@gmail.com";
+NSString * speakersURL = @"http://mobiledeveloperweekend.net/MDW/service/getSpeakers?userName=eng.medhat.cs.h@gmail.com";
 
-NSString * sessionsURL = @"http://www.mobiledeveloperweekend.net/MDW/service/getSessions?userName=eng.medhat.cs.h@gmail.com";
+NSString * sessionsURL = @"http://mobiledeveloperweekend.net/MDW/service/getSessions?userName=eng.medhat.cs.h@gmail.com";
 
-NSString * exhibitorsURL = @"http://www.mobiledeveloperweekend.net/MDW/service/getExhibitors?userName=eng.medhat.cs.h@gmail.com&sessionId=4482&enforce=false&status=0";
+NSString * exhibitorsURL = @"http://mobiledeveloperweekend.net/MDW/service/getExhibitors?userName=eng.medhat.cs.h@gmail.com&sessionId=4482&enforce=false&status=0";
 
-NSString * loginURL = @"http://www.mobiledeveloperweekend.net/MDW/service/login?userName=eng.medhat.cs.h@gmail.com&password=medhat123";
+NSString * loginURL = @"http://mobiledeveloperweekend.net/MDW/service/login?userName=eng.medhat.cs.h@gmail.com&password=medhat123";
 
 
 

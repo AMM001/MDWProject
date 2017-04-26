@@ -79,7 +79,12 @@
     [fullName appendString:@" "];
     [fullName appendString:[[_speakers objectAtIndex:indexPath.row] lastName]];
     
-    nameLabel.text = fullName;
+    //  fullName Rendering
+    NSAttributedString *renderedTextNameLabel=[[NSAttributedString alloc]initWithData:[fullName
+    dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType}documentAttributes:nil error:nil];
+    nameLabel.attributedText=renderedTextNameLabel;
+    
+    //nameLabel.text = fullName;
     descriptionLabel.text = [[_speakers objectAtIndex:indexPath.row] title];
     
     if([[_speakers objectAtIndex:indexPath.row] imageData] == nil){
