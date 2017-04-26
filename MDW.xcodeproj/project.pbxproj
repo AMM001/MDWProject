@@ -111,6 +111,8 @@
 		CC6DE1D31EAE8C90009B0DA5 /* ThirdDayAgendaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC6DE1D21EAE8C90009B0DA5 /* ThirdDayAgendaViewController.m */; };
 		CC6DE1D61EAE9147009B0DA5 /* FirstDayAgendaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC6DE1D51EAE9147009B0DA5 /* FirstDayAgendaViewController.m */; };
 		CC6DE1D91EAE95E2009B0DA5 /* AllDaysAgendaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC6DE1D81EAE95E2009B0DA5 /* AllDaysAgendaViewController.m */; };
+		CCCCC8DC1EAFDB2900293579 /* TicketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCCCC8DB1EAFDB2900293579 /* TicketViewController.m */; };
+		CCCCC8DF1EAFDB5300293579 /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCCCC8DE1EAFDB5300293579 /* ContactViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -271,6 +273,10 @@
 		CC6DE1D51EAE9147009B0DA5 /* FirstDayAgendaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstDayAgendaViewController.m; sourceTree = "<group>"; };
 		CC6DE1D71EAE95E2009B0DA5 /* AllDaysAgendaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllDaysAgendaViewController.h; sourceTree = "<group>"; };
 		CC6DE1D81EAE95E2009B0DA5 /* AllDaysAgendaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllDaysAgendaViewController.m; sourceTree = "<group>"; };
+		CCCCC8DA1EAFDB2900293579 /* TicketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TicketViewController.h; sourceTree = "<group>"; };
+		CCCCC8DB1EAFDB2900293579 /* TicketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TicketViewController.m; sourceTree = "<group>"; };
+		CCCCC8DD1EAFDB5300293579 /* ContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactViewController.h; sourceTree = "<group>"; };
+		CCCCC8DE1EAFDB5300293579 /* ContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -825,7 +831,9 @@
 				ADED08101EA2728700A33CE0 /* SessionDTO.m in Sources */,
 				AD433BA91E9E21EE002FC799 /* AppDelegate.m in Sources */,
 				CC6DE1D31EAE8C90009B0DA5 /* ThirdDayAgendaViewController.m in Sources */,
+				CCCCC8DC1EAFDB2900293579 /* TicketViewController.m in Sources */,
 				CC6DE1C11EAE680A009B0DA5 /* ExhibitorsViewController.m in Sources */,
+				CCCCC8DF1EAFDB5300293579 /* ContactViewController.m in Sources */,
 				ADF0D2FC1EAF5CA6007406D9 /* DateConverter.m in Sources */,
 				CC6DE1D91EAE95E2009B0DA5 /* AllDaysAgendaViewController.m in Sources */,
 				CC1ECCC21EA5CFD300083C02 /* LoginViewController.m in Sources */,

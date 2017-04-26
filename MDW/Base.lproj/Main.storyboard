@@ -422,14 +422,14 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="tGV-h5-6nC" kind="relationship" relationship="rootViewController" id="nJ3-Fl-JLj"/>
+                        <segue destination="Jhj-pD-aD3" kind="relationship" relationship="rootViewController" id="nJ3-Fl-JLj"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XcG-Q7-Qjl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-983" y="-206"/>
         </scene>
-        <!--Profile View Controller-->
+        <!--Info-->
         <scene sceneID="fh2-3H-u3C">
             <objects>
                 <viewController id="tGV-h5-6nC" customClass="ProfileViewController" sceneMemberID="viewController">
@@ -441,22 +441,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3g-7j-5C8">
-                                <rect key="frame" x="0.0" y="86" width="320" height="32"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="20y-ZR-5K4">
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5zE-CA-bli">
+                                <rect key="frame" x="0.0" y="100" width="320" height="21"/>
                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile.png" translatesAutoresizingMaskIntoConstraints="NO" id="a5c-9L-DgU">
-                                <rect key="frame" x="14" y="78" width="53" height="48"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile.png" translatesAutoresizingMaskIntoConstraints="NO" id="ut3-u5-XDE">
+                                <rect key="frame" x="20" y="90" width="42" height="41"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="Dh7-t8-UWu">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H0S-LF-mRC">
+                                <rect key="frame" x="104" y="144" width="113" height="111"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cn2-e4-Ejh">
+                                <rect key="frame" x="25" y="357" width="246" height="3"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Td9-4e-fqh">
+                                <rect key="frame" x="25" y="314" width="246" height="3"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKN-yd-jbS">
+                                <rect key="frame" x="25" y="271" width="275" height="35"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="37"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aud-hj-Qi0">
+                                <rect key="frame" x="59" y="328" width="199" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Info" image="info.png" id="3Qh-ar-fN3"/>
                     <navigationItem key="navigationItem" id="tQU-ih-8c1">
                         <barButtonItem key="leftBarButtonItem" image="reveal-icon.png" id="fcR-a3-Ytk">
                             <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -464,11 +494,117 @@
                     </navigationItem>
                     <connections>
                         <outlet property="barButton" destination="fcR-a3-Ytk" id="EFV-Er-cig"/>
+                        <outlet property="imageProfile" destination="H0S-LF-mRC" id="SfQ-pD-ekh"/>
+                        <outlet property="personNameProfile" destination="LKN-yd-jbS" id="Hoe-qh-XyD"/>
+                        <outlet property="personTitleProfile" destination="aud-hj-Qi0" id="7MZ-1q-aBf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bWe-tY-yyf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-978" y="612"/>
+            <point key="canvasLocation" x="-358" y="1349"/>
+        </scene>
+        <!--My Contact-->
+        <scene sceneID="zA2-Z7-jkO">
+            <objects>
+                <viewController id="MbQ-Vg-eC6" customClass="ContactViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TI3-OT-F2U"/>
+                        <viewControllerLayoutGuide type="bottom" id="rcv-vb-oYk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aMD-KJ-lTi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="Uf7-EZ-2X9">
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="myContactBackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="EQz-mg-sId">
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8TL-YA-ylP">
+                                <rect key="frame" x="63" y="112" width="154" height="128"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAL-71-R4a">
+                                <rect key="frame" x="63" y="263" width="197" height="31"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mobile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EVu-vK-riS">
+                                <rect key="frame" x="62" y="316" width="197" height="31"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MbQ-EW-qKM">
+                                <rect key="frame" x="-73" y="279" width="71" height="69"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="phoneIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="aw3-qd-1md">
+                                <rect key="frame" x="25" y="316" width="29" height="29"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="emailIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="vmy-T7-CwL">
+                                <rect key="frame" x="26" y="265" width="29" height="29"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="My Contact" image="contact.png" id="ThH-0e-Gf8"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="KAL-71-R4a" id="HwQ-YM-oJg"/>
+                        <outlet property="mobileLabel" destination="EVu-vK-riS" id="lG1-ev-1Nx"/>
+                        <outlet property="qrImage" destination="8TL-YA-ylP" id="KHF-jV-HmP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S5H-y9-8ek" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1527" y="1349"/>
+        </scene>
+        <!--Ticket-->
+        <scene sceneID="sRc-AW-5pu">
+            <objects>
+                <viewController id="XRg-Zq-UFJ" customClass="TicketViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oYm-Sw-Gvl"/>
+                        <viewControllerLayoutGuide type="bottom" id="4Ki-rH-bFV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="n0Q-e1-nyg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="eJx-8P-Gi7">
+                                <rect key="frame" x="0.0" y="64" width="326" height="447"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="myTicketBackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="wHt-kM-z17">
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="April 20-22 ,2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hf8-Fb-Ax4">
+                                <rect key="frame" x="86" y="260" width="133" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Smart Village-iti" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="220-63-4rG">
+                                <rect key="frame" x="91" y="289" width="123" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lbl-s8-yyK">
+                                <rect key="frame" x="75" y="105" width="154" height="128"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Ticket" image="ticket.png" id="CF5-ux-WDG"/>
+                    <connections>
+                        <outlet property="qrImage" destination="lbl-s8-yyK" id="a5O-tc-isk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="abI-yu-LLw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-978" y="1362"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="6Jp-0j-Uvh">
@@ -1471,15 +1607,38 @@
             </objects>
             <point key="canvasLocation" x="-3673" y="1298"/>
         </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="ddE-Ar-GU0">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Jhj-pD-aD3" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="XPD-3i-iAL"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="kkT-M4-XgY">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="tGV-h5-6nC" kind="relationship" relationship="viewControllers" id="Hve-IC-ZFB"/>
+                        <segue destination="XRg-Zq-UFJ" kind="relationship" relationship="viewControllers" id="THd-Hr-za3"/>
+                        <segue destination="MbQ-Vg-eC6" kind="relationship" relationship="viewControllers" id="yvC-A3-gKV"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l92-OV-TTh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-978" y="612"/>
+        </scene>
     </scenes>
     <resources>
         <image name="20 Apr" width="518" height="194"/>
         <image name="agenda.png" width="65" height="65"/>
         <image name="allDays.png" width="30" height="29"/>
         <image name="background.png" width="636" height="955"/>
+        <image name="contact.png" width="30" height="30"/>
+        <image name="emailIcon.png" width="61" height="60"/>
         <image name="exihiptors.png" width="65" height="65"/>
         <image name="firstDay.png" width="30" height="30"/>
         <image name="footer.png" width="130" height="73"/>
+        <image name="info.png" width="30" height="30"/>
         <image name="leftSideMenuHeader.png" width="518" height="194"/>
         <image name="location.png" width="65" height="65"/>
         <image name="loginButton.png" width="164" height="60"/>
@@ -1487,12 +1646,16 @@
         <image name="loginTextBoxsBackGround.png" width="723" height="293"/>
         <image name="logo1.png" width="164" height="163"/>
         <image name="logout.png" width="65" height="65"/>
+        <image name="myContactBackground.png" width="501" height="678"/>
+        <image name="myTicketBackground.png" width="331" height="607"/>
         <image name="myagenda.png" width="65" height="65"/>
+        <image name="phoneIcon.png" width="62" height="61"/>
         <image name="profile.png" width="65" height="65"/>
         <image name="reveal-icon.png" width="22" height="17"/>
         <image name="secondDay.png" width="30" height="30"/>
         <image name="speaker.png" width="65" height="65"/>
         <image name="thirdDay.png" width="30" height="30"/>
+        <image name="ticket.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="4Yh-GH-RyE"/>
