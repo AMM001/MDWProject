@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SideMenuTableViewController.h"
+#import "SessionDetailsViewController.h"
 @interface SecondDayAgendaViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *barButton;
 

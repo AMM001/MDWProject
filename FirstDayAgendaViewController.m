@@ -69,19 +69,19 @@
     imageView.image=[UIImage imageNamed:@"myagenda.png"];
     return cell;
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self performSegueWithIdentifier:@"sessionDetails" sender:indexPath];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"sessionDetails"]) {
+        NSIndexPath *indexPath = (NSIndexPath*)sender;
+        SessionDetailsViewController *destination=segue.destinationViewController;
+        
+        destination.session=[_firstDaySessions objectAtIndex:indexPath.row];
+        
+        
+    }
 }
-*/
 
 @end

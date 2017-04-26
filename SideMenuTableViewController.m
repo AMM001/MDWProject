@@ -55,8 +55,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (indexPath.row==7) {
-        [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"https://www.google.com"]];
+    if (indexPath.row==6) {
+        [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"http://jets.iti.gov.eg/pageView/4371"]];
     }
 
 

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SideMenuTableViewController.h"
+#import "SessionDetailsViewController.h"
 
 @interface AllDaysMyAgendaViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 

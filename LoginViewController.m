@@ -40,6 +40,6 @@
 }
 
 - (IBAction)registerAction:(id)sender {
-}
+   }
 
 @end

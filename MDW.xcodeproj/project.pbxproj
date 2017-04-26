@@ -11,7 +11,6 @@
 		4EA30B511EA2A39400CE1809 /* MDWNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA30B501EA2A39400CE1809 /* MDWNetworkManager.m */; };
 		AD433BA61E9E21EE002FC799 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AD433BA51E9E21EE002FC799 /* main.m */; };
 		AD433BA91E9E21EE002FC799 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD433BA81E9E21EE002FC799 /* AppDelegate.m */; };
-		AD433BAC1E9E21EE002FC799 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD433BAB1E9E21EE002FC799 /* ViewController.m */; };
 		AD433BAF1E9E21EE002FC799 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD433BAD1E9E21EE002FC799 /* Main.storyboard */; };
 		AD433BB11E9E21EE002FC799 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD433BB01E9E21EE002FC799 /* Assets.xcassets */; };
 		AD433BB41E9E21EE002FC799 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD433BB21E9E21EE002FC799 /* LaunchScreen.storyboard */; };
@@ -27,6 +26,7 @@
 		ADED08111EA2728700A33CE0 /* SpeakerDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = ADED080A1EA2728700A33CE0 /* SpeakerDTO.m */; };
 		ADF0D2FC1EAF5CA6007406D9 /* DateConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF0D2FB1EAF5CA6007406D9 /* DateConverter.m */; };
 		C9BC7AE9FB0F37240E8186AD /* libPods-MDW.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4347F597BA710ACAAB8B9845 /* libPods-MDW.a */; };
+		CC04420A1EB00BC4001CD37E /* SessionDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0442091EB00BC4001CD37E /* SessionDetailsViewController.m */; };
 		CC1ECCBF1EA5C4F700083C02 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1ECCBE1EA5C4F700083C02 /* ProfileViewController.m */; };
 		CC1ECCC21EA5CFD300083C02 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1ECCC11EA5CFD300083C02 /* LoginViewController.m */; };
 		CC1ECCD11EA6187000083C02 /* SpeakerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1ECCD01EA6187000083C02 /* SpeakerViewController.m */; };
@@ -142,8 +142,6 @@
 		AD433BA51E9E21EE002FC799 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AD433BA71E9E21EE002FC799 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AD433BA81E9E21EE002FC799 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		AD433BAA1E9E21EE002FC799 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		AD433BAB1E9E21EE002FC799 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		AD433BAE1E9E21EE002FC799 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AD433BB01E9E21EE002FC799 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD433BB31E9E21EE002FC799 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -172,6 +170,8 @@
 		ADED080A1EA2728700A33CE0 /* SpeakerDTO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeakerDTO.m; sourceTree = "<group>"; };
 		ADF0D2FA1EAF5CA6007406D9 /* DateConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateConverter.h; sourceTree = "<group>"; };
 		ADF0D2FB1EAF5CA6007406D9 /* DateConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateConverter.m; sourceTree = "<group>"; };
+		CC0442081EB00BC4001CD37E /* SessionDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionDetailsViewController.h; sourceTree = "<group>"; };
+		CC0442091EB00BC4001CD37E /* SessionDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionDetailsViewController.m; sourceTree = "<group>"; };
 		CC1ECCBD1EA5C4F700083C02 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		CC1ECCBE1EA5C4F700083C02 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		CC1ECCC01EA5CFD300083C02 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -361,8 +361,6 @@
 			children = (
 				AD433BA71E9E21EE002FC799 /* AppDelegate.h */,
 				AD433BA81E9E21EE002FC799 /* AppDelegate.m */,
-				AD433BAA1E9E21EE002FC799 /* ViewController.h */,
-				AD433BAB1E9E21EE002FC799 /* ViewController.m */,
 				AD433BAD1E9E21EE002FC799 /* Main.storyboard */,
 				AD433BB01E9E21EE002FC799 /* Assets.xcassets */,
 				AD433BB21E9E21EE002FC799 /* LaunchScreen.storyboard */,
@@ -461,6 +459,8 @@
 				CC6DE1D81EAE95E2009B0DA5 /* AllDaysAgendaViewController.m */,
 				CC35837C1EAFD728004BD794 /* SpeakerDetailsViewController.h */,
 				CC35837D1EAFD728004BD794 /* SpeakerDetailsViewController.m */,
+				CC0442081EB00BC4001CD37E /* SessionDetailsViewController.h */,
+				CC0442091EB00BC4001CD37E /* SessionDetailsViewController.m */,
 			);
 			name = storyboardControllers;
 			sourceTree = "<group>";
@@ -806,7 +806,6 @@
 				ADED080F1EA2728700A33CE0 /* RLMString.m in Sources */,
 				ADED080E1EA2728700A33CE0 /* ExhibitorDTO.m in Sources */,
 				CC6DE1CD1EAE859F009B0DA5 /* AllDaysMyAgendaViewController.m in Sources */,
-				AD433BAC1E9E21EE002FC799 /* ViewController.m in Sources */,
 				CC6DE1C71EAE7FA0009B0DA5 /* SecondDayMyAgendaViewController.m in Sources */,
 				4EA30B511EA2A39400CE1809 /* MDWNetworkManager.m in Sources */,
 				CC22AD511EA3F87000EBA097 /* SideMenuTableViewController.m in Sources */,
@@ -830,6 +829,7 @@
 				ADF0D2FC1EAF5CA6007406D9 /* DateConverter.m in Sources */,
 				CC6DE1D91EAE95E2009B0DA5 /* AllDaysAgendaViewController.m in Sources */,
 				CC1ECCC21EA5CFD300083C02 /* LoginViewController.m in Sources */,
+				CC04420A1EB00BC4001CD37E /* SessionDetailsViewController.m in Sources */,
 				AD433BA61E9E21EE002FC799 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

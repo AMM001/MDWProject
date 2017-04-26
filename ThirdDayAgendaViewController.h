@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SideMenuTableViewController.h"
+#import "SessionDetailsViewController.h"
 
 @interface ThirdDayAgendaViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 

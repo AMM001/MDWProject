@@ -5,53 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="82" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="U3Z-hI-6oZ">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="82" id="n4O-RB-O7a">
-                                        <rect key="frame" x="0.0" y="28" width="0.0" height="82"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="n4O-RB-O7a" id="1wL-MR-vgv">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MBd-Dd-ERp"/>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wqf-XD-T2V">
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4SI-2h-dpx">
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                    <connections>
-                        <outlet property="SpeakersTableView" destination="U3Z-hI-6oZ" id="vIO-la-c58"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3327" y="-678"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="plt-h3-xIU">
             <objects>
@@ -796,11 +749,12 @@
                     <connections>
                         <outlet property="barButton" destination="YCF-Rk-sh3" id="4BB-13-SXE"/>
                         <outlet property="thirdDayTable" destination="jA6-qu-yc4" id="yOT-v0-yLD"/>
+                        <segue destination="urC-zZ-vJc" kind="push" identifier="sessionDetails" id="Dao-h7-eQh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GFG-Ch-bYd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="241" y="-1610"/>
+            <point key="canvasLocation" x="-39" y="-1610"/>
         </scene>
         <!--All days-->
         <scene sceneID="AM2-68-Qnr">
@@ -943,11 +897,12 @@
                     <connections>
                         <outlet property="SecondDayTable" destination="GmZ-gT-58h" id="Igl-rw-5Nt"/>
                         <outlet property="barButton" destination="ast-5L-DZt" id="oZo-68-r3L"/>
+                        <segue destination="urC-zZ-vJc" kind="push" identifier="sessionDetails" id="OZm-qE-dN2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IvK-zP-mlu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-14" y="-2300"/>
+            <point key="canvasLocation" x="-39" y="-2306"/>
         </scene>
         <!--First Day My Agenda View Controller-->
         <scene sceneID="ool-3Q-gVQ">
@@ -1022,11 +977,12 @@
                     <connections>
                         <outlet property="FirstDayTable" destination="RMS-Tc-eBi" id="qvc-CS-bMN"/>
                         <outlet property="barButton" destination="Lrl-kk-KhC" id="6Mm-yd-cO4"/>
+                        <segue destination="urC-zZ-vJc" kind="push" identifier="sessionDetails" id="Jzg-Mv-H3x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8qg-Kr-h9h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-8" y="-2990"/>
+            <point key="canvasLocation" x="-39" y="-2984"/>
         </scene>
         <!--All Days My Agenda View Controller-->
         <scene sceneID="lVT-8Y-QMz">
@@ -1101,11 +1057,99 @@
                     <connections>
                         <outlet property="AllDaysTable" destination="l5z-xI-XC6" id="CGY-dN-77Q"/>
                         <outlet property="barButton" destination="XRa-0L-2Jt" id="sDG-KL-Chi"/>
+                        <segue destination="urC-zZ-vJc" kind="push" identifier="sessionDetails" id="pEZ-IB-jM5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DqK-3K-f7k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-8" y="-3742"/>
+            <point key="canvasLocation" x="-39" y="-3742"/>
+        </scene>
+        <!--Session Details View Controller-->
+        <scene sceneID="Rgz-5P-J1l">
+            <objects>
+                <viewController id="urC-zZ-vJc" customClass="SessionDetailsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="T26-x3-QYK"/>
+                        <viewControllerLayoutGuide type="bottom" id="jPF-8v-ZSo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HSG-Co-d8B">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Session Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeS-Qx-zwd">
+                                <rect key="frame" x="5" y="64" width="320" height="54"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Session Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NGc-BK-HLI">
+                                <rect key="frame" x="5" y="119" width="320" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kxc-Ap-hOn">
+                                <rect key="frame" x="139" y="166" width="43" height="39"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Speakers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5V0-pu-oyK">
+                                <rect key="frame" x="0.0" y="415" width="92" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="speaker.png" translatesAutoresizingMaskIntoConstraints="NO" id="qSA-RD-ViP">
+                                <rect key="frame" x="5" y="444" width="44" height="45"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="footer.png" translatesAutoresizingMaskIntoConstraints="NO" id="Vb4-Tq-Hby">
+                                <rect key="frame" x="108" y="483" width="83" height="28"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Speaker Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2SZ-Nb-7fy">
+                                <rect key="frame" x="62" y="444" width="258" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5t-Gy-V0O">
+                                <rect key="frame" x="0.0" y="210" width="320" height="34"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="location.png" translatesAutoresizingMaskIntoConstraints="NO" id="5A9-IO-fYW">
+                                <rect key="frame" x="275" y="207" width="45" height="37"/>
+                            </imageView>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SdQ-oG-S3D">
+                                <rect key="frame" x="0.0" y="255" width="320" height="145"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SessionStartEndDate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z43-dH-ZtC">
+                                <rect key="frame" x="0.0" y="137" width="320" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="igL-vc-IBU">
+                                <rect key="frame" x="0.0" y="-8" width="320" height="568"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ngd-HE-5qr"/>
+                    <connections>
+                        <outlet property="sessionDate" destination="NGc-BK-HLI" id="w0G-0L-A2J"/>
+                        <outlet property="sessionDescription" destination="SdQ-oG-S3D" id="ChM-US-eeI"/>
+                        <outlet property="sessionLocation" destination="g5t-Gy-V0O" id="Qy2-Jy-l7i"/>
+                        <outlet property="sessionName" destination="MeS-Qx-zwd" id="1J5-Mt-ahB"/>
+                        <outlet property="sessionStartEndDate" destination="Z43-dH-ZtC" id="jfR-Lz-E4W"/>
+                        <outlet property="sessionState" destination="Kxc-Ap-hOn" id="EB1-4v-m8c"/>
+                        <outlet property="speakerImage" destination="qSA-RD-ViP" id="iA9-jY-Wlf"/>
+                        <outlet property="speakerName" destination="2SZ-Nb-7fy" id="2Fk-4P-yef"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m1z-oM-TqP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1719" y="1303"/>
         </scene>
         <!--Second Day Agenda View Controller-->
         <scene sceneID="yI2-xB-Sbd">
@@ -1180,6 +1224,7 @@
                     <connections>
                         <outlet property="SecondDayTable" destination="1XH-lh-UeD" id="fcz-7U-FUl"/>
                         <outlet property="barButton" destination="c9T-cg-9Sr" id="tXs-Rj-IbP"/>
+                        <segue destination="urC-zZ-vJc" kind="push" identifier="sessionDetails" id="Hh8-YX-s7a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ifa-1H-RT5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1259,11 +1304,12 @@
                     <connections>
                         <outlet property="ThirdDayTable" destination="Xdv-2e-Lvf" id="yH7-gJ-sap"/>
                         <outlet property="barButton" destination="SUa-bm-qMG" id="JO0-7A-z4m"/>
+                        <segue destination="urC-zZ-vJc" kind="push" identifier="sessionDetails" id="7wE-zh-M6h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kLy-de-vxT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2043" y="1290"/>
+            <point key="canvasLocation" x="-1854" y="1366"/>
         </scene>
         <!--First Day Agenda View Controller-->
         <scene sceneID="Ik6-9c-Bx5">
@@ -1338,6 +1384,7 @@
                     <connections>
                         <outlet property="FirstDayTable" destination="Rek-SS-q9K" id="jzc-O3-NW1"/>
                         <outlet property="barButton" destination="C17-nJ-a8F" id="Jd3-Gb-x6P"/>
+                        <segue destination="urC-zZ-vJc" kind="push" identifier="sessionDetails" id="ck9-BQ-I1f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bwy-3D-qiH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1417,6 +1464,7 @@
                     <connections>
                         <outlet property="AllDaysTable" destination="tbV-ZU-m9x" id="U1e-1E-vQ4"/>
                         <outlet property="barButton" destination="GCJ-g3-uiB" id="4hC-mh-MOV"/>
+                        <segue destination="urC-zZ-vJc" kind="push" identifier="sessionDetails" id="MVr-Sz-JBs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oGQ-LX-dS5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1433,6 +1481,7 @@
         <image name="firstDay.png" width="30" height="30"/>
         <image name="footer.png" width="130" height="73"/>
         <image name="leftSideMenuHeader.png" width="518" height="194"/>
+        <image name="location.png" width="65" height="65"/>
         <image name="loginButton.png" width="164" height="60"/>
         <image name="loginHeader.png" width="372" height="125"/>
         <image name="loginTextBoxsBackGround.png" width="723" height="293"/>
@@ -1447,5 +1496,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="4Yh-GH-RyE"/>
+        <segue reference="MVr-Sz-JBs"/>
     </inferredMetricsTieBreakers>
 </document>
