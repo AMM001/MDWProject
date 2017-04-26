@@ -101,6 +101,7 @@
 		CC22AD4D1EA3F7CA00EBA097 /* ticket.png in Resources */ = {isa = PBXBuildFile; fileRef = CC22AD081EA3F7CA00EBA097 /* ticket.png */; };
 		CC22AD4E1EA3F7CA00EBA097 /* workshop.png in Resources */ = {isa = PBXBuildFile; fileRef = CC22AD091EA3F7CA00EBA097 /* workshop.png */; };
 		CC22AD511EA3F87000EBA097 /* SideMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC22AD501EA3F87000EBA097 /* SideMenuTableViewController.m */; };
+		CC35837E1EAFD728004BD794 /* SpeakerDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC35837D1EAFD728004BD794 /* SpeakerDetailsViewController.m */; };
 		CC6DE1C11EAE680A009B0DA5 /* ExhibitorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC6DE1C01EAE680A009B0DA5 /* ExhibitorsViewController.m */; };
 		CC6DE1C41EAE7A81009B0DA5 /* ThirdDayMyAgendaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC6DE1C31EAE7A81009B0DA5 /* ThirdDayMyAgendaViewController.m */; };
 		CC6DE1C71EAE7FA0009B0DA5 /* SecondDayMyAgendaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC6DE1C61EAE7FA0009B0DA5 /* SecondDayMyAgendaViewController.m */; };
@@ -148,7 +149,7 @@
 		AD433BAE1E9E21EE002FC799 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AD433BB01E9E21EE002FC799 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD433BB31E9E21EE002FC799 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		AD433BB51E9E21EE002FC799 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD433BB51E9E21EE002FC799 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../MDW/Info.plist; sourceTree = "<group>"; };
 		AD433BBA1E9E21EE002FC799 /* MDWTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MDWTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD433BBE1E9E21EE002FC799 /* MDWTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MDWTests.m; sourceTree = "<group>"; };
 		AD433BC01E9E21EE002FC799 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -252,6 +253,8 @@
 		CC22AD091EA3F7CA00EBA097 /* workshop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = workshop.png; sourceTree = "<group>"; };
 		CC22AD4F1EA3F87000EBA097 /* SideMenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuTableViewController.h; sourceTree = "<group>"; };
 		CC22AD501EA3F87000EBA097 /* SideMenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuTableViewController.m; sourceTree = "<group>"; };
+		CC35837C1EAFD728004BD794 /* SpeakerDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeakerDetailsViewController.h; sourceTree = "<group>"; };
+		CC35837D1EAFD728004BD794 /* SpeakerDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeakerDetailsViewController.m; sourceTree = "<group>"; };
 		CC6DE1BF1EAE6809009B0DA5 /* ExhibitorsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExhibitorsViewController.h; sourceTree = "<group>"; };
 		CC6DE1C01EAE680A009B0DA5 /* ExhibitorsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExhibitorsViewController.m; sourceTree = "<group>"; };
 		CC6DE1C21EAE7A81009B0DA5 /* ThirdDayMyAgendaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdDayMyAgendaViewController.h; sourceTree = "<group>"; };
@@ -369,7 +372,6 @@
 				AD433BAD1E9E21EE002FC799 /* Main.storyboard */,
 				AD433BB01E9E21EE002FC799 /* Assets.xcassets */,
 				AD433BB21E9E21EE002FC799 /* LaunchScreen.storyboard */,
-				AD433BB51E9E21EE002FC799 /* Info.plist */,
 				AD433BA41E9E21EE002FC799 /* Supporting Files */,
 			);
 			path = MDW;
@@ -395,6 +397,7 @@
 		AD433BC81E9E21EE002FC799 /* MDWUITests */ = {
 			isa = PBXGroup;
 			children = (
+				AD433BB51E9E21EE002FC799 /* Info.plist */,
 				AD433BC91E9E21EE002FC799 /* MDWUITests.m */,
 				AD433BCB1E9E21EE002FC799 /* Info.plist */,
 			);
@@ -825,6 +828,7 @@
 				AD4AB7DF1EAE14D3004D2893 /* FillteringAgendaDTO.m in Sources */,
 				4EA30B4E1EA2A37D00CE1809 /* ServiceUrls.m in Sources */,
 				ADED080B1EA2728700A33CE0 /* AgendaDTO.m in Sources */,
+				CC35837E1EAFD728004BD794 /* SpeakerDetailsViewController.m in Sources */,
 				CC1ECCD11EA6187000083C02 /* SpeakerViewController.m in Sources */,
 				CC6DE1D01EAE8A94009B0DA5 /* SecondDayAgendaViewController.m in Sources */,
 				ADED08101EA2728700A33CE0 /* SessionDTO.m in Sources */,

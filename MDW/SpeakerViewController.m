@@ -110,15 +110,21 @@
 
     return cell;
 }
-/*
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self performSegueWithIdentifier:@"speakerDetails" sender:self];
-}*/
-/*
+    [self performSegueWithIdentifier:@"speakerDetails" sender:indexPath];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    if ([[segue identifier] isEqualToString:@"speakerDetails"]) {
+        NSIndexPath *indexPath = (NSIndexPath*)sender;
+        SpeakerDetailsViewController *destination=segue.destinationViewController;
+        destination.speaker=[_speakers objectAtIndex:indexPath.row];
+       
+
+    }
    }
 
-*/
+
 @end

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SideMenuTableViewController.h"
 #import "MDWNetworkManager.h"
+#import "SpeakerDetailsViewController.h"
 
 @interface SpeakerViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 

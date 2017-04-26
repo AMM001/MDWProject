@@ -84,6 +84,11 @@
     
     return cell;
 }
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:[[_exhibitors objectAtIndex:indexPath.row]companyUrl]]];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
