@@ -15,4 +15,6 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *SecondDayTable;
 @property NSMutableArray * secondDaySessions ;
+
+
 @end

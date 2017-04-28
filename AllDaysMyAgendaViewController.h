@@ -15,4 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *barButton;
 @property (weak, nonatomic) IBOutlet UITableView *AllDaysTable;
 @property NSMutableArray * allSessions;
+
+
+
 @end

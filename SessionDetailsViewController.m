@@ -60,4 +60,7 @@
 }
 */
 
+- (IBAction)registerationButton:(id)sender {
+   
+}
 @end

@@ -22,5 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *speakerImage;
 
 
+- (IBAction)registerationButton:(id)sender;
+
 @property SessionDTO *session;
 @end

@@ -15,4 +15,6 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *FirstDayTable;
 @property NSMutableArray * firstDaySessions ;
+
+
 @end

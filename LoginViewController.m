@@ -40,6 +40,9 @@
 }
 
 - (IBAction)registerAction:(id)sender {
+    
+    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"http://mobiledeveloperweekend.net"]];
+    
    }
 
 @end
