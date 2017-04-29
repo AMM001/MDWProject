@@ -128,8 +128,21 @@ static DBHandler * myDb;
                     
                     NSArray* speakersList = [session objectForKey:@"speakers"];
                     // not nil
+                   
+                    
+                    //data el session
+                    SessionDTO* sessionDTO = [[SessionDTO alloc] initWithId:[[session objectForKey:@"id"] intValue] Date:[date longValue]
+                                                                       name:[session objectForKey:@"name"]
+                                                                   location:[session objectForKey:@"location"]
+                                                         sessionDescription:[session objectForKey:@"description"]
+                                                                     status:[[session objectForKey:@"status"] intValue]
+                                                                sessionType:[session objectForKey:@"sessionType"]
+                                                                      liked:[session objectForKey:@"liked"]
+                                                                  startDate:[[session objectForKey:@"startDate"] longValue]
+                                                                    endDate:[[session objectForKey:@"endDate"] longValue]];
+                    
                     //get session speakers
-                    NSMutableArray * sessionSpeakers;
+                     NSMutableArray * sessionSpeakers;
                     
                     if(![speakersList isKindOfClass:[NSNull class]]){
                         for(NSDictionary* speaker in speakersList){
@@ -143,21 +156,11 @@ static DBHandler * myDb;
                                                                                     title:[speaker objectForKey:@"title"]
                                                                                 biography:[speaker objectForKey:@"biography"]];
                             // add speaker ..
-                            [sessionSpeakers addObject:speakerDTO];
+                            //[sessionSpeakers addObject:speakerDTO];
+                            [sessionDTO.speakers addObject:speakerDTO];
                         }
-                    }
                     
-                    //data el session
-                    SessionDTO* sessionDTO = [[SessionDTO alloc] initWithId:[[session objectForKey:@"id"] intValue] Date:[date longValue]
-                                                                       name:[session objectForKey:@"name"]
-                                                                   location:[session objectForKey:@"location"]
-                                                         sessionDescription:[session objectForKey:@"description"]
-                                                                     status:[[session objectForKey:@"status"] intValue]
-                                                                sessionType:[session objectForKey:@"sessionType"]
-                                                                      liked:[session objectForKey:@"liked"]
-                                                                   speakers:sessionSpeakers
-                                                                  startDate:[[session objectForKey:@"startDate"] longValue]
-                                                                    endDate:[[session objectForKey:@"endDate"] longValue]];
+                    }
                     
                     [mydata addObject:sessionDTO];
                     [agendaObj.sessions addObject:sessionDTO];
@@ -274,7 +277,7 @@ static DBHandler * myDb;
                                                                      titleJob:[result objectForKey:@"title"]
                                                                        gender:[result objectForKey:@"gender"]];
                 // ... get phone ...
-                NSMutableArray *mobiles = [NSMutableArray alloc];
+                NSMutableArray *mobiles = [[NSMutableArray alloc] init];
                 
                 if ([[result objectForKey:@"mobiles"] count] > 0) {
                     [mobiles addObject:[result objectForKey:@"mobiles"][0]];
@@ -351,69 +354,77 @@ static DBHandler * myDb;
     }];
 }
 
-+(void) registerSessionWithID: (long) sessionID enforce:(NSString*)enforce status:(int)status{
-    
-    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:[ServiceUrls requestRegisterToSessionWithID:sessionID enforce:enforce status:status] completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-        
-        if (error) {
-            NSLog(@"Error : %@", error);
-            
-        }else{
-            
-            if([[responseObject objectForKey:@"status"] isEqualToString:@"view.success"]){
-                NSDictionary *result = [responseObject objectForKey:@"result"];
-                
-                //if oldSession != 0 then the user is already registered in another session at the same time
-                
-                if ([[result objectForKey:@"oldSessionId"] intValue] == 0) {
-                    
-                    // update status in DB and star view
-                    //[[result objectForKey:@"status"] intValue]
-                    
-                }else{
-                    
-                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Info" message:@"You are already registered in another session at the same time" preferredStyle:UIAlertControllerStyleAlert];
-                    
-                    UIAlertAction *replaceAction = [UIAlertAction actionWithTitle:@"Replace" style:UIAlertActionStyleDefault handler:^(UIAlertAction* _Nonnull action) {
-                        
-                         NSLog(@"enforce request<><>");
-                         // new request with enforce = true ;
-                        NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:[ServiceUrls requestRegisterToSessionWithID:sessionID enforce:@"true" status:status] completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-                            
-                            if (error) {
-                                NSLog(@"Error : %@", error);
-                                
-                            }else{
-                                
-                                if([[responseObject objectForKey:@"status"] isEqualToString:@"view.success"]){
-                                    
-                                    NSDictionary *result = [responseObject objectForKey:@"result"];
-                            
-                                        // update status in DB and star view
-                                        //[[result objectForKey:@"status"] intValue]
-                                        
-                                    }
-                            }
-                        
-                        }];
-                        
-                    }];
-                    
-                    UIAlertAction *ignoreAction = [UIAlertAction actionWithTitle:@"Ignore" style:UIAlertActionStyleDefault handler:nil];
-                    
-                    [alert addAction:replaceAction];
-                    [alert addAction:ignoreAction];
- 
-                }
-            }
-        }
-    
-    }];
-    
-   [dataTask resume];
-    
-}
+//+(void) registerSession: (SessionDTO*) sessionObj enforce:(NSString*)enforce{
+//    
+//    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:[ServiceUrls requestRegisterToSessionWithID:[sessionObj id] enforce:enforce status:[sessionObj status]] completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+//        
+//        if (error) {
+//            NSLog(@"Error : %@", error);
+//            
+//        }else{
+//            
+//            if([[responseObject objectForKey:@"status"] isEqualToString:@"view.success"]){
+//                NSDictionary *result = [responseObject objectForKey:@"result"];
+//                
+//                //if oldSession != 0 then the user is already registered in another session at the same time
+//                
+//                if ([[result objectForKey:@"oldSessionId"] intValue] == 0) {
+//                    
+//                    // update status in DB
+//                    // ipdate star view
+//                    //[[result objectForKey:@"status"] intValue]
+//                    
+//                    
+//                }else{
+//                    
+//                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Info" message:@"You are already registered in another session at the same time" preferredStyle:UIAlertControllerStyleAlert];
+//                    
+//                    UIAlertAction *replaceAction = [UIAlertAction actionWithTitle:@"Replace" style:UIAlertActionStyleDefault handler:^(UIAlertAction* _Nonnull action) {
+//                        
+//                         NSLog(@"enforce request<><>");
+//                         // new request with enforce = true ;
+//                        NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:[ServiceUrls requestRegisterToSessionWithID:[sessionObj id] enforce:enforce status:[sessionObj status]] completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+//                            
+//                            if (error) {
+//                                NSLog(@"Error : %@", error);
+//                                
+//                            }else{
+//                                
+//                                if([[responseObject objectForKey:@"status"] isEqualToString:@"view.success"]){
+//                                    
+//                                    NSDictionary *result = [responseObject objectForKey:@"result"];
+//                            
+//                                        // update status in DB and star view
+//                                        //[[result objectForKey:@"status"] intValue]
+//                                        
+//                                    }
+//                            }
+//                        
+//                        }];
+//                        
+//                    }];
+//                    
+//                    UIAlertAction *ignoreAction = [UIAlertAction actionWithTitle:@"Ignore" style:UIAlertActionStyleDefault handler:nil];
+//                    
+//                    [alert addAction:replaceAction];
+//                    [alert addAction:ignoreAction];
+//                    // show 
+//                }
+//            }
+//        }
+//    
+//    }];
+//    
+//   [dataTask resume];
+//    
+//}
 
++(AFURLSessionManager*) getAFURLSessionManager{
+    return manager;
+}
++(DBHandler*) getDBHandler{
+    return myDb;
+}
 //---------- end merna -----------
 
 //---------- marko -----------

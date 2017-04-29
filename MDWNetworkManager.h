@@ -32,7 +32,10 @@
 
 +(void) fetchImageWithURL: (NSString*)imageURL UIImageView:(UIImageView*) image setForObject:(id)myObject;
 
-+(void) registerSessionWithID: (NSInteger) sessionID enforce:(NSString*)enforce status:(int)status;
+//+(void) registerSession: (SessionDTO*) sessionObj enforce:(NSString*)enforce;
+
++(AFURLSessionManager*) getAFURLSessionManager;
++(DBHandler*) getDBHandler;
 //---------- end merna -----------
 
 //---------- marko -----------

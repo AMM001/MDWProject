@@ -46,6 +46,16 @@ static RLMRealm *realm;
     }];
 
 }
+-(void) updateSession:(SessionDTO*)session Status:(int)status{
+    NSError *error;
+    [realm beginWriteTransaction];
+    session.status = status;
+    [realm addOrUpdateObject:session];
+    [realm commitWriteTransaction:&error];
+    if (error != nil) {
+        NSLog(@"Merna%@", [error description]);
+    }
+}
 
 -(void)addOrUpdateSpeaker:(SpeakerDTO *)speaker{
 //    RLMRealm *realm = [RLMRealm defaultRealm];
