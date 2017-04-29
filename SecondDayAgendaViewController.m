@@ -11,7 +11,11 @@
 #import "DBHandler.h"
 #import "AgendaDTO.h"
 #import "DateConverter.h"
-@interface SecondDayAgendaViewController ()
+@interface SecondDayAgendaViewController (){
+    
+    UIRefreshControl *refreshControl;
+
+}
 
 @end
 
@@ -32,6 +36,13 @@
     // self.SecondDayTable.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];}
 }
 -(void)viewDidAppear:(BOOL)animated{
+    
+    ///////////refresh Control//////////
+    refreshControl=[[UIRefreshControl alloc]init];
+    [refreshControl addTarget:self action:@selector(refreshView) forControlEvents:UIControlEventValueChanged];
+    [self.SecondDayTable addSubview:refreshControl];
+    
+
     
     _indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     _indicator.frame = CGRectMake(0.0, 0.0, 120.0, 120.0);
@@ -130,5 +141,6 @@
         [_secondDaySessions addObject:session];
     }
     [_SecondDayTable reloadData];
+    [refreshControl endRefreshing];
 }
 @end

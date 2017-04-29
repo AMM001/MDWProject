@@ -11,7 +11,9 @@
 #import "DBHandler.h"
 #import "AgendaDTO.h"
 #import "DateConverter.h"
-@interface FirstDayAgendaViewController ()
+@interface FirstDayAgendaViewController (){
+    UIRefreshControl *refreshControl;
+}
 
 @end
 
@@ -32,6 +34,11 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
+    ///////////refresh Control//////////////
+    refreshControl=[[UIRefreshControl alloc]init];
+    [refreshControl addTarget:self action:@selector(refreshView) forControlEvents:UIControlEventValueChanged];
+    [self.FirstDayTable addSubview:refreshControl];
+
     
     _indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     _indicator.frame = CGRectMake(0.0, 0.0, 120.0, 120.0);
@@ -116,6 +123,7 @@
         [_firstDaySessions addObject:session];
     }
     [_FirstDayTable reloadData];
+    [refreshControl endRefreshing];
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"sessionDetails"]) {

@@ -11,7 +11,9 @@
 #import "DBHandler.h"
 #import "AgendaDTO.h"
 #import "DateConverter.h"
-@interface ThirdDayMyAgendaViewController ()
+@interface ThirdDayMyAgendaViewController (){
+    UIRefreshControl *refreshControl;
+}
 
 @end
 
@@ -33,6 +35,12 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
+    ///////////refresh Control//////////
+    refreshControl=[[UIRefreshControl alloc]init];
+    [refreshControl addTarget:self action:@selector(refreshView) forControlEvents:UIControlEventValueChanged];
+    [self.thirdDayTable addSubview:refreshControl];
+    
+
     
     _indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     _indicator.frame = CGRectMake(0.0, 0.0, 120.0, 120.0);
@@ -137,5 +145,6 @@
         }
     }
     [_thirdDayTable reloadData];
+    [refreshControl endRefreshing];
 }
 @end
