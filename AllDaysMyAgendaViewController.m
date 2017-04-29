@@ -12,7 +12,9 @@
 #import "DBHandler.h"
 #import "AgendaDTO.h"
 #import "DateConverter.h"
-@interface AllDaysMyAgendaViewController ()
+@interface AllDaysMyAgendaViewController (){
+    UIRefreshControl *refreshControl;
+}
 
 @end
 
@@ -32,6 +34,12 @@
     // self.AllDaysTable.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];}
 }
 -(void)viewDidAppear:(BOOL)animated{
+    
+    ////////////////Refresh Controller////////////////
+    
+    refreshControl=[[UIRefreshControl alloc]init];
+    [refreshControl addTarget:self action:@selector(refreshView) forControlEvents:UIControlEventValueChanged];
+    [self.AllDaysTable addSubview:refreshControl];
     
     _indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     _indicator.frame = CGRectMake(0.0, 0.0, 120.0, 120.0);
@@ -131,6 +139,7 @@
     }
     
     [_AllDaysTable reloadData];
+    [refreshControl endRefreshing];
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"sessionDetails"]) {

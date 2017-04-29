@@ -10,7 +10,10 @@
 #import "MDWNetworkManager.h"
 #import "SessionDTO.h"
 #import "DateConverter.h"
-@interface AllDaysAgendaViewController ()
+@interface AllDaysAgendaViewController (){
+    
+    UIRefreshControl *refreshControl;
+}
 
 @end
 
@@ -29,9 +32,21 @@
     [_AllDaysTable setDelegate:self];
     [_AllDaysTable setDataSource:self];
     // self.AllDaysTable.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];}
-}
+   }
+
+/*-(void)refreshMyTable{
+    [self.AllDaysTable reloadData];
+    [refreshControl endRefreshing];
+}*/
 
 -(void)viewDidAppear:(BOOL)animated{
+    ////////////////Refresh Controller////////////////
+
+    refreshControl=[[UIRefreshControl alloc]init];
+    [refreshControl addTarget:self action:@selector(refreshView) forControlEvents:UIControlEventValueChanged];
+    [self.AllDaysTable addSubview:refreshControl];
+
+
     
     _indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     _indicator.frame = CGRectMake(0.0, 0.0, 120.0, 120.0);
@@ -116,6 +131,7 @@
 }
 -(void)refreshView{
     [_AllDaysTable reloadData];
+    [refreshControl endRefreshing];
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"sessionDetails"]) {
