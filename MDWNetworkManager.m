@@ -142,7 +142,7 @@ static DBHandler * myDb;
                                                                     endDate:[[session objectForKey:@"endDate"] longValue]];
                     
                     //get session speakers
-                    // NSMutableArray * sessionSpeakers;
+                     NSMutableArray * sessionSpeakers;
                     
                     if(![speakersList isKindOfClass:[NSNull class]]){
                         for(NSDictionary* speaker in speakersList){
@@ -159,6 +159,7 @@ static DBHandler * myDb;
                             //[sessionSpeakers addObject:speakerDTO];
                             [sessionDTO.speakers addObject:speakerDTO];
                         }
+                    
                     }
                     
                     [mydata addObject:sessionDTO];
@@ -276,7 +277,7 @@ static DBHandler * myDb;
                                                                      titleJob:[result objectForKey:@"title"]
                                                                        gender:[result objectForKey:@"gender"]];
                 // ... get phone ...
-                NSMutableArray *mobiles = [NSMutableArray alloc];
+                NSMutableArray *mobiles = [[NSMutableArray alloc] init];
                 
                 if ([[result objectForKey:@"mobiles"] count] > 0) {
                     [mobiles addObject:[result objectForKey:@"mobiles"][0]];
