@@ -21,17 +21,27 @@
     [super viewDidLoad];
     _barButton.target=self.revealViewController;
     _barButton.action=@selector(revealToggle:);
-    AgendaDTO * secondDayAgenda = [[DBHandler getDB] getAgendaByDayNumber:2];
+
     _secondDaySessions =[NSMutableArray new];
-    for(SessionDTO *session in secondDayAgenda.sessions) {
-        [_secondDaySessions addObject:session];
-    }
+   
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
     
     [_SecondDayTable setDelegate:self];
     [_SecondDayTable setDataSource:self];
     // self.SecondDayTable.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];}
+}
+-(void)viewDidAppear:(BOOL)animated{
+    
+    _indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    _indicator.frame = CGRectMake(0.0, 0.0, 120.0, 120.0);
+    [_indicator setBackgroundColor:[UIColor colorWithWhite:0.0f alpha:0.6f]];
+    _indicator.center = self.view.center;
+    [self.view addSubview:_indicator];
+    [_indicator bringSubviewToFront:self.view];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = TRUE;
+    
+    [MDWNetworkManager fetchAllSessionsData:_secondDaySessions :self];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
@@ -101,5 +111,24 @@
         
     }
 }
-
+-(void)showAlertWithMessage:(NSString *)message{
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:message message:nil
+                                                  delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+}
+-(void)showProgressbar{
+    [_indicator startAnimating];
+}
+-(void)dismissProgressbar{
+    [_indicator stopAnimating];
+}
+-(void)refreshView{
+    [_secondDaySessions removeAllObjects];
+    
+    AgendaDTO * secondDayAgenda = [[DBHandler getDB] getAgendaByDayNumber:2];
+    for(SessionDTO *session in secondDayAgenda.sessions) {
+        [_secondDaySessions addObject:session];
+    }
+    [_SecondDayTable reloadData];
+}
 @end

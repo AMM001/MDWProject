@@ -76,30 +76,36 @@ static DBHandler * myDb;
 
 }
 
-+(void) fetchAllSessionsData: (NSMutableArray*) mydata :(UITableView*) myTable{
++(void) fetchAllSessionsData: (NSMutableArray*) mydata :(id<ViewsProtocol>) controller{
+    
+    [mydata removeAllObjects];
+    [controller showProgressbar];
     
     NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:[ServiceUrls allSessionsRequest] completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
         
         if (error) {
             NSLog(@"Error: %@", error);
+            
+            [controller dismissProgressbar];
             RLMResults *results = [AgendaDTO allObjects];
             
             if([results count] == 0){
                 
                 NSLog(@"alert %@",@"alert ............. <hi><hi>");
-                
+                [controller showAlertWithMessage:@"please check connection !"];
             }else{
                 
                 for (AgendaDTO *object in results) {
                     [mydata addObjectsFromArray:object.sessions];
                 }
                 
-                [myTable reloadData];
+                //[myTable reloadData];
+                [controller refreshView];
                 
             }
-
+            
         } else {
-
+            
             NSMutableArray * agendaList = [NSMutableArray new];
             
             NSDictionary * result = [responseObject objectForKey:@"result"];
@@ -129,33 +135,33 @@ static DBHandler * myDb;
                         for(NSDictionary* speaker in speakersList){
                             NSNumber* speakerID = [speaker objectForKey:@"id"];
                             SpeakerDTO* speakerDTO =[[SpeakerDTO alloc] initWithSpeakerId:[speakerID intValue]
-                                                                            firstName:[speaker objectForKey:@"firstName"]
-                                                                            middleName:[speaker objectForKey:@"middleName"]
-                                                                            lastName:[speaker objectForKey:@"lastName"]
-                                                                            imageURL:[speaker objectForKey:@"imageURL"]
-                                                                            companyName:[speaker objectForKey:@"companyName"]
-                                                                            title:[speaker objectForKey:@"title"]
-                                                                            biography:[speaker objectForKey:@"biography"]];
+                                                                                firstName:[speaker objectForKey:@"firstName"]
+                                                                               middleName:[speaker objectForKey:@"middleName"]
+                                                                                 lastName:[speaker objectForKey:@"lastName"]
+                                                                                 imageURL:[speaker objectForKey:@"imageURL"]
+                                                                              companyName:[speaker objectForKey:@"companyName"]
+                                                                                    title:[speaker objectForKey:@"title"]
+                                                                                biography:[speaker objectForKey:@"biography"]];
                             // add speaker ..
                             [sessionSpeakers addObject:speakerDTO];
                         }
                     }
                     
-                   //data el session
+                    //data el session
                     SessionDTO* sessionDTO = [[SessionDTO alloc] initWithId:[[session objectForKey:@"id"] intValue] Date:[date longValue]
-                                                                name:[session objectForKey:@"name"]
-                                                                location:[session objectForKey:@"location"]
-                                                                sessionDescription:[session objectForKey:@"description"]
-                                                                status:[[session objectForKey:@"status"] intValue]
+                                                                       name:[session objectForKey:@"name"]
+                                                                   location:[session objectForKey:@"location"]
+                                                         sessionDescription:[session objectForKey:@"description"]
+                                                                     status:[[session objectForKey:@"status"] intValue]
                                                                 sessionType:[session objectForKey:@"sessionType"]
-                                                                liked:[session objectForKey:@"liked"]
-                                                                speakers:sessionSpeakers
-                                                                startDate:[[session objectForKey:@"startDate"] longValue]
-                                                                endDate:[[session objectForKey:@"endDate"] longValue]];
-
+                                                                      liked:[session objectForKey:@"liked"]
+                                                                   speakers:sessionSpeakers
+                                                                  startDate:[[session objectForKey:@"startDate"] longValue]
+                                                                    endDate:[[session objectForKey:@"endDate"] longValue]];
+                    
                     [mydata addObject:sessionDTO];
                     [agendaObj.sessions addObject:sessionDTO];
-           
+                    
                 }
                 //-------------
                 [agendaObj setDate:[date longValue]];
@@ -176,10 +182,12 @@ static DBHandler * myDb;
                 NSLog(@"%@<><><>",agendaObj);
                 
             }
-
-            [myTable reloadData];
+            
+            //            [myTable reloadData];
+            [controller refreshView];
+            [controller dismissProgressbar];
         }
-    
+        
     }];
     
     [dataTask resume];
@@ -231,43 +239,67 @@ static DBHandler * myDb;
 }
 //---------- merna -----------
 
-+(void) fetchAttendeeData{
++(void) fetchAttendeeDataWithEmail:(NSString*)email Password:(NSString*)password Controller:(id) controller{
+    LoginViewController * loginController = (LoginViewController *) controller;
     
-    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:[ServiceUrls LoginRequest] completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+    [loginController.indicator startAnimating];
+    
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:[ServiceUrls LoginRequestWithEmail:email Password:password] completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
         
+        NSString * alertMessage;
         
         if (error) {
             
-            NSLog(@"Error: %@", error);
+            [loginController.indicator stopAnimating];
+            NSLog(@"Error: %@", error.description);
+            alertMessage = @"please check connection !";
+            [loginController failToLoginWith:alertMessage];
             
         } else {
-        
+            
             
             if([[responseObject objectForKey:@"status"] isEqualToString:@"view.success"]){
                 
                 NSDictionary * result = [responseObject objectForKey:@"result"];
                 AttendeeDTO * attendeeDTO = [[AttendeeDTO alloc] initWithCode:[result objectForKey:@"code"]
                                                                      imageURL:[result objectForKey:@"imageURL"]
-                                                                     birthDate:[[result objectForKey:@"birthdate"] longValue ]
-                                                                     email:[result objectForKey:@"email"]
-                                                                     firstName:[result objectForKey:@"firstName"]
-                                                                     middleName:[result objectForKey:@"middleName"]
+                                                                    birthDate:[[result objectForKey:@"birthdate"] longValue ]
+                                                                        email:[result objectForKey:@"email"]
+                                                                    firstName:[result objectForKey:@"firstName"]
+                                                                   middleName:[result objectForKey:@"middleName"]
                                                                      lastName:[result objectForKey:@"lastName"]
-                                                                     countryName:[result objectForKey:@"countryName"]
+                                                                  countryName:[result objectForKey:@"countryName"]
                                                                      cityName:[result objectForKey:@"cityName"]
-                                                                     companyName:[result objectForKey:@"companyName"]
+                                                                  companyName:[result objectForKey:@"companyName"]
                                                                      titleJob:[result objectForKey:@"title"]
-                                                                     gender:[result objectForKey:@"gender"]];
+                                                                       gender:[result objectForKey:@"gender"]];
+                // ... get phone ...
+                NSMutableArray *mobiles = [NSMutableArray alloc];
                 
+                if ([[result objectForKey:@"mobiles"] count] > 0) {
+                    [mobiles addObject:[result objectForKey:@"mobiles"][0]];
+                }
+                
+                [attendeeDTO setMobiles: mobiles];
+                //.................
                 
                 // save  attendee object using NSUserDefaults
                 NSData *data = [NSKeyedArchiver archivedDataWithRootObject:attendeeDTO];
                 
                 NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                 [defaults setObject:data forKey:@"attendeeObject"];
-
+                
+                [loginController.indicator stopAnimating];
+                [loginController navigateToMainController];
+                
+                
+            }else{
+                
+                [loginController.indicator stopAnimating];
+                alertMessage = @"please enter correct username and password";
+                [loginController failToLoginWith:alertMessage];
             }
-        
+            
         }
         
         
@@ -317,6 +349,69 @@ static DBHandler * myDb;
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
+}
+
++(void) registerSessionWithID: (long) sessionID enforce:(NSString*)enforce status:(int)status{
+    
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:[ServiceUrls requestRegisterToSessionWithID:sessionID enforce:enforce status:status] completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+        
+        if (error) {
+            NSLog(@"Error : %@", error);
+            
+        }else{
+            
+            if([[responseObject objectForKey:@"status"] isEqualToString:@"view.success"]){
+                NSDictionary *result = [responseObject objectForKey:@"result"];
+                
+                //if oldSession != 0 then the user is already registered in another session at the same time
+                
+                if ([[result objectForKey:@"oldSessionId"] intValue] == 0) {
+                    
+                    // update status in DB and star view
+                    //[[result objectForKey:@"status"] intValue]
+                    
+                }else{
+                    
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Info" message:@"You are already registered in another session at the same time" preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    UIAlertAction *replaceAction = [UIAlertAction actionWithTitle:@"Replace" style:UIAlertActionStyleDefault handler:^(UIAlertAction* _Nonnull action) {
+                        
+                         NSLog(@"enforce request<><>");
+                         // new request with enforce = true ;
+                        NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:[ServiceUrls requestRegisterToSessionWithID:sessionID enforce:@"true" status:status] completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+                            
+                            if (error) {
+                                NSLog(@"Error : %@", error);
+                                
+                            }else{
+                                
+                                if([[responseObject objectForKey:@"status"] isEqualToString:@"view.success"]){
+                                    
+                                    NSDictionary *result = [responseObject objectForKey:@"result"];
+                            
+                                        // update status in DB and star view
+                                        //[[result objectForKey:@"status"] intValue]
+                                        
+                                    }
+                            }
+                        
+                        }];
+                        
+                    }];
+                    
+                    UIAlertAction *ignoreAction = [UIAlertAction actionWithTitle:@"Ignore" style:UIAlertActionStyleDefault handler:nil];
+                    
+                    [alert addAction:replaceAction];
+                    [alert addAction:ignoreAction];
+ 
+                }
+            }
+        }
+    
+    }];
+    
+   [dataTask resume];
+    
 }
 
 //---------- end merna -----------

@@ -19,106 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _allSessions = [NSMutableArray new];
-    [MDWNetworkManager fetchAllSessionsData:_allSessions :_AllDaysTable];
-    
-    
-    
-    
-    
-    
-    
-//    SessionDTO *s = [SessionDTO new];
-//    s.sessionType=@"type 1";
-//    s.name=@"s1";
-//    s.id=1;
-//    s.liked = true;
-//    s.sessionDescription=@"sdjkfdsjkbfjdsbfbdsfsdns";
-//    SpeakerDTO *sp = [SpeakerDTO new];
-//    sp.id=1;
-//    sp.firstName=@"markosp";
-//    RLMString *ss =[RLMString new];
-//    ss.string = @"012545";
-//    [sp.mobiles addObject:ss];
-//    ss =[RLMString new];
-//    ss.string = @"012545";
-//    [sp.mobiles addObject:ss];
-//    sp.gender=true;
-//    [s.speakers addObject:sp];
-//    sp = [SpeakerDTO new];
-//    sp.id=2;
-//    sp.firstName=@"samysp";
-//    
-//    ss =[RLMString new];
-//    ss.string = @"012545";
-//    [sp.mobiles addObject:ss];
-//    ss =[RLMString new];
-//    ss.string = @"012545";
-//    [sp.mobiles addObject:ss];
-//    sp.gender=true;
-//    [s.speakers addObject:sp];
-//    sp = [SpeakerDTO new];
-//    sp.id=3;
-//    sp.firstName=@"eslamsp";
-//    ss =[RLMString new];
-//    ss.string = @"012545";
-//    [sp.mobiles addObject:ss];
-//    ss =[RLMString new];
-//    ss.string = @"012545";
-//    [sp.mobiles addObject:ss];
-//    sp.gender=true;
-//    [s.speakers addObject:sp];
-//    [_allSessions addObject:s];
-//    
-//    s = [SessionDTO new];
-//    s.sessionType=@"type 2";
-//    s.name=@"s2";
-//    s.id=2;
-//    s.liked = true;
-//    sp = [SpeakerDTO new];
-//    sp.id=4;
-//    sp.firstName=@"markosp";
-//    ss =[RLMString new];
-//    ss.string = @"012545";
-//    [sp.mobiles addObject:ss];
-//    ss =[RLMString new];
-//    ss.string = @"012545";
-//    [sp.mobiles addObject:ss];
-//    sp.gender=true;
-//    [s.speakers addObject:sp];
-//    sp = [SpeakerDTO new];
-//    sp.id=5;
-//    sp.firstName=@"samysp";
-//    ss =[RLMString new];
-//    ss.string = @"012545";
-//    [sp.mobiles addObject:ss];
-//    ss =[RLMString new];
-//    ss.string = @"012545";
-//    [sp.mobiles addObject:ss];
-//    sp.gender=true;
-//    [s.speakers addObject:sp];
-//    sp = [SpeakerDTO new];
-//    sp.id=6;
-//    sp.firstName=@"eslamsp";
-//    ss =[RLMString new];
-//    ss.string = @"012545";
-//    [sp.mobiles addObject:ss];
-//    ss =[RLMString new];
-//    ss.string = @"012545";
-//    [sp.mobiles addObject:ss];
-//    sp.gender=true;
-//    [s.speakers addObject:sp];
-//    [_allSessions addObject:s];
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     _barButton.target=self.revealViewController;
     _barButton.action=@selector(revealToggle:);
     
@@ -129,6 +30,20 @@
     [_AllDaysTable setDataSource:self];
     // self.AllDaysTable.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];}
 }
+
+-(void)viewDidAppear:(BOOL)animated{
+    
+    _indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    _indicator.frame = CGRectMake(0.0, 0.0, 120.0, 120.0);
+    [_indicator setBackgroundColor:[UIColor colorWithWhite:0.0f alpha:0.6f]];
+    _indicator.center = self.view.center;
+    [self.view addSubview:_indicator];
+    [_indicator bringSubviewToFront:self.view];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = TRUE;
+    
+    [MDWNetworkManager fetchAllSessionsData:_allSessions :self];
+}
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
@@ -188,6 +103,20 @@
     [self performSegueWithIdentifier:@"sessionDetails" sender:indexPath];
 }
 
+-(void)showAlertWithMessage:(NSString *)message{
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:message message:nil
+                                                  delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+}
+-(void)showProgressbar{
+    [_indicator startAnimating];
+}
+-(void)dismissProgressbar{
+    [_indicator stopAnimating];
+}
+-(void)refreshView{
+    [_AllDaysTable reloadData];
+}
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"sessionDetails"]) {
         NSIndexPath *indexPath = (NSIndexPath*)sender;

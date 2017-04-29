@@ -23,23 +23,25 @@
     _barButton.target=self.revealViewController;
     _barButton.action=@selector(revealToggle:);
     _allSessions = [NSMutableArray new];
-    RLMResults *results = [AgendaDTO allObjects];
-    
-
-        for (AgendaDTO *object in results) {
-            for (SessionDTO *session in object.sessions) {
-                if (session.status==1||session.status==2) {
-                    [_allSessions addObject:session];
-                }
-            }
-        }
-
+   
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
     
     [_AllDaysTable setDelegate:self];
     [_AllDaysTable setDataSource:self];
     // self.AllDaysTable.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];}
+}
+-(void)viewDidAppear:(BOOL)animated{
+    
+    _indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    _indicator.frame = CGRectMake(0.0, 0.0, 120.0, 120.0);
+    [_indicator setBackgroundColor:[UIColor colorWithWhite:0.0f alpha:0.6f]];
+    _indicator.center = self.view.center;
+    [self.view addSubview:_indicator];
+    [_indicator bringSubviewToFront:self.view];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = TRUE;
+    
+    [MDWNetworkManager fetchAllSessionsData:_allSessions :self];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
@@ -102,6 +104,34 @@
     [self performSegueWithIdentifier:@"sessionDetails" sender:indexPath];
 }
 
+-(void)showAlertWithMessage:(NSString *)message{
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:message message:nil
+                                                  delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+}
+
+-(void)showProgressbar{
+    [_indicator startAnimating];
+}
+-(void)dismissProgressbar{
+    [_indicator stopAnimating];
+}
+-(void)refreshView{
+    [_allSessions removeAllObjects];
+    
+    RLMResults *results = [AgendaDTO allObjects];
+    
+    
+    for (AgendaDTO *object in results) {
+        for (SessionDTO *session in object.sessions) {
+            if (session.status==1||session.status==2) {
+                [_allSessions addObject:session];
+            }
+        }
+    }
+    
+    [_AllDaysTable reloadData];
+}
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"sessionDetails"]) {
         NSIndexPath *indexPath = (NSIndexPath*)sender;

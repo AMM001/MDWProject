@@ -27,7 +27,7 @@
     
     //Fetch Attendee Data
     
-    [MDWNetworkManager fetchAttendeeData];
+   // [MDWNetworkManager fetchAttendeeData];
     
     NSData *userDate=[[NSUserDefaults standardUserDefaults] objectForKey:@"attendeeObject"];
     AttendeeDTO *attendee=[NSKeyedUnarchiver unarchiveObjectWithData:userDate];

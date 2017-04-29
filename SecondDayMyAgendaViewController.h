@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "SideMenuTableViewController.h"
 #import "SessionDetailsViewController.h"
+#import "ViewsProtocol.h"
+#import "MDWNetworkManager.h"
 
-@interface SecondDayMyAgendaViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@interface SecondDayMyAgendaViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,ViewsProtocol>
+
+@property UIActivityIndicatorView * indicator;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *barButton;
-
 @property (weak, nonatomic) IBOutlet UITableView *SecondDayTable;
 @property NSMutableArray * secondDaySessions ;
 

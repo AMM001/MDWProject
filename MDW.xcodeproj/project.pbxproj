@@ -135,6 +135,7 @@
 /* Begin PBXFileReference section */
 		1A49CC0A336F74BF5CA0F95A /* Pods-MDW.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDW.release.xcconfig"; path = "Pods/Target Support Files/Pods-MDW/Pods-MDW.release.xcconfig"; sourceTree = "<group>"; };
 		4347F597BA710ACAAB8B9845 /* libPods-MDW.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MDW.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E3D43A61EB3DACE0021E088 /* ViewsProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewsProtocol.h; sourceTree = "<group>"; };
 		4EA30B4C1EA2A37D00CE1809 /* ServiceUrls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceUrls.h; sourceTree = "<group>"; };
 		4EA30B4D1EA2A37D00CE1809 /* ServiceUrls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceUrls.m; sourceTree = "<group>"; };
 		4EA30B4F1EA2A39400CE1809 /* MDWNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDWNetworkManager.h; sourceTree = "<group>"; };
@@ -273,9 +274,7 @@
 		CC6DE1D51EAE9147009B0DA5 /* FirstDayAgendaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstDayAgendaViewController.m; sourceTree = "<group>"; };
 		CC6DE1D71EAE95E2009B0DA5 /* AllDaysAgendaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllDaysAgendaViewController.h; sourceTree = "<group>"; };
 		CC6DE1D81EAE95E2009B0DA5 /* AllDaysAgendaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllDaysAgendaViewController.m; sourceTree = "<group>"; };
-		CCCCC8DA1EAFDB2900293579 /* TicketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TicketViewController.h; sourceTree = "<group>"; };
 		CCCCC8DB1EAFDB2900293579 /* TicketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TicketViewController.m; sourceTree = "<group>"; };
-		CCCCC8DD1EAFDB5300293579 /* ContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactViewController.h; sourceTree = "<group>"; };
 		CCCCC8DE1EAFDB5300293579 /* ContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -317,6 +316,7 @@
 		4EA30B4A1EA2A35000CE1809 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				4E3D43A61EB3DACE0021E088 /* ViewsProtocol.h */,
 				4EA30B4C1EA2A37D00CE1809 /* ServiceUrls.h */,
 				4EA30B4D1EA2A37D00CE1809 /* ServiceUrls.m */,
 				ADF0D2FA1EAF5CA6007406D9 /* DateConverter.h */,
@@ -620,7 +620,7 @@
 		AD433B991E9E21EE002FC799 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = marko;
 				TargetAttributes = {
 					AD433BA01E9E21EE002FC799 = {
@@ -788,7 +788,7 @@
 		};
 		4F8D7B14710CC1B942A27A6E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -911,6 +911,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -958,6 +959,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -986,6 +988,7 @@
 			baseConfigurationReference = 74201D68596726BD56C6EF05 /* Pods-MDW.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = MDW/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -999,6 +1002,7 @@
 			baseConfigurationReference = 1A49CC0A336F74BF5CA0F95A /* Pods-MDW.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = MDW/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

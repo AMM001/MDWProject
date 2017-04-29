@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "SideMenuTableViewController.h"
 #import "SessionDetailsViewController.h"
+#import "ViewsProtocol.h"
 
-@interface AllDaysAgendaViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@interface AllDaysAgendaViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,ViewsProtocol>
+
+@property UIActivityIndicatorView * indicator;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *barButton;
 @property (weak, nonatomic) IBOutlet UITableView *AllDaysTable;
 @property NSMutableArray * allSessions;

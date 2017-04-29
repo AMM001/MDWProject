@@ -17,6 +17,21 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    NSData *data =[[NSUserDefaults standardUserDefaults] objectForKey:@"attendeeObject"];
+    AttendeeDTO * authenticatedUser= [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    
+    if (authenticatedUser){
+        self.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
+        
+        [ServiceUrls setUserEmail:[authenticatedUser email]];
+        
+    }else{
+        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        LoginViewController * loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginIdentifier"];
+        self.window.rootViewController = loginViewController;
+    }
     return YES;
 }
 

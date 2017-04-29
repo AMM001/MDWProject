@@ -16,18 +16,23 @@
 #import "AttendeeDTO.h"
 #import "AgendaDTO.h"
 #import "DBHandler.h"
+#import "LoginViewController.h"
+#import "ViewsProtocol.h"
+
 @interface MDWNetworkManager : NSObject <NSURLSessionTaskDelegate, NSURLSessionDataDelegate,
                                             NSURLSessionDownloadDelegate, NSURLSessionDelegate>
 
 +(void) fetchSpeakersData:(NSMutableArray*) mydata :(UITableView*) myTable;
-+(void) fetchAllSessionsData:(NSMutableArray*) mydata :(UITableView*) myTable;
++(void) fetchAllSessionsData:(NSMutableArray*) mydata :(id<ViewsProtocol>) controller;
 +(void) fetchExhibitorsData:(NSMutableArray*) mydata :(UITableView*) myTable;
 
 //---------- merna -----------
 
-+(void) fetchAttendeeData;
++(void) fetchAttendeeDataWithEmail:(NSString*)email Password:(NSString*)password Controller:(id) controller;
+
 +(void) fetchImageWithURL: (NSString*)imageURL UIImageView:(UIImageView*) image setForObject:(id)myObject;
 
++(void) registerSessionWithID: (NSInteger) sessionID enforce:(NSString*)enforce status:(int)status;
 //---------- end merna -----------
 
 //---------- marko -----------

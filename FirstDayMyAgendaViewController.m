@@ -21,13 +21,9 @@
     [super viewDidLoad];
     _barButton.target=self.revealViewController;
     _barButton.action=@selector(revealToggle:);
-    AgendaDTO * firstDayAgenda = [[DBHandler getDB] getAgendaByDayNumber:1];
+
     _firstDaySessions =[NSMutableArray new];
-    for(SessionDTO *session in firstDayAgenda.sessions) {
-        if (session.status==1||session.status==2) {
-            [_firstDaySessions addObject:session];
-        }
-    }
+   
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
     
@@ -35,6 +31,20 @@
     [_FirstDayTable setDataSource:self];
     // self.FirstDayTable.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];}
 }
+
+-(void)viewDidAppear:(BOOL)animated{
+    
+    _indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    _indicator.frame = CGRectMake(0.0, 0.0, 120.0, 120.0);
+    [_indicator setBackgroundColor:[UIColor colorWithWhite:0.0f alpha:0.6f]];
+    _indicator.center = self.view.center;
+    [self.view addSubview:_indicator];
+    [_indicator bringSubviewToFront:self.view];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = TRUE;
+    
+    [MDWNetworkManager fetchAllSessionsData:_firstDaySessions :self];
+}
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
@@ -102,6 +112,30 @@
         
         
     }
+}
+
+-(void)showAlertWithMessage:(NSString *)message{
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:message message:nil
+                                                  delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+}
+-(void)showProgressbar{
+    [_indicator startAnimating];
+}
+-(void)dismissProgressbar{
+    [_indicator stopAnimating];
+}
+-(void)refreshView{
+    [_firstDaySessions removeAllObjects];
+    
+    AgendaDTO * firstDayAgenda = [[DBHandler getDB] getAgendaByDayNumber:1];
+    for(SessionDTO *session in firstDayAgenda.sessions) {
+        if (session.status==1||session.status==2) {
+            [_firstDaySessions addObject:session];
+        }
+    }
+    
+    [_FirstDayTable reloadData];
 }
 
 @end

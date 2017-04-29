@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AttendeeDTO.h"
+#import "LoginViewController.h"
+#import "ServiceUrls.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

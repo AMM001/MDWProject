@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MDWNetworkManager.h"
+#import "AppDelegate.h"
 
 @interface LoginViewController : UIViewController
+
+@property UIActivityIndicatorView * indicator;
+
 @property (weak, nonatomic) IBOutlet UITextField *username;
 
 @property (weak, nonatomic) IBOutlet UITextField *password;
@@ -17,6 +22,7 @@
 
 
 - (IBAction)registerAction:(id)sender;
-
+-(void)navigateToMainController;
+-(void)failToLoginWith:(NSString*)message;
 
 @end

@@ -10,38 +10,40 @@
 
 @implementation ServiceUrls
 
-NSString * speakersURL = @"http://mobiledeveloperweekend.net/MDW/service/getSpeakers?userName=eng.medhat.cs.h@gmail.com";
 
-NSString * sessionsURL = @"http://mobiledeveloperweekend.net/MDW/service/getSessions?userName=eng.medhat.cs.h@gmail.com";
-
-NSString * exhibitorsURL = @"http://mobiledeveloperweekend.net/MDW/service/getExhibitors?userName=eng.medhat.cs.h@gmail.com&sessionId=4482&enforce=false&status=0";
-
-NSString * loginURL = @"http://mobiledeveloperweekend.net/MDW/service/login?userName=eng.medhat.cs.h@gmail.com&password=medhat123";
-
-
+static NSString * loginedUserEmail;
 
 
 +(NSURLRequest *)allSpeakersRequest{
     
-    return [NSURLRequest requestWithURL:[NSURL URLWithString:speakersURL]];
+    return [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://mobiledeveloperweekend.net/service/getSpeakers?userName=%@",loginedUserEmail]]];
 }
 
 +(NSURLRequest *)allSessionsRequest{
     
-    return [NSURLRequest requestWithURL:[NSURL URLWithString:sessionsURL]];
+    return [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://mobiledeveloperweekend.net/service/getSessions?userName=%@",loginedUserEmail]]];
 }
 +(NSURLRequest *)exhibitorsRequest{
     
-    return [NSURLRequest requestWithURL:[NSURL URLWithString:exhibitorsURL]];
+    return [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://mobiledeveloperweekend.net/service/getExhibitors?userName=%@",loginedUserEmail]]];
 }
 
 
 //---------- merna -----------
 
-+(NSURLRequest*)LoginRequest{
-    return [NSURLRequest requestWithURL:[NSURL URLWithString:loginURL]];
++(NSURLRequest*)LoginRequestWithEmail:(NSString*)email Password:(NSString*)password{
+    
+    loginedUserEmail = email;
+    
+    return [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://mobiledeveloperweekend.net/service/login?userName=%@&password=%@", email, password]]];
 }
-
++(NSURLRequest *)requestRegisterToSessionWithID: (long) sessionID enforce:(NSString*)enforce status:(int)status{
+    
+  return [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://mobiledeveloperweekend.net/service/registerSession?userName=%@&sessionId=%ld&enforce=%@&status=%d", loginedUserEmail, sessionID, enforce, status]]];
+}
++(void) setUserEmail:(NSString*)email{
+    loginedUserEmail = email;
+}
 //---------- end merna -----------
 
 //---------- marko -----------

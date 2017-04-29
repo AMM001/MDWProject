@@ -15,9 +15,10 @@
 +(NSURLRequest*) exhibitorsRequest;
 
 //---------- merna -----------
-+(NSURLRequest*) LoginRequest;
++(NSURLRequest*)LoginRequestWithEmail:(NSString*)email Password:(NSString*)password;
++(NSURLRequest *)requestRegisterToSessionWithID: (long) sessionID enforce:(NSString*)enforce status:(int)status;
 //---------- end merna -----------
-
++(void) setUserEmail:(NSString*)email;
 //---------- marko -----------
 
 //---------- end marko -----------
