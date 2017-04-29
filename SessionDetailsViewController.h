@@ -10,6 +10,7 @@
 #import "SessionDTO.h"
 #import "DateConverter.h"
 #import "DateConverter.h"
+#import "MDWNetworkManager.h"
 
 @interface SessionDetailsViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *sessionName;
@@ -22,7 +23,11 @@
 @property (weak, nonatomic) IBOutlet UIImageView *speakerImage;
 
 
+@property UIActivityIndicatorView * indicator;
+
 - (IBAction)registerationButton:(id)sender;
+-(void) updateSessionStatus:(int)status;
+-(void)showAlertWithMessage:(NSString *)message;
 
 @property SessionDTO *session;
 @end

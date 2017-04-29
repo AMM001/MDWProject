@@ -46,6 +46,14 @@
         _speakerName.text=[[_session.speakers objectAtIndex:0]firstName];
     }
     
+    
+    _indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    _indicator.frame = CGRectMake(0.0, 0.0, 120.0, 120.0);
+    [_indicator setBackgroundColor:[UIColor colorWithWhite:0.0f alpha:0.6f]];
+    _indicator.center = self.view.center;
+    [self.view addSubview:_indicator];
+    [_indicator bringSubviewToFront:self.view];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = TRUE;
    
 }
 
@@ -61,6 +69,108 @@
 */
 
 - (IBAction)registerationButton:(id)sender {
-   
+    
+    [_indicator startAnimating];
+    
+    NSURLSessionDataTask *dataTask = [[MDWNetworkManager getAFURLSessionManager] dataTaskWithRequest:[ServiceUrls requestRegisterToSessionWithID:[_session id] enforce:@"false" status:[_session status]] completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+        
+        if (error) {
+            NSLog(@"Error : %@", error);
+            
+            [_indicator startAnimating];
+            [self showAlertWithMessage:@"please check connection !"];
+        }else{
+            
+            if([[responseObject objectForKey:@"status"] isEqualToString:@"view.success"]){
+                NSDictionary *result = [responseObject objectForKey:@"result"];
+                
+                //if oldSession != 0 then the user is already registered in another session at the same time
+                
+                if ([[result objectForKey:@"oldSessionId"] intValue] == 0) {
+                    
+                
+                  
+                    // update status in DB
+                    [self updateSessionStatus:[[result objectForKey:@"status"] intValue]];
+                    [_indicator stopAnimating];
+                    
+                }else{
+                    
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Info" message:@"You are already registered in another session at the same time" preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    UIAlertAction *replaceAction = [UIAlertAction actionWithTitle:@"Replace" style:UIAlertActionStyleDefault handler:^(UIAlertAction* _Nonnull action) {
+                        
+                        NSLog(@"enforce request<><>");
+                        // new request with enforce = true ;
+                        NSURLSessionDataTask *dataTask = [[MDWNetworkManager getAFURLSessionManager] dataTaskWithRequest:[ServiceUrls requestRegisterToSessionWithID:[_session id] enforce:@"true" status:[_session status]] completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+                            
+                            if (error) {
+                                NSLog(@"Error : %@", error);
+                                [self showAlertWithMessage:@"please check connection !"];
+                            }else{
+                                
+                                if([[responseObject objectForKey:@"status"] isEqualToString:@"view.success"]){
+                                    
+                                    NSDictionary *result = [responseObject objectForKey:@"result"];
+                                    
+                                  
+                                    // [_session setStatus: [[result objectForKey:@"status"] intValue]];
+                                    
+                                    // update status in DB and star view
+                                    [self updateSessionStatus:[[result objectForKey:@"status"] intValue]];
+                                    [_indicator stopAnimating];
+                                }else{
+                                
+                                    [_indicator stopAnimating];
+                                    [self showAlertWithMessage:[responseObject objectForKey:@"result"]];
+                                    
+                                }
+                            }
+                            
+                        }];
+                        
+                        [dataTask resume];
+ 
+                    }];
+                    
+                    UIAlertAction *ignoreAction = [UIAlertAction actionWithTitle:@"Ignore" style:UIAlertActionStyleDefault handler:nil];
+                    
+                    [alert addAction:replaceAction];
+                    [alert addAction:ignoreAction];
+                    [self presentViewController:alert animated:YES completion:nil];
+                }
+            }
+        }
+        
+    }];
+    
+    [dataTask resume];
+
+}
+
+/* method update session in UI and DB */
+-(void) updateSessionStatus:(int)status{
+    
+    [[MDWNetworkManager getDBHandler] updateSession:_session Status:status];
+    
+    //update UI
+    
+    if(_session.status==0){
+        
+        [_sessionState setImage:[UIImage imageNamed:@"sessionnotadded.png"]];
+    }
+    else if(_session.status==1){
+        
+        [_sessionState setImage:[UIImage imageNamed:@"sessionpending.png"]];
+    }else if(_session.status==2){
+        
+        [_sessionState setImage:[UIImage imageNamed:@"sessionapproved.png"]];
+    }
+}
+
+-(void)showAlertWithMessage:(NSString *)message{
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:message message:nil
+                                                  delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
 }
 @end

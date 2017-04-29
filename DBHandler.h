@@ -19,6 +19,7 @@
 - (void)addOrUpdateAgenda: (AgendaDTO *) agenda;
 - (void)addOrUpdateFillter: (FillteringAgendaDTO *) fillter;
 -(void)addOrUpdateSession: (SessionDTO *) session;
+-(void) updateSession:(SessionDTO*)session Status:(int)status;
 -(void) addOrUpdateSpeaker: (SpeakerDTO *) speaker;
 -(void)UpdateSpeaker:(SpeakerDTO *)speaker withImage:(NSData*)img;
 -(void) addOrUpdateExhibitor: (ExhibitorDTO *) exhibitor;
