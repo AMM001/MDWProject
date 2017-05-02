@@ -37,7 +37,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     ///////////refresh Control//////////
     refreshControl=[[UIRefreshControl alloc]init];
-    [refreshControl addTarget:self action:@selector(refreshView) forControlEvents:UIControlEventValueChanged];
+    [refreshControl addTarget:self action:@selector(refreshing) forControlEvents:UIControlEventValueChanged];
     [self.thirdDayTable addSubview:refreshControl];
     
 
@@ -51,6 +51,13 @@
     [UIApplication sharedApplication].networkActivityIndicatorVisible = TRUE;
     
     [MDWNetworkManager fetchAllSessionsData:_thirdDaySessions :self];
+}
+////////refresh Method////
+-(void)refreshing{
+    
+    [MDWNetworkManager fetchAllSessionsData:_thirdDaySessions :self];
+    [refreshControl endRefreshing];
+    
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -145,6 +152,5 @@
         }
     }
     [_thirdDayTable reloadData];
-    [refreshControl endRefreshing];
 }
 @end

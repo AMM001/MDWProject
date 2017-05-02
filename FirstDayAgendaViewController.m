@@ -36,7 +36,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     ///////////refresh Control//////////////
     refreshControl=[[UIRefreshControl alloc]init];
-    [refreshControl addTarget:self action:@selector(refreshView) forControlEvents:UIControlEventValueChanged];
+    [refreshControl addTarget:self action:@selector(refreshing) forControlEvents:UIControlEventValueChanged];
     [self.FirstDayTable addSubview:refreshControl];
 
     
@@ -49,6 +49,14 @@
     [UIApplication sharedApplication].networkActivityIndicatorVisible = TRUE;
     
     [MDWNetworkManager fetchAllSessionsData:_firstDaySessions :self];
+}
+
+////////refresh Method////
+-(void)refreshing{
+    
+    [MDWNetworkManager fetchAllSessionsData:_firstDaySessions :self];
+    [refreshControl endRefreshing];
+    
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
@@ -123,7 +131,6 @@
         [_firstDaySessions addObject:session];
     }
     [_FirstDayTable reloadData];
-    [refreshControl endRefreshing];
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"sessionDetails"]) {

@@ -12,7 +12,12 @@
 
 @end
 
-@implementation SpeakerViewController
+@implementation SpeakerViewController{
+    
+    UIRefreshControl *refreshControl;
+
+
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,6 +48,24 @@
     
     
     [MDWNetworkManager fetchSpeakersData:_speakers :_speakersTableView];
+    
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    
+    ///////////refresh Control//////////
+    refreshControl=[[UIRefreshControl alloc]init];
+    [refreshControl addTarget:self action:@selector(refreshing) forControlEvents:UIControlEventValueChanged];
+    [self.speakersTableView addSubview:refreshControl];
+
+}
+
+////////refresh Method////
+-(void)refreshing{
+    
+    [MDWNetworkManager fetchSpeakersData:_speakers :_speakersTableView];
+
+    [refreshControl endRefreshing];
     
 }
 

@@ -43,7 +43,7 @@
     ////////////////Refresh Controller////////////////
 
     refreshControl=[[UIRefreshControl alloc]init];
-    [refreshControl addTarget:self action:@selector(refreshView) forControlEvents:UIControlEventValueChanged];
+    //[refreshControl addTarget:self action:@selector(refreshing) forControlEvents:UIControlEventValueChanged];
     [self.AllDaysTable addSubview:refreshControl];
 
 
@@ -57,6 +57,13 @@
     [UIApplication sharedApplication].networkActivityIndicatorVisible = TRUE;
     
     [MDWNetworkManager fetchAllSessionsData:_allSessions :self];
+}
+////////refresh Method////
+-(void)refreshing{
+    
+    [MDWNetworkManager fetchAllSessionsData:_allSessions :self];
+   // [refreshControl endRefreshing];
+
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -131,7 +138,6 @@
 }
 -(void)refreshView{
     [_AllDaysTable reloadData];
-    [refreshControl endRefreshing];
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"sessionDetails"]) {
