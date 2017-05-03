@@ -40,7 +40,7 @@
     ////////////////Refresh Controller////////////////
     
     refreshControl=[[UIRefreshControl alloc]init];
-    [refreshControl addTarget:self action:@selector(refreshView) forControlEvents:UIControlEventValueChanged];
+    [refreshControl addTarget:self action:@selector(refreshing) forControlEvents:UIControlEventValueChanged];
     [self.FirstDayTable addSubview:refreshControl];
     
     _indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
@@ -52,6 +52,13 @@
     [UIApplication sharedApplication].networkActivityIndicatorVisible = TRUE;
     
     [MDWNetworkManager fetchAllSessionsData:_firstDaySessions :self];
+}
+////////refresh Method////
+-(void)refreshing{
+    
+    [MDWNetworkManager fetchAllSessionsData:_firstDaySessions :self];
+    [refreshControl endRefreshing];
+    
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -145,7 +152,6 @@
     }
     
     [_FirstDayTable reloadData];
-    [refreshControl endRefreshing];
 }
 
 @end

@@ -39,7 +39,7 @@
     
     ///////////refresh Control//////////
     refreshControl=[[UIRefreshControl alloc]init];
-    [refreshControl addTarget:self action:@selector(refreshView) forControlEvents:UIControlEventValueChanged];
+    [refreshControl addTarget:self action:@selector(refreshing) forControlEvents:UIControlEventValueChanged];
     [self.SecondDayTable addSubview:refreshControl];
     
 
@@ -53,6 +53,13 @@
     [UIApplication sharedApplication].networkActivityIndicatorVisible = TRUE;
     
     [MDWNetworkManager fetchAllSessionsData:_secondDaySessions :self];
+}
+////////refresh Method////
+-(void)refreshing{
+    
+    [MDWNetworkManager fetchAllSessionsData:_secondDaySessions :self];
+    [refreshControl endRefreshing];
+    
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
@@ -141,6 +148,5 @@
         [_secondDaySessions addObject:session];
     }
     [_SecondDayTable reloadData];
-    [refreshControl endRefreshing];
 }
 @end

@@ -8,7 +8,10 @@
 
 #import "ExhibitorsViewController.h"
 
-@interface ExhibitorsViewController ()
+@interface ExhibitorsViewController (){
+    
+    UIRefreshControl *refreshControl;
+}
 
 @end
 
@@ -33,6 +36,25 @@
     
 
 }
+
+-(void)viewDidAppear:(BOOL)animated{
+    
+    ///////////refresh Control//////////
+    refreshControl=[[UIRefreshControl alloc]init];
+    [refreshControl addTarget:self action:@selector(refreshing) forControlEvents:UIControlEventValueChanged];
+    [self.ExhibitorsTable addSubview:refreshControl];
+    
+}
+
+////////refresh Method////
+-(void)refreshing{
+    
+    [MDWNetworkManager fetchExhibitorsData:_exhibitors :_ExhibitorsTable];
+    
+    [refreshControl endRefreshing];
+    
+}
+
 
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
