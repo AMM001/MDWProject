@@ -23,7 +23,7 @@
                                             NSURLSessionDownloadDelegate, NSURLSessionDelegate>
 
 +(void) fetchSpeakersData:(NSMutableArray*) mydata :(UITableView*) myTable;
-+(void) fetchAllSessionsData:(NSMutableArray*) mydata :(id<ViewsProtocol>) controller;
++(void) fetchAllSessionsData:(NSMutableArray*) mydata :(id<ViewsProtocol>) controller :(Boolean) showDialoge;
 +(void) fetchExhibitorsData:(NSMutableArray*) mydata :(UITableView*) myTable;
 
 //---------- merna -----------

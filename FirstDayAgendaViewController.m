@@ -48,13 +48,13 @@
     [_indicator bringSubviewToFront:self.view];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = TRUE;
     
-    [MDWNetworkManager fetchAllSessionsData:_firstDaySessions :self];
+    [MDWNetworkManager fetchAllSessionsData:_firstDaySessions :self :YES];
 }
 
 ////////refresh Method////
 -(void)refreshing{
     
-    [MDWNetworkManager fetchAllSessionsData:_firstDaySessions :self];
+    [MDWNetworkManager fetchAllSessionsData:_firstDaySessions :self : NO];
     [refreshControl endRefreshing];
     
 }
@@ -78,6 +78,19 @@
     UILabel *secondLabel = (UILabel*) [cell viewWithTag:3];
     UILabel *thirdLabel = (UILabel*) [cell viewWithTag:4];
     UIImageView *imageView = (UIImageView*) [cell viewWithTag:5];
+    UILabel *imageNoLabel = (UILabel*) [cell viewWithTag:6];
+    
+    if ([[[_firstDaySessions objectAtIndex:indexPath.row] sessionType] isEqualToString:@"Session"]){
+        imageView.image=[UIImage imageNamed:@"session.png"];
+    }else if([[[_firstDaySessions objectAtIndex:indexPath.row] sessionType] isEqualToString:@"Workshop"]){
+        imageView.image=[UIImage imageNamed:@"workshop.png"];
+    }else if([[[_firstDaySessions objectAtIndex:indexPath.row] sessionType] isEqualToString:@"Break"]){
+        imageView.image=[UIImage imageNamed:@"breakicon.png"];
+    }
+    else if([[[_firstDaySessions objectAtIndex:indexPath.row] sessionType] isEqualToString:@"Hackathon"]){
+        imageView.image=[UIImage imageNamed:@"hacathon.png"];
+    }
+
     
     
     //    firstLabel.text = @"First Label";
@@ -107,7 +120,9 @@
     dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType}documentAttributes:nil error:nil];
     thirdLabel.attributedText=renderedTextThirdLabel;
     
-    imageView.image=[UIImage imageNamed:@"myagenda.png"];
+    imageNoLabel.text=[NSString stringWithFormat:@"%@",
+                       [DateConverter dayStringFromDate:sessionToView.startDate]];
+    
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -77,10 +77,12 @@ static DBHandler * myDb;
 
 }
 
-+(void) fetchAllSessionsData: (NSMutableArray*) mydata :(id<ViewsProtocol>) controller{
++(void) fetchAllSessionsData: (NSMutableArray*) mydata :(id<ViewsProtocol>) controller :(Boolean) showDialoge{
     
     [mydata removeAllObjects];
-    [controller showProgressbar];
+    if(showDialoge){
+        [controller showProgressbar];
+    }
     
     NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:[ServiceUrls allSessionsRequest] completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
         
@@ -189,7 +191,11 @@ static DBHandler * myDb;
             
             //            [myTable reloadData];
             [controller refreshView];
-            [controller dismissProgressbar];
+            if(showDialoge){
+                [controller dismissProgressbar];
+            }
+            
+
         }
         
     }];
