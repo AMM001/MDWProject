@@ -133,10 +133,14 @@
     [alert show];
 }
 -(void)showProgressbar{
+    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+    // [self.view setUserInteractionEnabled:NO];
     [_indicator startAnimating];
 }
 -(void)dismissProgressbar{
     [_indicator stopAnimating];
+    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+    //[self.view setUserInteractionEnabled:YES];
 }
 -(void)refreshView{
     [_thirdDaySessions removeAllObjects];

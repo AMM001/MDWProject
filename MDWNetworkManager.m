@@ -21,7 +21,8 @@ static DBHandler * myDb;
 }
 
 +(void) fetchSpeakersData: (NSMutableArray*) mydata :(UITableView*) myTable{
-
+    
+    [mydata removeAllObjects];
     NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:[ServiceUrls allSpeakersRequest] completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
         if (error) {
             NSLog(@"Error: %@", error);
@@ -197,7 +198,8 @@ static DBHandler * myDb;
 }
 
 +(void) fetchExhibitorsData:(NSMutableArray*) mydata :(UITableView*) myTable{
-
+    
+    [mydata removeAllObjects];
     NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:[ServiceUrls exhibitorsRequest] completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
         
         if (error) {
