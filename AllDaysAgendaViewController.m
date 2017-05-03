@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _allSessions = [NSMutableArray new];
-
+    
     _barButton.target=self.revealViewController;
     _barButton.action=@selector(revealToggle:);
     
@@ -32,21 +32,22 @@
     [_AllDaysTable setDelegate:self];
     [_AllDaysTable setDataSource:self];
     // self.AllDaysTable.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];}
-   }
+}
 
 /*-(void)refreshMyTable{
-    [self.AllDaysTable reloadData];
-    [refreshControl endRefreshing];
-}*/
+ [self.AllDaysTable reloadData];
+ [refreshControl endRefreshing];
+ }*/
 
 -(void)viewDidAppear:(BOOL)animated{
     ////////////////Refresh Controller////////////////
-
+    
     refreshControl=[[UIRefreshControl alloc]init];
-    //[refreshControl addTarget:self action:@selector(refreshing) forControlEvents:UIControlEventValueChanged];
+    
+    [refreshControl addTarget:self action:@selector(refreshing) forControlEvents:UIControlEventValueChanged];
     [self.AllDaysTable addSubview:refreshControl];
-
-
+    
+    
     
     _indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     _indicator.frame = CGRectMake(0.0, 0.0, 120.0, 120.0);
@@ -56,14 +57,13 @@
     [_indicator bringSubviewToFront:self.view];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = TRUE;
     
-    [MDWNetworkManager fetchAllSessionsData:_allSessions :self];
+    [MDWNetworkManager fetchAllSessionsData:_allSessions :self : YES];
 }
 ////////refresh Method////
 -(void)refreshing{
+    [MDWNetworkManager fetchAllSessionsData:_allSessions :self : YES];
+    [refreshControl endRefreshing];
     
-    [MDWNetworkManager fetchAllSessionsData:_allSessions :self];
-   // [refreshControl endRefreshing];
-
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -87,37 +87,47 @@
     UIImageView *imageView = (UIImageView*) [cell viewWithTag:5];
     UILabel *imageNoLabel = (UILabel*) [cell viewWithTag:6];
     
+    if ([[[_allSessions objectAtIndex:indexPath.row] sessionType] isEqualToString:@"Session"]){
+        imageView.image=[UIImage imageNamed:@"session.png"];
+    }else if([[[_allSessions objectAtIndex:indexPath.row] sessionType] isEqualToString:@"Workshop"]){
+        imageView.image=[UIImage imageNamed:@"workshop.png"];
+    }else if([[[_allSessions objectAtIndex:indexPath.row] sessionType] isEqualToString:@"Break"]){
+        imageView.image=[UIImage imageNamed:@"breakicon.png"];
+    }
+    else if([[[_allSessions objectAtIndex:indexPath.row] sessionType] isEqualToString:@"Hackathon"]){
+        imageView.image=[UIImage imageNamed:@"hacathon.png"];
+    }
     
-//    firstLabel.text = @"First Label";
-//    secondLabel.text = @"Second Label";
-//    thirdLabel.text = @"Third Label";
+    //    firstLabel.text = @"First Label";
+    //    secondLabel.text = @"Second Label";
+    //    thirdLabel.text = @"Third Label";
     SessionDTO * sessionToView =nil;
     sessionToView=[_allSessions objectAtIndex:indexPath.row];
     //firstLabel.text = [sessionToView name];
     
-//    firstLabel Rendering
+    //    firstLabel Rendering
     NSAttributedString *renderedTextFirstLabel=[[NSAttributedString alloc]initWithData:[[sessionToView name]
-    dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType}documentAttributes:nil error:nil];
+                                                                                        dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType}documentAttributes:nil error:nil];
     firstLabel.attributedText=renderedTextFirstLabel;
     
     
     //secondLabel.text = [sessionToView location];
     
-//    secondLabel Rendering
+    //    secondLabel Rendering
     NSAttributedString *renderedTextSecondLabel=[[NSAttributedString alloc]initWithData:[[sessionToView location]
-    dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType}documentAttributes:nil error:nil];
+                                                                                         dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType}documentAttributes:nil error:nil];
     secondLabel.attributedText=renderedTextSecondLabel;
     
-//     thirdLabel Rendering
+    //     thirdLabel Rendering
     NSString * date = [NSString stringWithFormat:@"%@ - %@",
                        [DateConverter stringFromDate:sessionToView.startDate],
                        [DateConverter stringFromDate:sessionToView.endDate]];
     //thirdLabel.text = date;
     NSAttributedString *renderedTextThirdLabel=[[NSAttributedString alloc]initWithData:[date
-    dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType}documentAttributes:nil error:nil];
+                                                                                        dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType}documentAttributes:nil error:nil];
     thirdLabel.attributedText=renderedTextThirdLabel;
-
-    imageView.image=[UIImage imageNamed:@"myagenda.png"];
+    
+    
     imageNoLabel.text=[NSString stringWithFormat:@"%@",
                        [DateConverter dayStringFromDate:sessionToView.startDate]];
     
@@ -134,10 +144,12 @@
     [alert show];
 }
 -(void)showProgressbar{
+    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     [_indicator startAnimating];
 }
 -(void)dismissProgressbar{
     [_indicator stopAnimating];
+    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
 }
 -(void)refreshView{
     [_AllDaysTable reloadData];
