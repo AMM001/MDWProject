@@ -78,6 +78,7 @@
     UILabel *secondLabel = (UILabel*) [cell viewWithTag:3];
     UILabel *thirdLabel = (UILabel*) [cell viewWithTag:4];
     UIImageView *imageView = (UIImageView*) [cell viewWithTag:5];
+    UILabel *imageNoLabel = (UILabel*) [cell viewWithTag:6];
     
     
 //    firstLabel.text = @"First Label";
@@ -110,6 +111,8 @@
     thirdLabel.attributedText=renderedTextThirdLabel;
 
     imageView.image=[UIImage imageNamed:@"myagenda.png"];
+    imageNoLabel.text=[NSString stringWithFormat:@"%@",
+                       [DateConverter dayStringFromDate:sessionToView.startDate]];
     
     return cell;
 }
