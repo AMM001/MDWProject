@@ -77,9 +77,9 @@ static DBHandler * myDb;
 
 }
 
-+(void) fetchAllSessionsData: (NSMutableArray*) mydata :(id<ViewsProtocol>) controller :(Boolean) showDialoge{
++(void) fetchAllSessionsData: (NSMutableArray*) mydata :(id<ViewsProtocol>) controller :(BOOL) showDialoge :(UIRefreshControl*) refreshControl{
     
-    [mydata removeAllObjects];
+    //[mydata removeAllObjects];
     if(showDialoge){
         [controller showProgressbar];
     }
@@ -89,7 +89,7 @@ static DBHandler * myDb;
         if (error) {
             NSLog(@"Error: %@", error);
             
-            [controller dismissProgressbar];
+//            [controller dismissProgressbar];
             RLMResults *results = [AgendaDTO allObjects];
             
             if([results count] == 0){
@@ -104,7 +104,13 @@ static DBHandler * myDb;
                 
                 //[myTable reloadData];
                 [controller refreshView];
-                
+                if(showDialoge){
+                    [controller dismissProgressbar];
+                }
+                else{
+                    [refreshControl endRefreshing];
+                }
+
             }
             
         } else {
@@ -194,7 +200,9 @@ static DBHandler * myDb;
             if(showDialoge){
                 [controller dismissProgressbar];
             }
-            
+            else{
+                [refreshControl endRefreshing];
+            }
 
         }
         

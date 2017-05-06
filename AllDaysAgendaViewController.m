@@ -41,10 +41,11 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     ////////////////Refresh Controller////////////////
-    
+     [_allSessions removeAllObjects];
     refreshControl=[[UIRefreshControl alloc]init];
     
     [refreshControl addTarget:self action:@selector(refreshing) forControlEvents:UIControlEventValueChanged];
+    [refreshControl setHidden:YES];
     [self.AllDaysTable addSubview:refreshControl];
     
     
@@ -57,12 +58,13 @@
     [_indicator bringSubviewToFront:self.view];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = TRUE;
     
-    [MDWNetworkManager fetchAllSessionsData:_allSessions :self : YES];
+    [MDWNetworkManager fetchAllSessionsData:_allSessions :self : YES : refreshControl];
 }
 ////////refresh Method////
 -(void)refreshing{
-    [MDWNetworkManager fetchAllSessionsData:_allSessions :self : YES];
-    [refreshControl endRefreshing];
+    [_allSessions removeAllObjects];
+    [MDWNetworkManager fetchAllSessionsData:_allSessions :self : NO : refreshControl];
+    //[refreshControl endRefreshing];
     
 }
 
@@ -155,6 +157,7 @@
 }
 -(void)refreshView{
     [_AllDaysTable reloadData];
+    //[refreshControl endRefreshing];
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"sessionDetails"]) {

@@ -7,7 +7,8 @@
 //
 
 #import "SessionDetailsViewController.h"
-
+#import "DBHandler.h"
+#import "SpeakerDTO.h"
 @interface SessionDetailsViewController ()
 
 @end
@@ -17,23 +18,60 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     /////render html SessionName//////
-    
+    DBHandler *mydb = [DBHandler getDB];
+    SpeakerDTO *speaker = [mydb getSpeakerById:[[[_session speakers] firstObject] id]];
     _sessionName.text=_session.name;
     NSAttributedString *renderedSessionName=[[NSAttributedString alloc]initWithData:[_session.name
-                                                                                        dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType}documentAttributes:nil error:nil];
+                                                                                     dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType}documentAttributes:nil error:nil];
     _sessionName.attributedText=renderedSessionName;
     
     _sessionDate.text=[DateConverter dateStringFromDate:_session.date];
     NSString * date = [NSString stringWithFormat:@"%@ - %@",
                        [DateConverter stringFromDate:_session.startDate],
                        [DateConverter stringFromDate:_session.endDate]];
+    if([[_session speakers] firstObject]!=nil){
+        NSMutableString *fullName = [NSMutableString new];
+        [fullName appendString:speaker.firstName];
+        [fullName appendString:@" "];
+        [fullName appendString:speaker.middleName];
+        [fullName appendString:@" "];
+        [fullName appendString:speaker.lastName];
+        
+        
+        _speakerName.text = fullName;
+        
+        
+        
+        if([speaker imageData] == nil){
+            
+            if([speaker imageURL] == nil){
+                
+                _speakerImage.image=[UIImage imageNamed:@"speaker.png"];
+                
+            }else{
+                
+                [MDWNetworkManager fetchImageWithURL:[speaker imageURL]
+                                         UIImageView:_speakerImage
+                                        setForObject:speaker ];
+            }
+            
+        }else{
+            
+            UIImage * img = [[UIImage alloc] initWithData:[speaker imageData]];
+            _speakerImage.image = img;
+        }
+    }
+    // _speakerImage.image = [UIImage imageWithData:[speaker imageData]];
+    
+    
+    
     
     _sessionStartEndDate.text = date;
     _sessionLocation.text=_session.location;
     [_sessionDescription loadHTMLString:_session.sessionDescription baseURL:nil];
     
     if(_session.status==0){
-    
+        
         [_sessionState setImage:[UIImage imageNamed:@"sessionnotadded.png"]];
     }
     else if(_session.status==1){
@@ -43,13 +81,13 @@
         
         [_sessionState setImage:[UIImage imageNamed:@"sessionapproved.png"]];
     }
-
+    
     
     
     
     if ([_session.speakers count]>0) {
         
-        _speakerName.text=[[_session.speakers objectAtIndex:0]firstName];
+      //  _speakerName.text=[[_session.speakers objectAtIndex:0]firstName];
     }
     
     
@@ -60,19 +98,19 @@
     [self.view addSubview:_indicator];
     [_indicator bringSubviewToFront:self.view];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = TRUE;
-   
+    
 }
 
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 - (IBAction)registerationButton:(id)sender {
     
@@ -94,8 +132,8 @@
                 
                 if ([[result objectForKey:@"oldSessionId"] intValue] == 0) {
                     
-                
-                  
+                    
+                    
                     // update status in DB
                     [self updateSessionStatus:[[result objectForKey:@"status"] intValue]];
                     [_indicator stopAnimating];
@@ -119,14 +157,14 @@
                                     
                                     NSDictionary *result = [responseObject objectForKey:@"result"];
                                     
-                                  
+                                    
                                     // [_session setStatus: [[result objectForKey:@"status"] intValue]];
                                     
                                     // update status in DB and star view
                                     [self updateSessionStatus:[[result objectForKey:@"status"] intValue]];
                                     [_indicator stopAnimating];
                                 }else{
-                                
+                                    
                                     [_indicator stopAnimating];
                                     [self showAlertWithMessage:[responseObject objectForKey:@"result"]];
                                     
@@ -136,7 +174,7 @@
                         }];
                         
                         [dataTask resume];
- 
+                        
                     }];
                     
                     UIAlertAction *ignoreAction = [UIAlertAction actionWithTitle:@"Ignore" style:UIAlertActionStyleDefault handler:nil];
@@ -151,7 +189,7 @@
     }];
     
     [dataTask resume];
-
+    
 }
 
 /* method update session in UI and DB */

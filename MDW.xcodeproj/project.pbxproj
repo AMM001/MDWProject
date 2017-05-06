@@ -330,6 +330,7 @@
 			children = (
 				4EA30B4F1EA2A39400CE1809 /* MDWNetworkManager.h */,
 				4EA30B501EA2A39400CE1809 /* MDWNetworkManager.m */,
+				ADED07FE1EA2728700A33CE0 /* AgendaDTO.m */,
 			);
 			name = network;
 			sourceTree = "<group>";
@@ -406,7 +407,6 @@
 			isa = PBXGroup;
 			children = (
 				ADED07FD1EA2728700A33CE0 /* AgendaDTO.h */,
-				ADED07FE1EA2728700A33CE0 /* AgendaDTO.m */,
 				ADED07FF1EA2728700A33CE0 /* AttendeeDTO.h */,
 				ADED08001EA2728700A33CE0 /* AttendeeDTO.m */,
 				ADED08011EA2728700A33CE0 /* DBHandler.h */,

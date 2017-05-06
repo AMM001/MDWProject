@@ -38,6 +38,7 @@
 }
 -(void)viewDidAppear:(BOOL)animated{
     ///////////refresh Control//////////
+    [_thirdDaySessions removeAllObjects];
     refreshControl=[[UIRefreshControl alloc]init];
     [refreshControl addTarget:self action:@selector(refreshing) forControlEvents:UIControlEventValueChanged];
     [self.ThirdDayTable addSubview:refreshControl];
@@ -51,14 +52,15 @@
     [_indicator bringSubviewToFront:self.view];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = TRUE;
     
-    [MDWNetworkManager fetchAllSessionsData:_thirdDaySessions :self : YES];
+    [MDWNetworkManager fetchAllSessionsData:_thirdDaySessions :self : YES : refreshControl];
 }
 
 ////////refresh Method////
 -(void)refreshing{
-    
-    [MDWNetworkManager fetchAllSessionsData:_thirdDaySessions :self : NO];
-    [refreshControl endRefreshing];
+    [_thirdDaySessions removeAllObjects];
+
+    [MDWNetworkManager fetchAllSessionsData:_thirdDaySessions :self : NO : refreshControl];
+   // [refreshControl endRefreshing];
     
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

@@ -36,7 +36,8 @@
     // self.SecondDayTable.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];}
 }
 -(void)viewDidAppear:(BOOL)animated{
-    
+    [_secondDaySessions removeAllObjects];
+
     ///////////refresh Control//////////
     refreshControl=[[UIRefreshControl alloc]init];
     [refreshControl addTarget:self action:@selector(refreshing) forControlEvents:UIControlEventValueChanged];
@@ -52,13 +53,14 @@
     [_indicator bringSubviewToFront:self.view];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = TRUE;
     
-    [MDWNetworkManager fetchAllSessionsData:_secondDaySessions :self: YES];
+    [MDWNetworkManager fetchAllSessionsData:_secondDaySessions :self: YES : refreshControl];
 }
 ////////refresh Method////
 -(void)refreshing{
-    
-    [MDWNetworkManager fetchAllSessionsData:_secondDaySessions :self : NO];
-    [refreshControl endRefreshing];
+    [_secondDaySessions removeAllObjects];
+
+    [MDWNetworkManager fetchAllSessionsData:_secondDaySessions :self : NO : refreshControl];
+    //[refreshControl endRefreshing];
     
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
