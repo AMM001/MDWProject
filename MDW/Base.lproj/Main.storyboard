@@ -267,10 +267,17 @@
         <scene sceneID="aLw-wi-uY7">
             <objects>
                 <navigationController id="hdD-3Z-fVU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="All days" image="allDays.png" selectedImage="20 Apr" id="NeA-sS-T6h"/>
+                    <tabBarItem key="tabBarItem" title="All days" image="allDays.png" id="NeA-sS-T6h">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CEi-5m-YEX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="A8y-Eq-Cex" kind="relationship" relationship="rootViewController" id="w1M-vc-gT7"/>
@@ -284,10 +291,17 @@
         <scene sceneID="gHp-TG-Qpj">
             <objects>
                 <navigationController id="rXL-Dv-oNZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="20 Apr" image="firstDay.png" id="MYC-D7-YPI"/>
+                    <tabBarItem key="tabBarItem" title="20 Apr" image="firstDay.png" id="MYC-D7-YPI">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rDh-Oc-5PN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="QtM-lX-DPl" kind="relationship" relationship="rootViewController" id="YoB-5x-NbU"/>
@@ -301,10 +315,17 @@
         <scene sceneID="rho-2Y-pcT">
             <objects>
                 <navigationController id="KuE-yf-Bac" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="21 Apr" image="secondDay.png" id="Mnq-Pa-sOh"/>
+                    <tabBarItem key="tabBarItem" title="21 Apr" image="secondDay.png" id="Mnq-Pa-sOh">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="c3W-Wg-LtG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="16j-DZ-sth" kind="relationship" relationship="rootViewController" id="ipe-OD-ocI"/>
@@ -321,6 +342,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hOJ-I0-plu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="qoF-TN-Mdm" kind="relationship" relationship="rootViewController" id="Ean-jg-lhf"/>
@@ -337,6 +359,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="f8S-dt-pmV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="fY1-dd-aPC" kind="relationship" relationship="rootViewController" id="Kbd-fD-f9t"/>
@@ -420,6 +443,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3aZ-Ig-KkC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="Jhj-pD-aD3" kind="relationship" relationship="rootViewController" id="nJ3-Fl-JLj"/>
@@ -486,14 +510,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Info" image="info.png" id="3Qh-ar-fN3"/>
-                    <navigationItem key="navigationItem" id="tQU-ih-8c1">
-                        <barButtonItem key="leftBarButtonItem" image="reveal-icon.png" id="fcR-a3-Ytk">
-                            <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <tabBarItem key="tabBarItem" title="Info" image="info.png" id="3Qh-ar-fN3">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
+                    <navigationItem key="navigationItem" id="tQU-ih-8c1"/>
                     <connections>
-                        <outlet property="barButton" destination="fcR-a3-Ytk" id="EFV-Er-cig"/>
                         <outlet property="imageProfile" destination="H0S-LF-mRC" id="SfQ-pD-ekh"/>
                         <outlet property="personNameProfile" destination="LKN-yd-jbS" id="Hoe-qh-XyD"/>
                         <outlet property="personTitleProfile" destination="aud-hj-Qi0" id="7MZ-1q-aBf"/>
@@ -550,7 +575,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="My Contact" image="contact.png" id="ThH-0e-Gf8"/>
+                    <tabBarItem key="tabBarItem" title="My Contact" image="contact.png" id="ThH-0e-Gf8">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <connections>
                         <outlet property="emailLabel" destination="KAL-71-R4a" id="HwQ-YM-oJg"/>
                         <outlet property="mobileLabel" destination="EVu-vK-riS" id="lG1-ev-1Nx"/>
@@ -597,7 +628,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Ticket" image="ticket.png" id="CF5-ux-WDG"/>
+                    <tabBarItem key="tabBarItem" title="Ticket" image="ticket.png" id="CF5-ux-WDG">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <connections>
                         <outlet property="qrImage" destination="lbl-s8-yyK" id="a5O-tc-isk"/>
                     </connections>
@@ -802,10 +839,17 @@
         <scene sceneID="DYn-Fq-goe">
             <objects>
                 <navigationController id="uDL-gI-B2f" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="22 Apr" image="thirdDay.png" id="W47-aY-4EQ"/>
+                    <tabBarItem key="tabBarItem" title="22 Apr" image="thirdDay.png" id="W47-aY-4EQ">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eWD-iF-fx5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="gu8-jd-Rxc" kind="relationship" relationship="rootViewController" id="q9l-8W-NL1"/>
@@ -905,10 +949,17 @@
         <scene sceneID="AM2-68-Qnr">
             <objects>
                 <navigationController id="sRJ-YX-cbB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="All days" image="allDays.png" id="6L9-Vc-Uqh"/>
+                    <tabBarItem key="tabBarItem" title="All days" image="allDays.png" id="6L9-Vc-Uqh">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="c0x-vU-V0m">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="uWq-8s-h3j" kind="relationship" relationship="rootViewController" id="eFL-bP-Nga"/>
@@ -922,10 +973,17 @@
         <scene sceneID="4IK-Nd-4IE">
             <objects>
                 <navigationController id="Z35-Ef-axc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="20 Apr" image="firstDay.png" id="r5v-hU-t2I"/>
+                    <tabBarItem key="tabBarItem" title="20 Apr" image="firstDay.png" id="r5v-hU-t2I">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="YqV-Ka-eoU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="IyM-fO-8Ep" kind="relationship" relationship="rootViewController" id="yHd-R2-Rhx"/>
@@ -939,10 +997,17 @@
         <scene sceneID="0b4-S6-SmA">
             <objects>
                 <navigationController id="1fY-1z-uMl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="21 Apr" image="secondDay.png" id="nRI-Ko-SWB"/>
+                    <tabBarItem key="tabBarItem" title="21 Apr" image="secondDay.png" id="nRI-Ko-SWB">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="6tS-1v-AYt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="Rdg-23-6Z5" kind="relationship" relationship="rootViewController" id="vu3-SI-WeC"/>
@@ -956,10 +1021,17 @@
         <scene sceneID="Ylj-fG-Jte">
             <objects>
                 <navigationController id="10x-9l-Izs" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="22 Apr" image="thirdDay.png" id="1si-n7-OcI"/>
+                    <tabBarItem key="tabBarItem" title="22 Apr" image="thirdDay.png" id="1si-n7-OcI">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LPP-l8-fz9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="38J-u8-SQy" kind="relationship" relationship="rootViewController" id="ikJ-qf-arB"/>
@@ -1242,12 +1314,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="igL-vc-IBU">
                                 <rect key="frame" x="0.0" y="-8" width="320" height="568"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Session Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeS-Qx-zwd">
-                                <rect key="frame" x="5" y="64" width="320" height="54"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Session Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NGc-BK-HLI">
                                 <rect key="frame" x="5" y="119" width="320" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -1301,6 +1367,12 @@
                                     <action selector="registerationButton:" destination="urC-zZ-vJc" eventType="touchUpInside" id="Wkd-NH-xkh"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Session Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeS-Qx-zwd">
+                                <rect key="frame" x="0.0" y="64" width="320" height="47"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1490,7 +1562,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kLy-de-vxT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1854" y="1366"/>
+            <point key="canvasLocation" x="-2043" y="1298"/>
         </scene>
         <!--First Day Agenda View Controller-->
         <scene sceneID="Ik6-9c-Bx5">
@@ -1664,17 +1736,22 @@
             </objects>
             <point key="canvasLocation" x="-3673" y="1298"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Profile Tab Bar-->
         <scene sceneID="ddE-Ar-GU0">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Jhj-pD-aD3" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Jhj-pD-aD3" customClass="ProfileTabBar" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="XPD-3i-iAL"/>
+                    <navigationItem key="navigationItem" id="XPD-3i-iAL">
+                        <barButtonItem key="leftBarButtonItem" image="reveal-icon.png" id="qMh-4K-rhb">
+                            <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="kkT-M4-XgY">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <outlet property="barButton" destination="qMh-4K-rhb" id="cJo-1l-aoY"/>
                         <segue destination="tGV-h5-6nC" kind="relationship" relationship="viewControllers" id="Hve-IC-ZFB"/>
                         <segue destination="XRg-Zq-UFJ" kind="relationship" relationship="viewControllers" id="THd-Hr-za3"/>
                         <segue destination="MbQ-Vg-eC6" kind="relationship" relationship="viewControllers" id="yvC-A3-gKV"/>
@@ -1686,7 +1763,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="20 Apr" width="518" height="194"/>
         <image name="agenda.png" width="65" height="65"/>
         <image name="allDays.png" width="30" height="29"/>
         <image name="background.png" width="636" height="955"/>
@@ -1716,6 +1792,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="4Yh-GH-RyE"/>
-        <segue reference="7wE-zh-M6h"/>
+        <segue reference="pEZ-IB-jM5"/>
     </inferredMetricsTieBreakers>
 </document>

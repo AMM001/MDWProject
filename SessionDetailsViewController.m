@@ -24,7 +24,8 @@
     NSAttributedString *renderedSessionName=[[NSAttributedString alloc]initWithData:[_session.name
                                                                                      dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType}documentAttributes:nil error:nil];
     _sessionName.attributedText=renderedSessionName;
-    
+   
+
     _sessionDate.text=[DateConverter dateStringFromDate:_session.date];
     NSString * date = [NSString stringWithFormat:@"%@ - %@",
                        [DateConverter stringFromDate:_session.startDate],

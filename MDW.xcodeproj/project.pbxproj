@@ -27,6 +27,7 @@
 		ADF0D2FC1EAF5CA6007406D9 /* DateConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF0D2FB1EAF5CA6007406D9 /* DateConverter.m */; };
 		C9BC7AE9FB0F37240E8186AD /* libPods-MDW.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4347F597BA710ACAAB8B9845 /* libPods-MDW.a */; };
 		CC04420A1EB00BC4001CD37E /* SessionDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0442091EB00BC4001CD37E /* SessionDetailsViewController.m */; };
+		CC07F1021EBEF20600D72E9F /* ProfileTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CC07F1011EBEF20600D72E9F /* ProfileTabBar.m */; };
 		CC1ECCBF1EA5C4F700083C02 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1ECCBE1EA5C4F700083C02 /* ProfileViewController.m */; };
 		CC1ECCC21EA5CFD300083C02 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1ECCC11EA5CFD300083C02 /* LoginViewController.m */; };
 		CC1ECCD11EA6187000083C02 /* SpeakerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1ECCD01EA6187000083C02 /* SpeakerViewController.m */; };
@@ -175,6 +176,8 @@
 		ADF0D2FB1EAF5CA6007406D9 /* DateConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateConverter.m; sourceTree = "<group>"; };
 		CC0442081EB00BC4001CD37E /* SessionDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionDetailsViewController.h; sourceTree = "<group>"; };
 		CC0442091EB00BC4001CD37E /* SessionDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionDetailsViewController.m; sourceTree = "<group>"; };
+		CC07F1001EBEF20600D72E9F /* ProfileTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTabBar.h; sourceTree = "<group>"; };
+		CC07F1011EBEF20600D72E9F /* ProfileTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTabBar.m; sourceTree = "<group>"; };
 		CC1ECCBD1EA5C4F700083C02 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		CC1ECCBE1EA5C4F700083C02 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		CC1ECCC01EA5CFD300083C02 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -467,6 +470,8 @@
 				CC35837D1EAFD728004BD794 /* SpeakerDetailsViewController.m */,
 				CC0442081EB00BC4001CD37E /* SessionDetailsViewController.h */,
 				CC0442091EB00BC4001CD37E /* SessionDetailsViewController.m */,
+				CC07F1001EBEF20600D72E9F /* ProfileTabBar.h */,
+				CC07F1011EBEF20600D72E9F /* ProfileTabBar.m */,
 			);
 			name = storyboardControllers;
 			sourceTree = "<group>";
@@ -815,6 +820,7 @@
 				CC6DE1C71EAE7FA0009B0DA5 /* SecondDayMyAgendaViewController.m in Sources */,
 				4EA30B511EA2A39400CE1809 /* MDWNetworkManager.m in Sources */,
 				CC22AD511EA3F87000EBA097 /* SideMenuTableViewController.m in Sources */,
+				CC07F1021EBEF20600D72E9F /* ProfileTabBar.m in Sources */,
 				CC1ECCBF1EA5C4F700083C02 /* ProfileViewController.m in Sources */,
 				ADED080C1EA2728700A33CE0 /* AttendeeDTO.m in Sources */,
 				CC6DE1D61EAE9147009B0DA5 /* FirstDayAgendaViewController.m in Sources */,

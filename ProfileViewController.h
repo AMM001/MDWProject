@@ -7,12 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SideMenuTableViewController.h"
 #import "MDWNetworkManager.h"
 
 
 @interface ProfileViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *barButton;
 @property (weak, nonatomic) IBOutlet UIImageView *imageProfile;
 @property (weak, nonatomic) IBOutlet UILabel *personNameProfile;
 @property (weak, nonatomic) IBOutlet UILabel *personTitleProfile;
