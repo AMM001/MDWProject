@@ -11,8 +11,13 @@
 #import "DateConverter.h"
 #import "DateConverter.h"
 #import "MDWNetworkManager.h"
+#import "SpeakerDetailsViewController.h"
 
-@interface SessionDetailsViewController : UIViewController
+@interface SessionDetailsViewController : UIViewController{
+    SpeakerDTO *speaker ;
+}
+@property (weak, nonatomic) IBOutlet UIView *speakerSubView;
+
 @property (weak, nonatomic) IBOutlet UILabel *sessionName;
 @property (weak, nonatomic) IBOutlet UILabel *sessionDate;
 @property (weak, nonatomic) IBOutlet UILabel *sessionLocation;

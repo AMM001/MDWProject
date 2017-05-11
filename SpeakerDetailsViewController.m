@@ -11,7 +11,6 @@
 @interface SpeakerDetailsViewController ()
 
 @end
-
 @implementation SpeakerDetailsViewController
 
 - (void)viewDidLoad {

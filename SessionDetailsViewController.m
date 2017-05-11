@@ -17,14 +17,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    //The event handling method
+   
     /////render html SessionName//////
     DBHandler *mydb = [DBHandler getDB];
-    SpeakerDTO *speaker = [mydb getSpeakerById:[[[_session speakers] firstObject] id]];
+    speaker = [mydb getSpeakerById:[[[_session speakers] firstObject] id]];
     _sessionName.text=_session.name;
     NSAttributedString *renderedSessionName=[[NSAttributedString alloc]initWithData:[_session.name
                                                                                      dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType}documentAttributes:nil error:nil];
     _sessionName.attributedText=renderedSessionName;
-   
+   [_sessionName setTextAlignment:UITextAlignmentCenter];
+    
+    [_sessionName setFont:[UIFont systemFontOfSize:17]];
 
     _sessionDate.text=[DateConverter dateStringFromDate:_session.date];
     NSString * date = [NSString stringWithFormat:@"%@ - %@",
@@ -102,16 +108,16 @@
     
 }
 
-
 /*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
+ 
+      if ([[segue identifier] isEqualToString:@"viewSpeaker"]) {
+            SpeakerDetailsViewController *destination=segue.destinationViewController;
+            destination.speaker=speaker;
+      }
+
  }
- */
+*/
 
 - (IBAction)registerationButton:(id)sender {
     
@@ -218,4 +224,5 @@
                                                   delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show];
 }
+
 @end
