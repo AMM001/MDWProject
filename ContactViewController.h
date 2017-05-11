@@ -12,6 +12,6 @@
 @interface ContactViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
 @property (weak, nonatomic) IBOutlet UILabel *mobileLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *qrImage;
+@property (weak, nonatomic) IBOutlet UIImageView *qrImage; 
 
 @end

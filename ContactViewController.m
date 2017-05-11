@@ -44,25 +44,42 @@
  }
  */
 -(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
+//    [super viewWillAppear:animated];
+//    NSData *userDate=[[NSUserDefaults standardUserDefaults] objectForKey:@"attendeeObject"];
+//    AttendeeDTO *attendee=[NSKeyedUnarchiver unarchiveObjectWithData:userDate];
+//    NSString *code=[attendee code];
+//    if (code == 0) return;
+//    
+//    ZXMultiFormatWriter *writer = [[ZXMultiFormatWriter alloc] init];
+//    ZXBitMatrix *result = [writer encode:code
+//                                  format:kBarcodeFormatQRCode
+//                                   width:self.qrImage.frame.size.width
+//                                  height:self.qrImage.frame.size.width
+//                                   error:nil];
+//    
+//    if (result) {
+//        ZXImage *image = [ZXImage imageWithMatrix:result];
+//        self.qrImage.image = [UIImage imageWithCGImage:image.cgimage];
+//    }
+//    else {
+//        self.qrImage.image = nil;
+//    }
     NSData *userDate=[[NSUserDefaults standardUserDefaults] objectForKey:@"attendeeObject"];
     AttendeeDTO *attendee=[NSKeyedUnarchiver unarchiveObjectWithData:userDate];
-    NSString *code=[attendee code];
-    if (code == 0) return;
+    NSString *encodedData=[ NSString stringWithFormat:@"BEGIN:VCARD\nVERSION:3.0\nN:%@;%@\nFN:\nORG:%@\nTITLE:%@\nTEL;CELL:%@\nEMAIL;WORK;INTERNET:%@\nURL:\nEND:VCARD", attendee.middleName, attendee.firstName, attendee.companyName, attendee.title, attendee.mobiles[0], attendee.email];
     
-    ZXMultiFormatWriter *writer = [[ZXMultiFormatWriter alloc] init];
-    ZXBitMatrix *result = [writer encode:code
+    NSError *error = nil;
+    CGImageRef image = nil;
+    ZXMultiFormatWriter *writer = [ZXMultiFormatWriter writer];
+    ZXBitMatrix* result = [writer encode:encodedData
                                   format:kBarcodeFormatQRCode
-                                   width:self.qrImage.frame.size.width
-                                  height:self.qrImage.frame.size.width
-                                   error:nil];
-    
+                                   width:500
+                                  height:500
+                                   error:&error];
     if (result) {
-        ZXImage *image = [ZXImage imageWithMatrix:result];
-        self.qrImage.image = [UIImage imageWithCGImage:image.cgimage];
-    }
-    else {
-        self.qrImage.image = nil;
+        image = [[ZXImage imageWithMatrix:result] cgimage];
+        //[ _qrImage.image:[[UIImage alloc]initWithCGImage:image]];
+        self.qrImage.image = [UIImage imageWithCGImage:image];
     }
 }
 

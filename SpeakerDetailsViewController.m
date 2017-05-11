@@ -27,33 +27,37 @@
     _speakerName.text=fullName;
     _speakerTitle.text=_speaker.title;
     _companyName.text=_speaker.companyName;
-    _speakerBiography.text=_speaker.biography;
+    // _speakerBiography.text=_speaker.biography;
     
-
+    NSAttributedString *speakerBio=[[NSAttributedString alloc]initWithData:[_speaker.biography
+                                                                            dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType}documentAttributes:nil error:nil];
+    _speakerBiography.attributedText=speakerBio;
+    
+    
     if([_speaker imageData]==nil){
         
         if(_speaker.imageURL == nil){
             _speakerImage.image=[UIImage imageNamed:@"speaker.png"];
             
         }else{
-        
+            
             [MDWNetworkManager fetchImageWithURL:[_speaker imageURL]
                                      UIImageView:_speakerImage
-  
+             
                                     setForObject:_speaker ];
         }
-    
+        
     }
     
     else{
-    
+        
         UIImage * img = [[UIImage alloc] initWithData:[_speaker imageData]];
         _speakerImage.image=img;
         
     }
     
     
-  }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -61,13 +65,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
